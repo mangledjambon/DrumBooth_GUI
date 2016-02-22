@@ -11,7 +11,7 @@
 #ifndef DRUMBOOTH_COMPONENTS_H_INCLUDED
 #define DRUMBOOTH_COMPONENTS_H_INCLUDED
 
-#include "SeparationProcessor.h"
+#include "SeparationSource.h"
 #include "InfoBar.h"
 #include "MediaBar.h"
 #include "AboutPage.h"

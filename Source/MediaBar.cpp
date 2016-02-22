@@ -15,20 +15,33 @@
 //==============================================================================
 MediaBar::MediaBar(AudioTransportSource& transport) : transportSource(transport)
 {
-	addAndMakeVisible(label_Gain = new Label("Gain"));
-	label_Gain->setText("Volume:", dontSendNotification);
 
 	// Add Buttons, might move to Main Component
 	addAndMakeVisible(button_LoadFile = new TextButton("Load"));
 	addAndMakeVisible(button_PlayPause = new TextButton("PlayPause"));
 	addAndMakeVisible(button_Stop = new TextButton("Stop"));
 
-	// set up Gain slider
+	// set up Gain slider label
+	addAndMakeVisible(label_Gain = new Label("Gain"));
+	label_Gain->setText("Volume:", dontSendNotification);
+
+	// set up gain slider
 	addAndMakeVisible(slider_Gain = new Slider("Gain"));
 	slider_Gain->setSliderStyle(Slider::SliderStyle::LinearBarVertical);
 	slider_Gain->setRange(0, 100, 1);
 	slider_Gain->setValue(100);
 	slider_Gain->addListener(this);
+
+	// set up filter label
+	addAndMakeVisible(label_FilterFreq = new Label("High Pass Filter Frequency"));
+	label_FilterFreq->setText("High Pass Freq:", dontSendNotification);
+
+	// set up filter slider
+	addAndMakeVisible(slider_FilterFreq = new Slider("Filter Frequency"));
+	slider_FilterFreq->setSliderStyle(Slider::SliderStyle::LinearBar);
+	slider_FilterFreq->setRange(0, 20000, 1);
+	slider_FilterFreq->setValue(0);
+	//slider_FilterFreq->addListener(this);
 
 	// begin timer
 	startTimer(500);
@@ -40,17 +53,22 @@ MediaBar::~MediaBar()
 void MediaBar::paint (Graphics& g)
 {
 	Rectangle<int> localBounds = getLocalBounds();
-	Rectangle<int> sliderArea = localBounds.removeFromLeft(getWidth() / 15);
+	Rectangle<int> sliderArea = localBounds.removeFromLeft(getWidth() / 15).reduced(2);
 	Rectangle<int> labelArea = sliderArea.removeFromTop(20);
-
-	// draw slider and label
-	slider_Gain->setBounds(sliderArea);
-	label_Gain->setBounds(labelArea);
-
 
 	g.fillAll(Colours::slategrey);   // clear the background
 
-	g.setColour(Colours::whitesmoke);
+	// draw gain slider and label
+	slider_Gain->setBounds(sliderArea);
+	label_Gain->setBounds(labelArea);
+
+	// draw filter slider and label
+	Rectangle<int> filterSliderArea = localBounds.removeFromBottom(30).reduced(2);
+	Rectangle<int> filterLabelArea = filterSliderArea.removeFromLeft(80);
+	label_FilterFreq->setBounds(filterLabelArea);
+	slider_FilterFreq->setBounds(filterSliderArea);
+
+	g.setColour(Colours::lightgrey);
 	g.drawRect(localBounds, 1);   // draw an outline around the component
 	
 	// draw buttons
@@ -59,6 +77,7 @@ void MediaBar::paint (Graphics& g)
 	button_LoadFile->setBounds(buttonArea.removeFromLeft(BUTTON_WIDTH));
 	button_PlayPause->setBounds(buttonArea.removeFromLeft(BUTTON_WIDTH));
 	button_Stop->setBounds(buttonArea.removeFromLeft(BUTTON_WIDTH));
+
 
 	g.setColour(Colours::whitesmoke);
 
@@ -150,4 +169,9 @@ void MediaBar::addButtonListeners(Button::Listener* listenerToAdd)
 	button_LoadFile->addListener(listenerToAdd);
 	button_PlayPause->addListener(listenerToAdd);
 	button_Stop->addListener(listenerToAdd);
+}
+
+void MediaBar::addSliderListeners(Slider::Listener* listenerToAdd)
+{
+	slider_FilterFreq->addListener(listenerToAdd);
 }

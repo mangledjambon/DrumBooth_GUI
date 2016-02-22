@@ -21,11 +21,12 @@ class MainContentComponent   :	public AudioAppComponent,
 								public ApplicationCommandTarget,
 								public MenuBarModel,
 								public ChangeListener,
-								public Button::Listener
+								public Button::Listener,
+								public Slider::Listener
 {
 public:
     //==============================================================================
-    MainContentComponent() : state(Stopped), separationProcessor(new Separator()) // need to implement all the pure virtual functions in AudioProcessor
+    MainContentComponent() : state(Stopped)
     {
         setSize (800, 600);
 
@@ -35,9 +36,10 @@ public:
 		formatManager.registerBasicFormats();
 		transportSource.addChangeListener(this);
 
+
 		//GUI - add components here
 		addAndMakeVisible(infoBar = new InfoBar());						// bar containing cpu usage, sample-rate, etc...
-		addAndMakeVisible(mediaBar = new MediaBar(transportSource));	// pause/play/stop buttons, harmonic separator knob control
+		addAndMakeVisible(mediaBar = new MediaBar(transportSource));	// pause/play/stop buttons
 		addAndMakeVisible(menuBar = new MenuBarComponent(this));		// Options menus
 
 		// menu bar setup
@@ -47,6 +49,7 @@ public:
 		// update mediaBar with current playback state
 		mediaBar->setPlaybackState(state);
 		mediaBar->addButtonListeners(this);
+		mediaBar->addSliderListeners(this);
 
 		// optional at the moment - may remove
 		addAndMakeVisible(spectrogram = new SpectrogramComponent());
@@ -63,7 +66,9 @@ public:
 		currentBufferSize = samplesPerBlockExpected;
 		currentSampleRate = sampleRate;
 		transportSource.prepareToPlay(samplesPerBlockExpected, sampleRate);
-		//separationProcessor->prepareToPlay(sampleRate, samplesPerBlockExpected);
+
+		separationSource = new Separator(&transportSource);
+		separationSource->prepareToPlay(samplesPerBlockExpected, sampleRate);
     }
 
     void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override
@@ -74,7 +79,20 @@ public:
 			return;
 		}
 
-		transportSource.getNextAudioBlock(bufferToFill);
+		/*
+		MidiBuffer midiBuffer;
+		AudioBuffer<float> buffer(bufferToFill.buffer->getNumChannels(), bufferToFill.numSamples);
+
+		for (int channel = 0; channel < bufferToFill.buffer->getNumChannels(); channel++)
+		{
+			buffer.clear();
+			buffer.addFrom(channel, 0, bufferToFill.buffer->getWritePointer(channel, 0), bufferToFill.numSamples, 1.0f);
+			separationProcessor->processBlock(buffer, midiBuffer);
+		}
+		*/
+
+		separationSource->getNextAudioBlock(bufferToFill);
+		//transportSource.getNextAudioBlock(bufferToFill);
 		spectrogram->getNextAudioBlock(bufferToFill);
     }
 
@@ -288,6 +306,17 @@ public:
 		}
 	}
 	// =======================================
+
+	// method inherited from Slider::Listener
+	void sliderValueChanged(Slider* sliderThatWasChanged)
+	{
+		if (sliderThatWasChanged == mediaBar->slider_FilterFreq)
+		{
+			int newFreq = mediaBar->slider_FilterFreq->getValue();
+			separationSource->setFilterFrequency(newFreq);
+		}
+	}
+	// =======================================
 	
 	
 
@@ -358,8 +387,9 @@ private:
 			if (reader != nullptr)
 			{
 				ScopedPointer<AudioFormatReaderSource> newSource = new AudioFormatReaderSource(reader, false);
-				transportSource.setSource(newSource, 0, nullptr, reader->sampleRate);                                                                                         // [13]
+				transportSource.setSource(newSource, 0, nullptr, reader->sampleRate);                                                                                         
 				readerSource = newSource.release();
+
 			}
 		}
 	}
@@ -414,13 +444,12 @@ private:
 	double currentSampleRate;
 	int currentBufferSize;
 	AudioFormatManager formatManager;
+
+	// AudioSources
 	AudioTransportSource transportSource;
 	ScopedPointer<AudioFormatReader> formatReader;
 	ScopedPointer<AudioFormatReaderSource> readerSource;
-
-	// Processors
-	ScopedPointer<Separator> separationProcessor;
-	IIRFilter highPassFilter;
+	ScopedPointer<Separator> separationSource;
 	
 	// Application Components
 	ScopedPointer<InfoBar> infoBar;

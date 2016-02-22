@@ -33,7 +33,10 @@ public:
 	void sliderValueChanged(Slider* sliderThatWasChanged) override;
 
 	void addButtonListeners(Button::Listener* listenerToAdd);
+	void addSliderListeners(Slider::Listener* listenerToAdd);
+
 	ScopedPointer<TextButton> button_LoadFile, button_PlayPause, button_Stop;
+	ScopedPointer<Slider> slider_FilterFreq;
 
 private:
 	String getPlaybackStatus();
@@ -45,6 +48,8 @@ private:
 	// GUI
 	ScopedPointer<Label> label_Gain;
 	ScopedPointer<Slider> slider_Gain;
+	ScopedPointer<Label> label_FilterFreq;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MediaBar)
 };
 

@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2015
+Project("{8DB85D0C-58BB-5496-6ED7-CE84A3F0A135}") = "DrumBooth", "DrumBooth.vcxproj", "{55657880-7CB2-C216-021B-D8B6651ABEFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|Win32 = Release|Win32
+		Debug|Win32 = Debug|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55657880-7CB2-C216-021B-D8B6651ABEFE}.Release|Win32.ActiveCfg = Release|Win32
+		{55657880-7CB2-C216-021B-D8B6651ABEFE}.Release|Win32.Build.0 = Release|Win32
+		{55657880-7CB2-C216-021B-D8B6651ABEFE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{55657880-7CB2-C216-021B-D8B6651ABEFE}.Debug|Win32.Build.0 = Debug|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

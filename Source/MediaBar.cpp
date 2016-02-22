@@ -104,6 +104,8 @@ String MediaBar::getPlaybackStatus()
 	switch (playbackState)
 	{
 	case Stopped:
+		button_PlayPause->setButtonText("Play");
+		button_Stop->setEnabled(false);
 		return "Stopped";
 		break;
 
@@ -112,6 +114,8 @@ String MediaBar::getPlaybackStatus()
 		break;
 
 	case Playing:
+		button_PlayPause->setButtonText("Pause");
+		button_Stop->setEnabled(true);
 		return "Playing";
 		break;
 
@@ -120,6 +124,7 @@ String MediaBar::getPlaybackStatus()
 		break;
 
 	case Paused:
+		button_PlayPause->setButtonText("Resume");
 		return "Paused";
 		break;
 

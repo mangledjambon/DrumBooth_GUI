@@ -25,7 +25,7 @@ class MainContentComponent   :	public AudioAppComponent,
 {
 public:
     //==============================================================================
-    MainContentComponent() : state(Stopped)//, separationProcessor(new Separator()) need to implement all the pure virtual functions in AudioProcessor
+    MainContentComponent() : state(Stopped), separationProcessor(new Separator()) // need to implement all the pure virtual functions in AudioProcessor
     {
         setSize (800, 600);
 
@@ -63,8 +63,7 @@ public:
 		currentBufferSize = samplesPerBlockExpected;
 		currentSampleRate = sampleRate;
 		transportSource.prepareToPlay(samplesPerBlockExpected, sampleRate);
-		//separationProcessor->prepareToPlay(samplesPerBlockExpected, sampleRate);
-		//highPassFilter.setCoefficients(IIRCoefficients::makeHighPass(sampleRate, 5000));
+		//separationProcessor->prepareToPlay(sampleRate, samplesPerBlockExpected);
     }
 
     void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override
@@ -74,13 +73,6 @@ public:
 			bufferToFill.clearActiveBufferRegion();
 			return;
 		}
-	
-		//separationProcessor->getNextAudioBlock(bufferToFill);
-		//float* pbuf = bufferToFill.buffer->getWritePointer(0);
-		//highPassFilter.processSamples(pbuf, bufferToFill.numSamples);
-
-		//pbuf = bufferToFill.buffer->getWritePointer(1);
-		//highPassFilter.processSamples(pbuf, bufferToFill.numSamples);
 
 		transportSource.getNextAudioBlock(bufferToFill);
 		spectrogram->getNextAudioBlock(bufferToFill);

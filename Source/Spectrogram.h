@@ -25,7 +25,7 @@ public:
 		enabled(false)
 	{
 		setOpaque(true);
-		setAudioChannels(1, 0);  // we want a couple of input channels but no outputs
+		setAudioChannels(2, 0);  // we want a couple of input channels but no outputs
 		startTimerHz(60);
 		//setSize(700, 500);
 	}
@@ -40,12 +40,7 @@ public:
 	{
 		// (nothing to do here)
 	}
-
-	void releaseResources() override
-	{
-		// (nothing to do here)
-	}
-
+	
 	void getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill) override
 	{
 		if (bufferToFill.buffer->getNumChannels() > 0)
@@ -55,6 +50,11 @@ public:
 			for (int i = 0; i < bufferToFill.numSamples; ++i)
 				pushNextSampleIntoFifo(channelData[i]);
 		}
+	}
+
+	void releaseResources() override
+	{
+		// (nothing to do here)
 	}
 
 	//=======================================================================

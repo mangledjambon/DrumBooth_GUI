@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="Ay0032" name="DrumBooth" projectType="guiapp" version="1.0.0"
+              bundleIdentifier="com.yourcompany.DrumBooth" includeBinaryInAppConfig="1"
+              jucerVersion="4.1.0" companyName="Sean Breen" companyEmail="sean.breen@mycit.ie">
+  <MAINGROUP id="kimbUk" name="DrumBooth">
+    <GROUP id="{2B12A334-D04A-3F49-7893-D8D94637D817}" name="Source">
+      <GROUP id="{E69D11A8-31BE-742E-B3DC-027230BC8A66}" name="Processors">
+        <FILE id="JTg9Pa" name="SeparationProcessor.cpp" compile="1" resource="0"
+              file="Source/SeparationProcessor.cpp"/>
+        <FILE id="FiHhu0" name="SeparationProcessor.h" compile="0" resource="0"
+              file="Source/SeparationProcessor.h"/>
+      </GROUP>
+      <GROUP id="{673CD975-B298-D5DA-1AFB-2F0D110BC9C0}" name="Components">
+        <FILE id="eRoZJK" name="AboutPage.cpp" compile="1" resource="0" file="Source/AboutPage.cpp"/>
+        <FILE id="ClGQBH" name="AboutPage.h" compile="0" resource="0" file="Source/AboutPage.h"/>
+        <FILE id="yjZzft" name="MediaBar.cpp" compile="1" resource="0" file="Source/MediaBar.cpp"/>
+        <FILE id="u8mdOu" name="MediaBar.h" compile="0" resource="0" file="Source/MediaBar.h"/>
+        <FILE id="WoS2EO" name="InfoBar.cpp" compile="1" resource="0" file="Source/InfoBar.cpp"/>
+        <FILE id="D4WmH1" name="InfoBar.h" compile="0" resource="0" file="Source/InfoBar.h"/>
+        <FILE id="l3VLCL" name="Spectrogram.h" compile="0" resource="0" file="Source/Spectrogram.h"/>
+      </GROUP>
+      <FILE id="POnYTK" name="DrumBooth_Components.h" compile="0" resource="0"
+            file="Source/DrumBooth_Components.h"/>
+      <FILE id="KpZsf8" name="TransportState.h" compile="0" resource="0"
+            file="Source/TransportState.h"/>
+      <FILE id="JGRXgI" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+      <FILE id="TQlmMh" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                       isDebug="1" optimisation="1" targetName="DrumBooth"/>
+        <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                       isDebug="0" optimisation="3" targetName="DrumBooth"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path=""/>
+        <MODULEPATH id="juce_events" path=""/>
+        <MODULEPATH id="juce_graphics" path=""/>
+        <MODULEPATH id="juce_data_structures" path=""/>
+        <MODULEPATH id="juce_gui_basics" path=""/>
+        <MODULEPATH id="juce_gui_extra" path=""/>
+        <MODULEPATH id="juce_audio_basics" path=""/>
+        <MODULEPATH id="juce_audio_devices" path=""/>
+        <MODULEPATH id="juce_audio_formats" path=""/>
+        <MODULEPATH id="juce_audio_processors" path=""/>
+        <MODULEPATH id="juce_audio_utils" path=""/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <VS2015 targetFolder="Builds/VisualStudio2015">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="0" optimisation="3" targetName="DrumBooth"/>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
+                       isDebug="1" optimisation="1" targetName="DrumBooth"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_events" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_graphics" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_data_structures" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_gui_basics" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_gui_extra" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_audio_basics" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_audio_devices" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_audio_formats" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_audio_processors" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_audio_utils" path="..\..\Cpp\git\juce\modules"/>
+      </MODULEPATHS>
+    </VS2015>
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" libraryPath="/usr/X11R6/lib/" isDebug="1" optimisation="1"
+                       targetName="DrumBooth"/>
+        <CONFIGURATION name="Release" libraryPath="/usr/X11R6/lib/" isDebug="0" optimisation="3"
+                       targetName="DrumBooth"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_events" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_graphics" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_data_structures" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_gui_basics" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_gui_extra" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_audio_basics" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_audio_devices" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_audio_formats" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_audio_processors" path="..\..\Cpp\git\juce\modules"/>
+        <MODULEPATH id="juce_audio_utils" path="..\..\Cpp\git\juce\modules"/>
+      </MODULEPATHS>
+    </LINUX_MAKE>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="1" overwriteOnSave="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" overwriteOnSave="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_USE_FLAC="enabled" JUCE_USE_OGGVORBIS="disabled" JUCE_USE_MP3AUDIOFORMAT="enabled"
+               JUCE_USE_LAME_AUDIO_FORMAT="enabled"/>
+</JUCERPROJECT>

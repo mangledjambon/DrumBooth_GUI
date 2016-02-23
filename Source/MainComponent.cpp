@@ -29,6 +29,7 @@ public:
     MainContentComponent() : state(Stopped)
     {
         setSize (800, 600);
+		setWantsKeyboardFocus(true);
 
 		// Audio setup
         // specify the number of input and output channels that we want to open
@@ -58,6 +59,8 @@ public:
     ~MainContentComponent()
     {
         shutdownAudio();
+		transportSource.setSource(nullptr);
+		reader = nullptr;
     }
 
     //=======================================================================
@@ -257,13 +260,16 @@ public:
 		return true;
 	}
 
-	/*
 	// Not sure if i need this for keyboard shortcuts	
-	bool keyPressed(const KeyPress& key, Component* originatingComponent) override
+	bool keyPressed(const KeyPress& key) override
 	{
+		if (key == KeyPress::spaceKey)
+		{
+			playButtonPressed();
+		}
+
 		return true;
 	}
-	*/
 
 	// ===============================================
 
@@ -382,13 +388,13 @@ private:
 		if (chooser.browseForFileToOpen())
 		{
 			File file(chooser.getResult());
-			AudioFormatReader* reader = formatManager.createReaderFor(file);
+			reader = formatManager.createReaderFor(file);
 
 			if (reader != nullptr)
 			{
 				ScopedPointer<AudioFormatReaderSource> newSource = new AudioFormatReaderSource(reader, false);
-				transportSource.setSource(newSource, 0, nullptr, reader->sampleRate);                                                                                         
 				readerSource = newSource.release();
+				transportSource.setSource(readerSource, 0, nullptr, reader->sampleRate);                                                                                         
 
 			}
 		}
@@ -409,7 +415,7 @@ private:
 
 	void settingsButtonPressed() 
 	{
-		deviceSelector = new AudioDeviceSelectorComponent(deviceManager,
+		ScopedPointer<AudioDeviceSelectorComponent> deviceSelector = new AudioDeviceSelectorComponent(deviceManager,
 			0, 0, 2, 2,
 			false,
 			false,
@@ -431,7 +437,7 @@ private:
 
 	void aboutButtonPressed()
 	{
-		aboutPage = new AboutPage();
+		ScopedPointer<AboutPage> aboutPage = new AboutPage();
 		aboutPage->setSize(300, 100);
 		DialogWindow::showModalDialog("About DrumBooth",
 			aboutPage,
@@ -444,6 +450,7 @@ private:
 	double currentSampleRate;
 	int currentBufferSize;
 	AudioFormatManager formatManager;
+	ScopedPointer<AudioFormatReader> reader;
 
 	// AudioSources
 	AudioTransportSource transportSource;
@@ -455,8 +462,6 @@ private:
 	ScopedPointer<InfoBar> infoBar;
 	ScopedPointer<MediaBar> mediaBar;
 	ScopedPointer<MenuBarComponent> menuBar;
-	ScopedPointer<AboutPage> aboutPage;
-	ScopedPointer<AudioDeviceSelectorComponent> deviceSelector;
 	ScopedPointer<SpectrogramComponent> spectrogram;
 	ApplicationCommandManager commandManager;
 

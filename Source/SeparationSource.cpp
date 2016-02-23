@@ -23,6 +23,7 @@ void Separator::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 	currentSampleRate = sampleRate;
 	highPassFilter->prepareToPlay(samplesPerBlockExpected, sampleRate);
 	highPassFilter->setCoefficients(IIRCoefficients::makeHighPass(sampleRate,filterFrequency));
+	setFilterFrequency(20);
 }
 
 void Separator::getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill)

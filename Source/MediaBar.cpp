@@ -39,8 +39,8 @@ MediaBar::MediaBar(AudioTransportSource& transport) : transportSource(transport)
 	// set up filter slider
 	addAndMakeVisible(slider_FilterFreq = new Slider("Filter Frequency"));
 	slider_FilterFreq->setSliderStyle(Slider::SliderStyle::LinearBar);
-	slider_FilterFreq->setRange(0, 20000, 1);
-	slider_FilterFreq->setValue(0);
+	slider_FilterFreq->setRange(20, 20000, 1);
+	slider_FilterFreq->setValue(20);
 	//slider_FilterFreq->addListener(this);
 
 	// begin timer

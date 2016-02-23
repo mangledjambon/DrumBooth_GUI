@@ -35,6 +35,8 @@ public:
         // specify the number of input and output channels that we want to open
         setAudioChannels (0, 2);
 		formatManager.registerBasicFormats();
+
+		// listen for changes to transportSource's state
 		transportSource.addChangeListener(this);
 
 
@@ -59,7 +61,6 @@ public:
     ~MainContentComponent()
     {
         shutdownAudio();
-		transportSource.setSource(nullptr);
 		reader = nullptr;
     }
 
@@ -82,18 +83,6 @@ public:
 			return;
 		}
 
-		/*
-		MidiBuffer midiBuffer;
-		AudioBuffer<float> buffer(bufferToFill.buffer->getNumChannels(), bufferToFill.numSamples);
-
-		for (int channel = 0; channel < bufferToFill.buffer->getNumChannels(); channel++)
-		{
-			buffer.clear();
-			buffer.addFrom(channel, 0, bufferToFill.buffer->getWritePointer(channel, 0), bufferToFill.numSamples, 1.0f);
-			separationProcessor->processBlock(buffer, midiBuffer);
-		}
-		*/
-
 		separationSource->getNextAudioBlock(bufferToFill);
 		//transportSource.getNextAudioBlock(bufferToFill);
 		spectrogram->getNextAudioBlock(bufferToFill);
@@ -102,6 +91,7 @@ public:
     void releaseResources() override
     {
 		transportSource.releaseResources();
+		transportSource.setSource(nullptr);
     }
 
     //=======================================================================
@@ -382,6 +372,7 @@ private:
 
 	void loadButtonPressed()
 	{
+
 		FileChooser chooser("Select a file to load...",
 			File::nonexistent,
 			"*.wav; *.flac; *.mp3");
@@ -392,9 +383,10 @@ private:
 
 			if (reader != nullptr)
 			{
+				transportSource.stop();
 				ScopedPointer<AudioFormatReaderSource> newSource = new AudioFormatReaderSource(reader, false);
+				transportSource.setSource(newSource, 0, nullptr, reader->sampleRate);                                                                                         
 				readerSource = newSource.release();
-				transportSource.setSource(readerSource, 0, nullptr, reader->sampleRate);                                                                                         
 
 			}
 		}

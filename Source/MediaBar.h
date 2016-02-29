@@ -36,7 +36,8 @@ public:
 	void addSliderListeners(Slider::Listener* listenerToAdd);
 
 	ScopedPointer<TextButton> button_LoadFile, button_PlayPause, button_Stop;
-	ScopedPointer<Slider> slider_FilterFreq;
+	ScopedPointer<Slider> slider_HighPassFilterFreq, slider_LowPassFilterFreq;
+	ScopedPointer<ToggleButton> button_spectrogramEnabled;
 
 private:
 	String getPlaybackStatus();
@@ -48,7 +49,7 @@ private:
 	// GUI
 	ScopedPointer<Label> label_Gain;
 	ScopedPointer<Slider> slider_Gain;
-	ScopedPointer<Label> label_FilterFreq;
+	ScopedPointer<Label> label_HighPassFilterFreq, label_LowPassFilterFreq;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MediaBar)
 };

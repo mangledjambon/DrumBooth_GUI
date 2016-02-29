@@ -39,10 +39,9 @@ public:
 		// listen for changes to transportSource's state
 		transportSource.addChangeListener(this);
 
-
 		//GUI - add components here
 		addAndMakeVisible(infoBar = new InfoBar());						// bar containing cpu usage, sample-rate, etc...
-		addAndMakeVisible(mediaBar = new MediaBar(transportSource));	// pause/play/stop buttons
+		addAndMakeVisible(mediaBar = new MediaBar(transportSource));	// pause/play/stop buttons, spectrogram toggle button
 		addAndMakeVisible(menuBar = new MenuBarComponent(this));		// Options menus
 
 		// menu bar setup
@@ -69,10 +68,12 @@ public:
     {
 		currentBufferSize = samplesPerBlockExpected;
 		currentSampleRate = sampleRate;
+
+		// call prepareToPlay on relevant Sources
 		transportSource.prepareToPlay(samplesPerBlockExpected, sampleRate);
 
-		separationSource = new Separator(&transportSource);
-		separationSource->prepareToPlay(samplesPerBlockExpected, sampleRate);
+		highPassFilterSource = new HighPassFilterAudioSource(&transportSource);
+		highPassFilterSource->prepareToPlay(samplesPerBlockExpected, sampleRate);
     }
 
     void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override
@@ -83,8 +84,8 @@ public:
 			return;
 		}
 
-		separationSource->getNextAudioBlock(bufferToFill);
 		//transportSource.getNextAudioBlock(bufferToFill);
+		highPassFilterSource->getNextAudioBlock(bufferToFill);
 		spectrogram->getNextAudioBlock(bufferToFill);
     }
 
@@ -111,7 +112,7 @@ public:
 		menuBar->setBounds(menuBarArea);
 		mediaBar->setBounds(mediaBarArea);
 		infoBar->setBounds(infoBarArea);
-		spectrogram->setBounds(spectrogramArea);
+		spectrogram->setBounds(spectrogramArea.reduced(5));
 
 		// update InfoBar labels with current CPU usage, sample rate and buffer size
 		infoBar->updateCpu(deviceManager.getCpuUsage() * 100);
@@ -300,17 +301,27 @@ public:
 		{
 			stopButtonPressed();
 		}
+		else if (buttonThatWasClicked == mediaBar->button_spectrogramEnabled)
+		{
+			spectrogram->setEnabled(mediaBar->button_spectrogramEnabled->getToggleState());
+		}
 	}
 	// =======================================
 
 	// method inherited from Slider::Listener
 	void sliderValueChanged(Slider* sliderThatWasChanged)
 	{
-		if (sliderThatWasChanged == mediaBar->slider_FilterFreq)
+		if (sliderThatWasChanged == mediaBar->slider_HighPassFilterFreq)
 		{
-			int newFreq = mediaBar->slider_FilterFreq->getValue();
-			separationSource->setFilterFrequency(newFreq);
+			int newFreq = mediaBar->slider_HighPassFilterFreq->getValue();
+			highPassFilterSource->setHighPassFilterFrequency(newFreq);
 		}
+		else if (sliderThatWasChanged == mediaBar->slider_LowPassFilterFreq)
+		{
+			int newFreq = mediaBar->slider_LowPassFilterFreq->getValue();
+			//lowPassFilterSource->setLowPassFilterFrequency(newFreq);
+		}
+
 	}
 	// =======================================
 	
@@ -343,7 +354,7 @@ private:
 			{
 			case Stopped:
 				transportSource.setPosition(0.0);
-				spectrogram->setEnabled(false);
+				//spectrogram->setEnabled(false);
 				break;
 
 			case Starting:
@@ -378,17 +389,20 @@ private:
 			"*.wav; *.flac; *.mp3");
 		if (chooser.browseForFileToOpen())
 		{
+			changeState(Stopping);
 			File file(chooser.getResult());
+			reader = nullptr;
 			reader = formatManager.createReaderFor(file);
 
 			if (reader != nullptr)
 			{
-				transportSource.stop();
 				ScopedPointer<AudioFormatReaderSource> newSource = new AudioFormatReaderSource(reader, false);
 				transportSource.setSource(newSource, 0, nullptr, reader->sampleRate);                                                                                         
 				readerSource = newSource.release();
 
 			}
+
+			spectrogram->setToClear(true);
 		}
 	}
 
@@ -407,6 +421,9 @@ private:
 
 	void settingsButtonPressed() 
 	{
+		// pause playback
+		// changeState(Pausing);
+
 		ScopedPointer<AudioDeviceSelectorComponent> deviceSelector = new AudioDeviceSelectorComponent(deviceManager,
 			0, 0, 2, 2,
 			false,
@@ -449,6 +466,8 @@ private:
 	ScopedPointer<AudioFormatReader> formatReader;
 	ScopedPointer<AudioFormatReaderSource> readerSource;
 	ScopedPointer<Separator> separationSource;
+	ScopedPointer<LowPassFilterAudioSource> lowPassFilterSource;
+	ScopedPointer<HighPassFilterAudioSource> highPassFilterSource;
 	
 	// Application Components
 	ScopedPointer<InfoBar> infoBar;

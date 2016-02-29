@@ -60,7 +60,20 @@ public:
 	//=======================================================================
 	void paint(Graphics& g) override
 	{
-		g.fillAll(Colours::grey);
+		if (!enabled)
+		{
+			g.fillAll(Colours::whitesmoke);
+			g.drawFittedText("(Spectrogram disabled)", getLocalBounds(), Justification::centred, 1);
+			return;
+		}
+
+		if (toBeCleared)
+		{
+			clear(g);
+			toBeCleared = false;
+		}
+
+		g.fillAll(Colours::lightslategrey);
 
 		g.setOpacity(1.0f);
 		g.drawImageWithin(spectrogramImage, 0, 0, getWidth(), getHeight(), RectanglePlacement::stretchToFit);
@@ -108,12 +121,12 @@ public:
 
 		// find the range of values produced, so we can scale our rendering to
 		// show up the detail clearly
-		Range<float> maxLevel = FloatVectorOperations::findMinAndMax(fftData, fftSize/2);
+		Range<float> maxLevel = FloatVectorOperations::findMinAndMax(fftData, fftSize*2);
 
 		for (int y = 1; y < imageHeight; ++y)
 		{
 			const float skewedProportionY = 1.0f - std::exp(std::log(y / (float)imageHeight) * 0.2f);
-			const int fftDataIndex = jlimit(0, fftSize/2, (int)(skewedProportionY * fftSize/2));
+			const int fftDataIndex = jlimit(0, fftSize*2, (int)(skewedProportionY * (fftSize/3)));
 			const float level = jmap(fftData[fftDataIndex], 0.0f, maxLevel.getEnd(), 0.0f, 1.0f);
 
 			spectrogramImage.setPixelAt(rightHandEdge, y, Colour::fromHSV(level, 1.0f, level, 1.0f));
@@ -123,6 +136,19 @@ public:
 	void setEnabled(bool status)
 	{
 		enabled = status;
+
+		if (!enabled)
+			repaint();
+	}
+
+	void clear(Graphics& g)
+	{
+		g.fillAll(Colours::black);
+	}
+
+	void setToClear(bool newValue)
+	{
+		toBeCleared = newValue;
 	}
 
 	enum
@@ -136,6 +162,7 @@ private:
 	Image spectrogramImage;
 
 	bool enabled;
+	bool toBeCleared;
 	float fifo[fftSize];
 	float fftData[2 * fftSize];
 	int fifoIndex;

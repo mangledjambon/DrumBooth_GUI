@@ -16,14 +16,26 @@
 MediaBar::MediaBar(AudioTransportSource& transport) : transportSource(transport)
 {
 
-	// Add Buttons, might move to Main Component
+	// Add Buttons
 	addAndMakeVisible(button_LoadFile = new TextButton("Load"));
 	addAndMakeVisible(button_PlayPause = new TextButton("PlayPause"));
 	addAndMakeVisible(button_Stop = new TextButton("Stop"));
+	addAndMakeVisible(button_spectrogramEnabled = new ToggleButton("Spectrogram On/Off"));
+
+	button_spectrogramEnabled->setToggleState(true, dontSendNotification);
 
 	// set up Gain slider label
 	addAndMakeVisible(label_Gain = new Label("Gain"));
 	label_Gain->setText("Volume:", dontSendNotification);
+
+	// set up filter labels
+	// high pass
+	addAndMakeVisible(label_HighPassFilterFreq = new Label("High Pass Filter Frequency"));
+	label_HighPassFilterFreq->setText("High Pass Freq:", dontSendNotification);
+
+	// low pass
+	addAndMakeVisible(label_LowPassFilterFreq = new Label("Low Pass Filter Frequency"));
+	label_LowPassFilterFreq->setText("Low Pass Freq:", dontSendNotification);
 
 	// set up gain slider
 	addAndMakeVisible(slider_Gain = new Slider("Gain"));
@@ -32,16 +44,17 @@ MediaBar::MediaBar(AudioTransportSource& transport) : transportSource(transport)
 	slider_Gain->setValue(100);
 	slider_Gain->addListener(this);
 
-	// set up filter label
-	addAndMakeVisible(label_FilterFreq = new Label("High Pass Filter Frequency"));
-	label_FilterFreq->setText("High Pass Freq:", dontSendNotification);
 
-	// set up filter slider
-	addAndMakeVisible(slider_FilterFreq = new Slider("Filter Frequency"));
-	slider_FilterFreq->setSliderStyle(Slider::SliderStyle::LinearBar);
-	slider_FilterFreq->setRange(20, 20000, 1);
-	slider_FilterFreq->setValue(20);
-	//slider_FilterFreq->addListener(this);
+	// set up filter sliders
+	addAndMakeVisible(slider_HighPassFilterFreq = new Slider("Filter Frequency"));
+	slider_HighPassFilterFreq->setSliderStyle(Slider::SliderStyle::LinearBar);
+	slider_HighPassFilterFreq->setRange(20, 20000, 2);
+	slider_HighPassFilterFreq->setValue(20);
+	
+	addAndMakeVisible(slider_LowPassFilterFreq = new Slider("Low Pass Filter Frequency"));
+	slider_LowPassFilterFreq->setSliderStyle(Slider::SliderStyle::LinearBar);
+	slider_LowPassFilterFreq->setRange(20, 20000, 2);
+	slider_LowPassFilterFreq->setValue(15000);
 
 	// begin timer
 	startTimer(500);
@@ -62,21 +75,27 @@ void MediaBar::paint (Graphics& g)
 	slider_Gain->setBounds(sliderArea);
 	label_Gain->setBounds(labelArea);
 
-	// draw filter slider and label
+	// draw filter sliders and labels
 	Rectangle<int> filterSliderArea = localBounds.removeFromBottom(30).reduced(2);
 	Rectangle<int> filterLabelArea = filterSliderArea.removeFromLeft(80);
-	label_FilterFreq->setBounds(filterLabelArea);
-	slider_FilterFreq->setBounds(filterSliderArea);
+	label_HighPassFilterFreq->setBounds(filterLabelArea);
+	slider_HighPassFilterFreq->setBounds(filterSliderArea);
 
-	g.setColour(Colours::lightgrey);
+	//filterSliderArea = localBounds.removeFromBottom(30).reduced(2);
+	//filterLabelArea = filterSliderArea.removeFromLeft(80);
+	//label_LowPassFilterFreq->setBounds(filterLabelArea);
+	//slider_LowPassFilterFreq->setBounds(filterSliderArea);
+
+	g.setColour(Colours::darkblue);
 	g.drawRect(localBounds, 1);   // draw an outline around the component
 	
 	// draw buttons
-	const int BUTTON_WIDTH = localBounds.getWidth() / 3;	// set button width as constant int value (1/3 of localBound's width)
+	const int BUTTON_WIDTH = localBounds.getWidth() / 4;	// set button width as constant int value (1/3 of localBound's width)
 	Rectangle<int> buttonArea = localBounds.reduced(10).removeFromBottom(getHeight() / 10);
 	button_LoadFile->setBounds(buttonArea.removeFromLeft(BUTTON_WIDTH));
 	button_PlayPause->setBounds(buttonArea.removeFromLeft(BUTTON_WIDTH));
 	button_Stop->setBounds(buttonArea.removeFromLeft(BUTTON_WIDTH));
+	button_spectrogramEnabled->setBounds(buttonArea.removeFromLeft(BUTTON_WIDTH));
 
 
 	g.setColour(Colours::whitesmoke);
@@ -125,6 +144,7 @@ String MediaBar::getPlaybackStatus()
 	case Stopped:
 		button_PlayPause->setButtonText("Play");
 		button_Stop->setEnabled(false);
+		button_spectrogramEnabled->setEnabled(false);
 		return "Stopped";
 		break;
 
@@ -135,6 +155,7 @@ String MediaBar::getPlaybackStatus()
 	case Playing:
 		button_PlayPause->setButtonText("Pause");
 		button_Stop->setEnabled(true);
+		button_spectrogramEnabled->setEnabled(true);
 		return "Playing";
 		break;
 
@@ -169,9 +190,11 @@ void MediaBar::addButtonListeners(Button::Listener* listenerToAdd)
 	button_LoadFile->addListener(listenerToAdd);
 	button_PlayPause->addListener(listenerToAdd);
 	button_Stop->addListener(listenerToAdd);
+	button_spectrogramEnabled->addListener(listenerToAdd);
 }
 
 void MediaBar::addSliderListeners(Slider::Listener* listenerToAdd)
 {
-	slider_FilterFreq->addListener(listenerToAdd);
+	slider_HighPassFilterFreq->addListener(listenerToAdd);
+	slider_LowPassFilterFreq->addListener(listenerToAdd);
 }

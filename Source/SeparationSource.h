@@ -25,12 +25,8 @@ public:
 	void getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill) override;
 	void releaseResources() override;
 
-	void setFilterFrequency(int newFrequency);
-	int getFilterFrequency();
 private:
 	int currentSampleRate;
-	int filterFrequency;
-	ScopedPointer<IIRFilterAudioSource> highPassFilter;
 };
 
 

@@ -22,6 +22,7 @@ MediaBar::MediaBar(AudioTransportSource& transport) : transportSource(transport)
 	addAndMakeVisible(button_Stop = new TextButton("Stop"));
 	addAndMakeVisible(button_spectrogramEnabled = new ToggleButton("Spectrogram On/Off"));
 
+	// set toggle button to checked (true)
 	button_spectrogramEnabled->setToggleState(true, dontSendNotification);
 
 	// set up Gain slider label
@@ -33,11 +34,7 @@ MediaBar::MediaBar(AudioTransportSource& transport) : transportSource(transport)
 	addAndMakeVisible(label_HighPassFilterFreq = new Label("High Pass Filter Frequency"));
 	label_HighPassFilterFreq->setText("High Pass Freq:", dontSendNotification);
 
-	// low pass
-	addAndMakeVisible(label_LowPassFilterFreq = new Label("Low Pass Filter Frequency"));
-	label_LowPassFilterFreq->setText("Low Pass Freq:", dontSendNotification);
-
-	// set up gain slider
+	// set up volume slider
 	addAndMakeVisible(slider_Gain = new Slider("Gain"));
 	slider_Gain->setSliderStyle(Slider::SliderStyle::LinearBarVertical);
 	slider_Gain->setRange(0, 100, 1);
@@ -50,11 +47,6 @@ MediaBar::MediaBar(AudioTransportSource& transport) : transportSource(transport)
 	slider_HighPassFilterFreq->setSliderStyle(Slider::SliderStyle::LinearBar);
 	slider_HighPassFilterFreq->setRange(20, 20000, 2);
 	slider_HighPassFilterFreq->setValue(20);
-	
-	addAndMakeVisible(slider_LowPassFilterFreq = new Slider("Low Pass Filter Frequency"));
-	slider_LowPassFilterFreq->setSliderStyle(Slider::SliderStyle::LinearBar);
-	slider_LowPassFilterFreq->setRange(20, 20000, 2);
-	slider_LowPassFilterFreq->setValue(15000);
 
 	// begin timer
 	startTimer(500);
@@ -81,11 +73,6 @@ void MediaBar::paint (Graphics& g)
 	label_HighPassFilterFreq->setBounds(filterLabelArea);
 	slider_HighPassFilterFreq->setBounds(filterSliderArea);
 
-	//filterSliderArea = localBounds.removeFromBottom(30).reduced(2);
-	//filterLabelArea = filterSliderArea.removeFromLeft(80);
-	//label_LowPassFilterFreq->setBounds(filterLabelArea);
-	//slider_LowPassFilterFreq->setBounds(filterSliderArea);
-
 	g.setColour(Colours::darkblue);
 	g.drawRect(localBounds, 1);   // draw an outline around the component
 	
@@ -106,17 +93,19 @@ void MediaBar::paint (Graphics& g)
 		status of the playback (Playing, Paused, etc...)		
 	*/
 
+	
 	int min_elapsed = (transportSource.getNextReadPosition() / 44100) / 60;
 	int sec_elapsed = (transportSource.getNextReadPosition() / 44100) % 60;
 	int min_total = (transportSource.getTotalLength() / 44100) / 60;
 	int sec_total = (transportSource.getTotalLength() / 44100) % 60;
 
 	g.drawFittedText(
-		  String(min_elapsed)+ "m "
+		fileName + "\n"
+		+ String(min_elapsed)+ "m "
 		+ String(sec_elapsed) + "s \t\t-\t\t" 
 		+ String(min_total) + "m " + String(sec_total) + "s"
 		+ "\nStatus: " + getPlaybackStatus(), 
-		localBounds, Justification::centred, 3);
+		localBounds, Justification::centred, 4);
 
 }
 
@@ -174,6 +163,11 @@ String MediaBar::getPlaybackStatus()
 	}
 }
 
+void MediaBar::setTrackInfo(String name)
+{
+	fileName = name;
+}
+
 void MediaBar::sliderValueChanged(Slider* sliderThatWasChanged)
 {
 	if (sliderThatWasChanged == slider_Gain)
@@ -196,5 +190,5 @@ void MediaBar::addButtonListeners(Button::Listener* listenerToAdd)
 void MediaBar::addSliderListeners(Slider::Listener* listenerToAdd)
 {
 	slider_HighPassFilterFreq->addListener(listenerToAdd);
-	slider_LowPassFilterFreq->addListener(listenerToAdd);
+	//slider_LowPassFilterFreq->addListener(listenerToAdd);
 }

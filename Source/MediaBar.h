@@ -35,8 +35,10 @@ public:
 	void addButtonListeners(Button::Listener* listenerToAdd);
 	void addSliderListeners(Slider::Listener* listenerToAdd);
 
+	void setTrackInfo(String name);
+
 	ScopedPointer<TextButton> button_LoadFile, button_PlayPause, button_Stop;
-	ScopedPointer<Slider> slider_HighPassFilterFreq, slider_LowPassFilterFreq;
+	ScopedPointer<Slider> slider_HighPassFilterFreq;
 	ScopedPointer<ToggleButton> button_spectrogramEnabled;
 
 private:
@@ -47,9 +49,11 @@ private:
 	AudioTransportSource& transportSource;
 
 	// GUI
+	String artistName, trackName, fileName;
+	ScopedPointer<Label> label_artistName, label_trackName;
 	ScopedPointer<Label> label_Gain;
 	ScopedPointer<Slider> slider_Gain;
-	ScopedPointer<Label> label_HighPassFilterFreq, label_LowPassFilterFreq;
+	ScopedPointer<Label> label_HighPassFilterFreq;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MediaBar)
 };

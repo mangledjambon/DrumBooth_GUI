@@ -1,7 +1,10 @@
 /*
   ==============================================================================
 
-    This file was auto-generated!
+    TODO:
+		- Rudiment Browser Component
+		- Implement Harmonic/Percussive Separator Audio Source
+		- Investigate AudioProcessor Graph as alternative for AudioSources
 
   ==============================================================================
 */
@@ -316,11 +319,6 @@ public:
 			int newFreq = mediaBar->slider_HighPassFilterFreq->getValue();
 			highPassFilterSource->setHighPassFilterFrequency(newFreq);
 		}
-		else if (sliderThatWasChanged == mediaBar->slider_LowPassFilterFreq)
-		{
-			int newFreq = mediaBar->slider_LowPassFilterFreq->getValue();
-			//lowPassFilterSource->setLowPassFilterFrequency(newFreq);
-		}
 
 	}
 	// =======================================
@@ -389,20 +387,19 @@ private:
 			"*.wav; *.flac; *.mp3");
 		if (chooser.browseForFileToOpen())
 		{
-			changeState(Stopping);
+			stopButtonPressed();
 			File file(chooser.getResult());
 			reader = nullptr;
 			reader = formatManager.createReaderFor(file);
+			
+			mediaBar->setTrackInfo(file.getFileNameWithoutExtension());
 
 			if (reader != nullptr)
 			{
 				ScopedPointer<AudioFormatReaderSource> newSource = new AudioFormatReaderSource(reader, false);
 				transportSource.setSource(newSource, 0, nullptr, reader->sampleRate);                                                                                         
 				readerSource = newSource.release();
-
 			}
-
-			spectrogram->setToClear(true);
 		}
 	}
 

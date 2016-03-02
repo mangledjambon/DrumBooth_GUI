@@ -67,12 +67,6 @@ public:
 			return;
 		}
 
-		if (toBeCleared)
-		{
-			clear(g);
-			toBeCleared = false;
-		}
-
 		g.fillAll(Colours::lightslategrey);
 
 		g.setOpacity(1.0f);
@@ -81,6 +75,7 @@ public:
 
 	void timerCallback() override
 	{
+
 		if (nextFFTBlockReady && enabled)
 		{
 			drawNextLineOfSpectrogram();

@@ -162,6 +162,7 @@ public:
 			menu.addCommandItem(&commandManager, PLAY);
 			menu.addCommandItem(&commandManager, STOP);
 			menu.addSeparator();
+			menu.addCommandItem(&commandManager, RUDIMENTS);
 			menu.addCommandItem(&commandManager, SETTINGS);
 		}
 		else if (topLevelMenuIndex == 2)
@@ -186,7 +187,7 @@ public:
 
 	void getAllCommands(Array<CommandID> &commands)
 	{
-		const CommandID ids[] = { LOAD, QUIT, PLAY, STOP, SETTINGS, ABOUT };
+		const CommandID ids[] = { LOAD, QUIT, PLAY, STOP, SETTINGS, RUDIMENTS, ABOUT };
 		commands.addArray(ids, numElementsInArray(ids));
 	}
 
@@ -221,6 +222,10 @@ public:
 			result.addDefaultKeypress('Q', ModifierKeys::commandModifier);
 			break;
 
+		case CommandIDs::RUDIMENTS:
+			result.setInfo("Rudiment Browser", "Opens Rudiment Browser", menu, 0);
+			result.addDefaultKeypress(KeyPress::F2Key, ModifierKeys::noModifiers);
+			break;
 		case CommandIDs::ABOUT:
 			result.setInfo("About", "Information about this application", menu, 0);
 		}
@@ -252,6 +257,10 @@ public:
 
 		case CommandIDs::ABOUT:
 			aboutButtonPressed();
+			break;
+
+		case CommandIDs::RUDIMENTS:
+			rudimentBrowserTriggered();
 			break;
 		default:
 			return false;
@@ -347,6 +356,7 @@ private:
 		PLAY = 0x2003,
 		STOP = 0x2004,
 		ABOUT = 0x2005,
+		RUDIMENTS = 0x2006,
 		QUIT = StandardApplicationCommandIDs::quit
 	};
 

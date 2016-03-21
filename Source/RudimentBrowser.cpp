@@ -16,12 +16,11 @@ RudimentBrowser::RudimentBrowser()
 		imageList(&wildcardFileFilter, imageScanThread),
 		fileTree(imageList)
 {
-	setSize(650, 200);
+	setSize(700, 300);
 	setOpaque(true);
 	imageList.setDirectory(File::getCurrentWorkingDirectory().getChildFile("../../Source/rudiments"), true, true);
 	imageScanThread.startThread(1);
 	fileTree.addListener(this);
-
 	fileTree.setColour(TreeView::backgroundColourId, Colours::lightgrey);
 	addAndMakeVisible(fileTree);
 	addAndMakeVisible(imagePreview);
@@ -31,11 +30,13 @@ RudimentBrowser::~RudimentBrowser()
 {
 	if (imageScanThread.isThreadRunning())
 		imageScanThread.signalThreadShouldExit();
+
+	fileTree.removeListener(this);
 }
 
 void RudimentBrowser::paint(Graphics& g)
 {
-	g.fillAll(Colours::whitesmoke);
+	g.fillAll(Colours::slategrey);
 }
 
 void RudimentBrowser::resized()
@@ -46,9 +47,4 @@ void RudimentBrowser::resized()
 	Rectangle<int> treeArea = localBounds.removeFromLeft(width / 3);
 	fileTree.setBounds(treeArea);
 	imagePreview.setBounds(localBounds);
-}
-
-void RudimentBrowser::loadImages()
-{
-	
 }

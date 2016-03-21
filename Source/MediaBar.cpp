@@ -57,15 +57,12 @@ MediaBar::~MediaBar()
 
 void MediaBar::paint (Graphics& g)
 {
-	Rectangle<int> localBounds = getLocalBounds();
-	Rectangle<int> sliderArea = localBounds.removeFromLeft(getWidth() / 15).reduced(2);
-	Rectangle<int> labelArea = sliderArea.removeFromTop(20);
-
 	g.fillAll(Colours::slategrey);   // clear the background
 
+	Rectangle<int> localBounds = getLocalBounds().reduced(5);
 	// draw gain slider and label
-	slider_Gain->setBounds(sliderArea);
-	label_Gain->setBounds(labelArea);
+	//slider_Gain->setBounds(sliderArea);
+	//label_Gain->setBounds(labelArea);
 
 	// draw filter sliders and labels
 	Rectangle<int> filterSliderArea = localBounds.removeFromBottom(30).reduced(2);
@@ -77,7 +74,13 @@ void MediaBar::paint (Graphics& g)
 	g.drawRect(localBounds, 1);   // draw an outline around the component
 	
 	// draw buttons
-	const int BUTTON_WIDTH = localBounds.getWidth() / 4;	// set button width as constant int value (1/3 of localBound's width)
+	const int BUTTON_WIDTH = localBounds.getWidth() / 8;	// set button width as constant int value (1/3 of localBound's width)
+	
+	Rectangle<int> sliderArea = localBounds.removeFromLeft(getWidth() / 15);
+	Rectangle<int> labelArea = sliderArea.removeFromTop(20);
+	slider_Gain->setBounds(sliderArea.reduced(5));
+	label_Gain->setBounds(labelArea);
+
 	Rectangle<int> buttonArea = localBounds.reduced(10).removeFromBottom(getHeight() / 10);
 	button_LoadFile->setBounds(buttonArea.removeFromLeft(BUTTON_WIDTH));
 	button_PlayPause->setBounds(buttonArea.removeFromLeft(BUTTON_WIDTH));

@@ -14,6 +14,7 @@
 #include "SeparationSource.h"
 #include "HighPassFilterAudioSource.h"
 #include "LowPassFilterAudioSource.h"
+#include "RudimentBrowser.h"
 #include "InfoBar.h"
 #include "MediaBar.h"
 #include "AboutPage.h"

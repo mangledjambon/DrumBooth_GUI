@@ -6,6 +6,8 @@
 		- Implement Harmonic/Percussive Separator Audio Source
 		- Investigate AudioProcessor Graph as alternative for AudioSources
 
+		- line 309: adjust screen size when spectrogram disabled	
+
   ==============================================================================
 */
 
@@ -54,7 +56,7 @@ public:
 		// update mediaBar with current playback state
 		mediaBar->setPlaybackState(state);
 		mediaBar->addButtonListeners(this);
-		mediaBar->addSliderListeners(this);
+		//mediaBar->addSliderListeners(this);
 
 		// optional at the moment - may remove
 		addAndMakeVisible(spectrogram = new SpectrogramComponent());
@@ -75,8 +77,11 @@ public:
 		// call prepareToPlay on relevant Sources
 		transportSource.prepareToPlay(samplesPerBlockExpected, sampleRate);
 
-		highPassFilterSource = new HighPassFilterAudioSource(&transportSource);
-		highPassFilterSource->prepareToPlay(samplesPerBlockExpected, sampleRate);
+		separationSource = new Separator(&transportSource);
+		separationSource->prepareToPlay(samplesPerBlockExpected, sampleRate);
+
+		//highPassFilterSource = new HighPassFilterAudioSource(&transportSource);
+		//highPassFilterSource->prepareToPlay(samplesPerBlockExpected, sampleRate);
     }
 
     void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override
@@ -87,8 +92,9 @@ public:
 			return;
 		}
 
-		//transportSource.getNextAudioBlock(bufferToFill);
-		highPassFilterSource->getNextAudioBlock(bufferToFill);
+		transportSource.getNextAudioBlock(bufferToFill);
+		//highPassFilterSource->getNextAudioBlock(bufferToFill);
+		separationSource->getNextAudioBlock(bufferToFill);
 		spectrogram->getNextAudioBlock(bufferToFill);
     }
 
@@ -108,14 +114,14 @@ public:
 		Rectangle<int> localBounds = getLocalBounds();
 		Rectangle<int> menuBarArea = localBounds.removeFromTop(LookAndFeel::getDefaultLookAndFeel().getDefaultMenuBarHeight());
 		Rectangle<int> infoBarArea = localBounds.removeFromBottom(30);
-		Rectangle<int> mediaBarArea = localBounds.removeFromTop(localBounds.getHeight() / 2);
+		Rectangle<int> mediaBarArea = localBounds.removeFromTop(localBounds.getHeight()/2);
 		Rectangle<int> spectrogramArea = localBounds;
 		
 		// set bounds for each component in window
 		menuBar->setBounds(menuBarArea);
 		mediaBar->setBounds(mediaBarArea);
 		infoBar->setBounds(infoBarArea);
-		spectrogram->setBounds(spectrogramArea.reduced(5));
+		spectrogram->setBounds(spectrogramArea.reduced(2));
 
 		// update InfoBar labels with current CPU usage, sample rate and buffer size
 		infoBar->updateCpu(deviceManager.getCpuUsage() * 100);
@@ -261,10 +267,13 @@ public:
 		{
 			playButtonPressed();
 		}
+		else if (key == KeyPress::F2Key)
+		{
+			rudimentBrowserTriggered();
+		}
 
 		return true;
 	}
-
 	// ===============================================
 
 	// methods inherited from ChangeListener
@@ -306,7 +315,10 @@ public:
 		}
 		else if (buttonThatWasClicked == mediaBar->button_spectrogramEnabled)
 		{
-			spectrogram->setEnabled(mediaBar->button_spectrogramEnabled->getToggleState());
+			// TODO: adjust screen size here to hide spectrogram when not in use
+			bool enable = mediaBar->button_spectrogramEnabled->getToggleState();
+
+			spectrogram->setEnabled(enable);
 		}
 	}
 	// =======================================
@@ -451,6 +463,21 @@ private:
 			Colours::whitesmoke,
 			true);
 	}
+
+	void rudimentBrowserTriggered()
+	{		
+		RudimentBrowser* rudimentBrowser = new RudimentBrowser();
+		DialogWindow::LaunchOptions options;
+		options.dialogTitle = "Rudiment Browser";
+		options.useNativeTitleBar = true;
+		options.escapeKeyTriggersCloseButton = true;
+		options.useBottomRightCornerResizer = true;
+		options.resizable = true;
+		options.content = OptionalScopedPointer<Component>(rudimentBrowser, true);
+		options.launchAsync();
+	}
+
+	Rectangle<int> spectrogramArea;
 
 	// Audio
 	double currentSampleRate;

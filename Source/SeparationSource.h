@@ -11,6 +11,8 @@
 #ifndef SEPARATIONPROCESSOR_H_INCLUDED
 #define SEPARATIONPROCESSOR_H_INCLUDED
 
+#include "transforms/STFT.h"
+#include "transforms/ISTFT.h"
 #include "../JuceLibraryCode/JuceHeader.h"
 
 class Separator : public AudioSource
@@ -27,6 +29,8 @@ public:
 
 private:
 	int currentSampleRate;
+	ScopedPointer<STFT> stft;
+	ScopedPointer<ISTFT> istft;
 };
 
 

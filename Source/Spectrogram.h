@@ -62,7 +62,8 @@ public:
 	{
 		if (!enabled)
 		{
-			g.fillAll(Colours::whitesmoke);
+			g.fillAll(Colours::lightslategrey);
+			spectrogramImage.clear(spectrogramImage.getBounds());
 			g.drawFittedText("(Spectrogram disabled)", getLocalBounds(), Justification::centred, 1);
 			return;
 		}
@@ -131,14 +132,11 @@ public:
 	void setEnabled(bool status)
 	{
 		enabled = status;
-
-		if (!enabled)
-			repaint();
 	}
 
 	void clear(Graphics& g)
 	{
-		g.fillAll(Colours::black);
+		spectrogramImage.clear(getLocalBounds());
 	}
 
 	void setToClear(bool newValue)

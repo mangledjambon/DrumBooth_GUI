@@ -11,6 +11,7 @@
 #ifndef DRUMBOOTH_COMPONENTS_H_INCLUDED
 #define DRUMBOOTH_COMPONENTS_H_INCLUDED
 
+#include "separator\SeparationTask.h"
 #include "HighPassFilterAudioSource.h"
 #include "LowPassFilterAudioSource.h"
 #include "PositionableMixerAudioSource.h"

@@ -16,6 +16,8 @@
 #ifndef HARMONICPERCUSSIVESEPARATOR_H_INCLUDED
 #define HARMONICPERCUSSIVESEPARATOR_H_INCLUDED
 
+#include "JuceHeader.h"
+#include "../separator/ArraySorter.h"
 #include "../transforms/STFT.h"
 #include "../transforms/ISTFT.h"
 #include "../Eigen/Eigen"
@@ -24,10 +26,28 @@
 class MedianSeparator
 {
 public:
-	MedianSeparator();
+	MedianSeparator(AudioFormatReader* reader);
 	~MedianSeparator();
 
+	void fillBuffer();
+	void convertToSpectrogram();
+	void filterBins();
+	void filterFrames();
+	void resynthesize();
+	void writeFiles();
+
+
 private:
+	StringArray fileNameNoExt1;
+	int numSamples, numCols, numChannels, startSample;
+	AudioSampleBuffer samples;
+	AudioFormatReader* reader;
+	MatrixXcf spectrogram[2];
+	MatrixXf filteredSpectrogram_P[2];
+	MatrixXf filteredSpectrogram_H[2];
+	MatrixXcf resynthSpectrogram_P[2];
+	MatrixXcf resynthSpectrogram_H[2];
+	Array<float> outputSignal_Left, outputSignal_Right;
 };
 
 

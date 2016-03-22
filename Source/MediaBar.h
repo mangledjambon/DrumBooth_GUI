@@ -37,7 +37,7 @@ public:
 
 	void setTrackInfo(String name);
 
-	ScopedPointer<TextButton> button_LoadFile, button_PlayPause, button_Stop;
+	ScopedPointer<TextButton> button_LoadFile, button_PlayPause, button_Stop, button_Process;
 	ScopedPointer<Slider> slider_HighPassFilterFreq;
 	ScopedPointer<ToggleButton> button_spectrogramEnabled;
 

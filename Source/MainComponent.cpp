@@ -334,6 +334,10 @@ public:
 
 			spectrogram->setEnabled(enable);
 		}
+		else if (buttonThatWasClicked == mediaBar->button_Process)
+		{
+			processButtonPressed();
+		}
 	}
 	// =======================================
 
@@ -406,6 +410,24 @@ private:
 		}
 	}
 
+	void processButtonPressed()
+	{
+		// perform separation
+		ScopedPointer<SeparationTask> separationTask = new SeparationTask(reader);
+
+		if (separationTask->runThread())
+		{
+			// thread finished normally
+		}
+		else
+		{
+			// user pressed cancel
+		}
+
+		// add extracted harmonic + percussive files to mixer
+		// add mixer as transportSource source
+	}
+
 	void loadButtonPressed()
 	{
 		// Open file chooser dialog
@@ -423,6 +445,7 @@ private:
 			File file(chooser.getResult());
 			reader = nullptr;
 			reader = formatManager.createReaderFor(file);
+			currentFileNameNoExtension = file.getFileNameWithoutExtension();
 			
 			// display track title in player
 			mediaBar->setTrackInfo(file.getFileNameWithoutExtension());
@@ -433,6 +456,7 @@ private:
 				ScopedPointer<AudioFormatReaderSource> newSource = new AudioFormatReaderSource(reader, false);
 				transportSource.setSource(newSource);
 				readerSource = newSource.release();
+				mediaBar->button_Process->setEnabled(true);
 			}
 		}
 	}
@@ -513,6 +537,7 @@ private:
 	Rectangle<int> spectrogramArea;
 
 	// Audio
+	String currentFileNameNoExtension;
 	double currentSampleRate;
 	int currentBufferSize;
 	AudioFormatManager formatManager;

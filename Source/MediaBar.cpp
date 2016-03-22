@@ -20,7 +20,9 @@ MediaBar::MediaBar(AudioTransportSource& transport) : transportSource(transport)
 	addAndMakeVisible(button_LoadFile = new TextButton("Load"));
 	addAndMakeVisible(button_PlayPause = new TextButton("PlayPause"));
 	addAndMakeVisible(button_Stop = new TextButton("Stop"));
+	addAndMakeVisible(button_Process = new TextButton("Process Audio"));
 	addAndMakeVisible(button_spectrogramEnabled = new ToggleButton("Spectrogram On/Off"));
+	button_Process->setEnabled(false);
 
 	// set toggle button to checked (true)
 	button_spectrogramEnabled->setToggleState(true, dontSendNotification);
@@ -49,7 +51,7 @@ MediaBar::MediaBar(AudioTransportSource& transport) : transportSource(transport)
 	slider_HighPassFilterFreq->setValue(20);
 
 	// begin timer
-	startTimer(500);
+	startTimerHz(5);
 }
 
 MediaBar::~MediaBar()
@@ -82,7 +84,8 @@ void MediaBar::paint (Graphics& g)
 	button_LoadFile->setBounds(buttonArea.removeFromLeft(BUTTON_WIDTH));
 	button_PlayPause->setBounds(buttonArea.removeFromLeft(BUTTON_WIDTH));
 	button_Stop->setBounds(buttonArea.removeFromLeft(BUTTON_WIDTH));
-	button_spectrogramEnabled->setBounds(buttonArea.removeFromLeft(BUTTON_WIDTH));
+	button_spectrogramEnabled->setBounds(buttonArea.removeFromRight(BUTTON_WIDTH));
+	button_Process->setBounds(buttonArea.removeFromRight(BUTTON_WIDTH * 2));
 
 
 	g.setColour(Colours::whitesmoke);
@@ -185,6 +188,7 @@ void MediaBar::addButtonListeners(Button::Listener* listenerToAdd)
 	button_PlayPause->addListener(listenerToAdd);
 	button_Stop->addListener(listenerToAdd);
 	button_spectrogramEnabled->addListener(listenerToAdd);
+	button_Process->addListener(listenerToAdd);
 }
 
 void MediaBar::addSliderListeners(Slider::Listener* listenerToAdd)

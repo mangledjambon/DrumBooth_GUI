@@ -22,9 +22,10 @@
 class SeparationTask : public ThreadWithProgressWindow
 {
 public:
-	SeparationTask();
+	SeparationTask(AudioFormatReader* readerForFile);
 	~SeparationTask();
 
+	void run() override;
 private:
 	ScopedPointer<MedianSeparator> separator;
 };

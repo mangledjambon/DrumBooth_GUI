@@ -3,5 +3,6 @@
 #define TPI 2*M_PI
 #define eps 0.0000000000001f
 #define FILTER_SIZE 17
+#define MEDIAN_INDEX (FILTER_SIZE/2) + 1
 #define WINDOW_SIZE 4096
 #define HOP_SIZE (WINDOW_SIZE / 4)

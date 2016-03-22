@@ -22,6 +22,10 @@ RudimentBrowser::RudimentBrowser()
 	imageScanThread.startThread(1);
 	fileTree.addListener(this);
 	fileTree.setColour(TreeView::backgroundColourId, Colours::lightgrey);
+
+	imageTitleLabel.setJustificationType(Justification::centred);
+	imageTitleLabel.setText(TRANS("Select a rudiment from the drop-down list and it will be displayed below."), dontSendNotification);
+	addAndMakeVisible(imageTitleLabel);
 	addAndMakeVisible(fileTree);
 	addAndMakeVisible(imagePreview);
 }
@@ -36,15 +40,22 @@ RudimentBrowser::~RudimentBrowser()
 
 void RudimentBrowser::paint(Graphics& g)
 {
-	g.fillAll(Colours::slategrey);
-}
+	g.fillAll(Colours::whitesmoke);
 
-void RudimentBrowser::resized()
-{
 	Rectangle<int> localBounds = getLocalBounds().reduced(4);
 	int width = getWidth();
 
 	Rectangle<int> treeArea = localBounds.removeFromLeft(width / 3);
+	Rectangle<int> labelArea = localBounds.removeFromTop(40).reduced(4);
+
+	g.setColour(Colours::darkslategrey);
+	g.drawRect(labelArea);
 	fileTree.setBounds(treeArea);
-	imagePreview.setBounds(localBounds);
+	imageTitleLabel.setBounds(labelArea);
+	imagePreview.setBounds(localBounds.reduced(5));
+}
+
+void RudimentBrowser::resized()
+{
+	
 }

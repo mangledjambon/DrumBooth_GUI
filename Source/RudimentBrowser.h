@@ -27,9 +27,9 @@ public:
 	void paint(Graphics& g) override;
 	void resized() override;
 
-	void loadImages();
-
 private:
+
+	Label imageTitleLabel;
 	// heap variables go here
 	WildcardFileFilter wildcardFileFilter;
 	TimeSliceThread imageScanThread;
@@ -45,7 +45,10 @@ private:
 		const File selectedFile(fileTree.getSelectedFile());
 
 		if (selectedFile.existsAsFile())
+		{
 			imagePreview.setImage(ImageCache::getFromFile(selectedFile));
+			imageTitleLabel.setText(selectedFile.getFileNameWithoutExtension(), dontSendNotification);
+		}
 
 		// the image cahce is a handly way to load images from files or directly from memory and
 		// will keep them hanging around for a few seconds in case they are requested elsewhere

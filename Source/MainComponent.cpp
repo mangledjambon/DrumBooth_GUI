@@ -440,22 +440,25 @@ private:
 
 	void settingsButtonPressed() 
 	{
-		// pause playback
-		// changeState(Pausing);
 
-		ScopedPointer<AudioDeviceSelectorComponent> deviceSelector = new AudioDeviceSelectorComponent(deviceManager,
+		AudioDeviceSelectorComponent* deviceSelector = new AudioDeviceSelectorComponent(deviceManager,
 			0, 0, 2, 2,
 			false,
 			false,
 			true,
-			false);
+			true);
 
 		deviceSelector->setSize(500, 180);
-		DialogWindow::showModalDialog(String("Audio Settings"),
-			deviceSelector,
-			TopLevelWindow::getTopLevelWindow(0),
-			Colours::whitesmoke,
-			true);
+
+		DialogWindow::LaunchOptions options;
+		options.dialogTitle = "Audio Settings";
+		options.useNativeTitleBar = true;
+		options.dialogBackgroundColour = Colours::whitesmoke;
+		options.escapeKeyTriggersCloseButton = true;
+		options.useBottomRightCornerResizer = false;
+		options.resizable = false;
+		options.content = OptionalScopedPointer<Component>(deviceSelector, true);
+		options.launchAsync();
 	}
 
 	void quitButtonPressed()
@@ -465,18 +468,22 @@ private:
 
 	void aboutButtonPressed()
 	{
-		ScopedPointer<AboutPage> aboutPage = new AboutPage();
-		aboutPage->setSize(300, 100);
-		DialogWindow::showModalDialog("About DrumBooth",
-			aboutPage,
-			TopLevelWindow::getTopLevelWindow(0),
-			Colours::whitesmoke,
-			true);
+		AboutPage* aboutPage = new AboutPage();
+		
+		DialogWindow::LaunchOptions options;
+		options.dialogTitle = "About DrumBooth";
+		options.useNativeTitleBar = true;
+		options.escapeKeyTriggersCloseButton = true;
+		options.useBottomRightCornerResizer = false;
+		options.resizable = false;
+		options.content = OptionalScopedPointer<Component>(aboutPage, true);
+		options.launchAsync();
 	}
 
 	void rudimentBrowserTriggered()
 	{		
 		RudimentBrowser* rudimentBrowser = new RudimentBrowser();
+
 		DialogWindow::LaunchOptions options;
 		options.dialogTitle = "Rudiment Browser";
 		options.useNativeTitleBar = true;
@@ -497,6 +504,7 @@ private:
 
 	// AudioSources
 	AudioTransportSource transportSource;
+	ScopedPointer<MixerAudioSource> mixerSource;
 	ScopedPointer<AudioFormatReader> formatReader;
 	ScopedPointer<AudioFormatReaderSource> readerSource;
 	ScopedPointer<Separator> separationSource;

@@ -11,7 +11,9 @@
 #include "AboutPage.h"
 
 AboutPage::AboutPage()
-{}
+{
+	setSize(300, 300);
+}
 
 AboutPage::~AboutPage()
 {}

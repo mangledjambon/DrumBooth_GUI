@@ -10,8 +10,10 @@
 
 #include "SeparationTask.h"
 
-SeparationTask::SeparationTask()
-{}
+SeparationTask::SeparationTask() : ThreadWithProgressWindow("Separator running...", true, true, 5000, "Cancel")
+{
+	//separator = new MedianSeparator();
+}
 
 SeparationTask::~SeparationTask()
 {}

@@ -76,12 +76,6 @@ public:
 
 		// call prepareToPlay on relevant Sources
 		transportSource.prepareToPlay(samplesPerBlockExpected, sampleRate);
-
-		separationSource = new Separator(&transportSource);
-		separationSource->prepareToPlay(samplesPerBlockExpected, sampleRate);
-
-		//highPassFilterSource = new HighPassFilterAudioSource(&transportSource);
-		//highPassFilterSource->prepareToPlay(samplesPerBlockExpected, sampleRate);
     }
 
     void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override
@@ -93,8 +87,7 @@ public:
 		}
 
 		transportSource.getNextAudioBlock(bufferToFill);
-		//highPassFilterSource->getNextAudioBlock(bufferToFill);
-		separationSource->getNextAudioBlock(bufferToFill);
+		//separationSource->getNextAudioBlock(bufferToFill);
 		spectrogram->getNextAudioBlock(bufferToFill);
     }
 
@@ -403,21 +396,28 @@ private:
 
 	void loadButtonPressed()
 	{
-
+		// Open file chooser dialog
 		FileChooser chooser("Select a file to load...",
 			File::nonexistent,
 			"*.wav; *.flac; *.mp3");
+
+		// if user selects a file
 		if (chooser.browseForFileToOpen())
 		{
+			//stop playback
 			stopButtonPressed();
+
+			// get file and create reader
 			File file(chooser.getResult());
 			reader = nullptr;
 			reader = formatManager.createReaderFor(file);
 			
+			// display track title in player
 			mediaBar->setTrackInfo(file.getFileNameWithoutExtension());
 
 			if (reader != nullptr)
 			{
+				// add new source to transport, remove old source
 				ScopedPointer<AudioFormatReaderSource> newSource = new AudioFormatReaderSource(reader, false);
 				transportSource.setSource(newSource, 0, nullptr, reader->sampleRate);                                                                                         
 				readerSource = newSource.release();
@@ -440,7 +440,7 @@ private:
 
 	void settingsButtonPressed() 
 	{
-
+		// initialise device selector component
 		AudioDeviceSelectorComponent* deviceSelector = new AudioDeviceSelectorComponent(deviceManager,
 			0, 0, 2, 2,
 			false,
@@ -448,8 +448,9 @@ private:
 			true,
 			true);
 
-		deviceSelector->setSize(500, 180);
+		deviceSelector->setSize(500, 180);		// set component size
 
+		// initialise LaunchOptions struct with relevant fields
 		DialogWindow::LaunchOptions options;
 		options.dialogTitle = "Audio Settings";
 		options.useNativeTitleBar = true;
@@ -458,7 +459,7 @@ private:
 		options.useBottomRightCornerResizer = false;
 		options.resizable = false;
 		options.content = OptionalScopedPointer<Component>(deviceSelector, true);
-		options.launchAsync();
+		options.launchAsync(); // launch dialog
 	}
 
 	void quitButtonPressed()
@@ -468,8 +469,10 @@ private:
 
 	void aboutButtonPressed()
 	{
+		// initialise About component
 		AboutPage* aboutPage = new AboutPage();
 		
+		// create LaunchOptions struct
 		DialogWindow::LaunchOptions options;
 		options.dialogTitle = "About DrumBooth";
 		options.useNativeTitleBar = true;
@@ -477,7 +480,7 @@ private:
 		options.useBottomRightCornerResizer = false;
 		options.resizable = false;
 		options.content = OptionalScopedPointer<Component>(aboutPage, true);
-		options.launchAsync();
+		options.launchAsync(); // launch dialog
 	}
 
 	void rudimentBrowserTriggered()
@@ -488,7 +491,7 @@ private:
 		options.dialogTitle = "Rudiment Browser";
 		options.useNativeTitleBar = true;
 		options.escapeKeyTriggersCloseButton = true;
-		options.useBottomRightCornerResizer = true;
+		options.useBottomRightCornerResizer = true; // needs to be resizable, exercise images need more room than rudiments
 		options.resizable = true;
 		options.content = OptionalScopedPointer<Component>(rudimentBrowser, true);
 		options.launchAsync();
@@ -507,7 +510,7 @@ private:
 	ScopedPointer<MixerAudioSource> mixerSource;
 	ScopedPointer<AudioFormatReader> formatReader;
 	ScopedPointer<AudioFormatReaderSource> readerSource;
-	ScopedPointer<Separator> separationSource;
+	//ScopedPointer<Separator> separationSource;
 	ScopedPointer<LowPassFilterAudioSource> lowPassFilterSource;
 	ScopedPointer<HighPassFilterAudioSource> highPassFilterSource;
 	

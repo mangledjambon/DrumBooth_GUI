@@ -11,7 +11,6 @@
 #ifndef DRUMBOOTH_COMPONENTS_H_INCLUDED
 #define DRUMBOOTH_COMPONENTS_H_INCLUDED
 
-#include "SeparationSource.h"
 #include "HighPassFilterAudioSource.h"
 #include "LowPassFilterAudioSource.h"
 #include "RudimentBrowser.h"

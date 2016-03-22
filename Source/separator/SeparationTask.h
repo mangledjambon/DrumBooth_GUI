@@ -17,13 +17,16 @@
 #ifndef SEPARATIONTHREAD_H_INCLUDED
 #define SEPARATIONTHREAD_H_INCLUDED
 #include "JuceHeader.h"
+#include "HarmonicPercussiveSeparator.h"
 
-class SeparationTask
+class SeparationTask : public ThreadWithProgressWindow
 {
 public:
 	SeparationTask();
 	~SeparationTask();
 
+private:
+	ScopedPointer<MedianSeparator> separator;
 };
 
 

@@ -12,7 +12,7 @@
 
 SeparationTask::SeparationTask() : ThreadWithProgressWindow("Separator running...", true, true, 5000, "Cancel")
 {
-	//separator = new MedianSeparator();
+	separator = new MedianSeparator();
 }
 
 SeparationTask::~SeparationTask()

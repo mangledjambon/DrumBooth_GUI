@@ -16,6 +16,8 @@
 #ifndef HARMONICPERCUSSIVESEPARATOR_H_INCLUDED
 #define HARMONICPERCUSSIVESEPARATOR_H_INCLUDED
 
+#include "../transforms/STFT.h"
+#include "../transforms/ISTFT.h"
 #include "../Eigen/Eigen"
 #include "../ffft/FFTReal.h"
 

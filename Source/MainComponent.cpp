@@ -2,10 +2,6 @@
   ==============================================================================
 
     TODO:
-		- Rudiment Browser Component
-		- Implement Harmonic/Percussive Separator Audio Source
-		- Investigate AudioProcessor Graph as alternative for AudioSources
-
 		- line 309: adjust screen size when spectrogram disabled	
 
   ==============================================================================
@@ -60,6 +56,9 @@ public:
 
 		// optional at the moment - may remove
 		addAndMakeVisible(spectrogram = new SpectrogramComponent());
+
+		mixerSource = new PositionableMixerAudioSource();
+		transportSource.setSource(mixerSource);
     }
 
     ~MainContentComponent()
@@ -87,7 +86,6 @@ public:
 		}
 
 		transportSource.getNextAudioBlock(bufferToFill);
-		//separationSource->getNextAudioBlock(bufferToFill);
 		spectrogram->getNextAudioBlock(bufferToFill);
     }
 
@@ -419,7 +417,8 @@ private:
 			{
 				// add new source to transport, remove old source
 				ScopedPointer<AudioFormatReaderSource> newSource = new AudioFormatReaderSource(reader, false);
-				transportSource.setSource(newSource, 0, nullptr, reader->sampleRate);                                                                                         
+				//transportSource.setSource(newSource, 0, nullptr, reader->sampleRate); 
+				mixerSource->addInputSource(newSource, true);
 				readerSource = newSource.release();
 			}
 		}
@@ -507,10 +506,9 @@ private:
 
 	// AudioSources
 	AudioTransportSource transportSource;
-	ScopedPointer<MixerAudioSource> mixerSource;
+	ScopedPointer<PositionableMixerAudioSource> mixerSource;
 	ScopedPointer<AudioFormatReader> formatReader;
 	ScopedPointer<AudioFormatReaderSource> readerSource;
-	//ScopedPointer<Separator> separationSource;
 	ScopedPointer<LowPassFilterAudioSource> lowPassFilterSource;
 	ScopedPointer<HighPassFilterAudioSource> highPassFilterSource;
 	

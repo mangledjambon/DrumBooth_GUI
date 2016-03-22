@@ -13,6 +13,7 @@
 
 #include "HighPassFilterAudioSource.h"
 #include "LowPassFilterAudioSource.h"
+#include "PositionableMixerAudioSource.h"
 #include "RudimentBrowser.h"
 #include "InfoBar.h"
 #include "MediaBar.h"

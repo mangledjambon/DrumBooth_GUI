@@ -59,10 +59,7 @@ void MediaBar::paint (Graphics& g)
 {
 	g.fillAll(Colours::slategrey);   // clear the background
 
-	Rectangle<int> localBounds = getLocalBounds().reduced(5);
-	// draw gain slider and label
-	//slider_Gain->setBounds(sliderArea);
-	//label_Gain->setBounds(labelArea);
+	Rectangle<int> localBounds = getLocalBounds().reduced(5); // get area
 
 	// draw filter sliders and labels
 	Rectangle<int> filterSliderArea = localBounds.removeFromBottom(30).reduced(2);

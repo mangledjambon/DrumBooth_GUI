@@ -47,7 +47,7 @@ public:
 
 		// menu bar setup
 		commandManager.registerAllCommandsForTarget(this);
-		menuBar->toFront(true);
+		//menuBar->toFront(true);
 
 		// update mediaBar with current playback state
 		mediaBar->setPlaybackState(state);
@@ -57,8 +57,8 @@ public:
 		// optional at the moment - may remove
 		addAndMakeVisible(spectrogram = new SpectrogramComponent());
 
-		mixerSource = new PositionableMixerAudioSource();
-		transportSource.setSource(mixerSource);
+		//mixerSource = new PositionableMixerAudioSource();
+		//transportSource.setSource(&mixerSource);
     }
 
     ~MainContentComponent()
@@ -73,7 +73,6 @@ public:
 		currentBufferSize = samplesPerBlockExpected;
 		currentSampleRate = sampleRate;
 
-		// call prepareToPlay on relevant Sources
 		transportSource.prepareToPlay(samplesPerBlockExpected, sampleRate);
     }
 
@@ -82,6 +81,11 @@ public:
 		if (readerSource == nullptr)
 		{
 			bufferToFill.clearActiveBufferRegion();
+			return;
+		}
+		else if (transportSource.hasStreamFinished())
+		{
+			changeState(Stopping);
 			return;
 		}
 
@@ -190,27 +194,27 @@ public:
 		{
 		case CommandIDs::LOAD:
 			result.setInfo("Load", "Pick a file to load into DrumBooth", menu, 0);
-			result.addDefaultKeypress('L', ModifierKeys::commandModifier);
+			//result.addDefaultKeypress('L', ModifierKeys::commandModifier);
 			break;
 
 		case CommandIDs::QUIT:
 			result.setInfo("Quit", "Exits DrumBooth", menu, 0);
-			result.addDefaultKeypress('Q', ModifierKeys::commandModifier);
+			//result.addDefaultKeypress('Q', ModifierKeys::commandModifier);
 			break;
 
 		case CommandIDs::PLAY:
-			result.setInfo("Play", "Starts playback", menu, 0);
+			result.setInfo("Play/Pause", "Starts/stops playback", menu, 0);
 			result.addDefaultKeypress(KeyPress::spaceKey, ModifierKeys::noModifiers);
 			break;
 
 		case CommandIDs::STOP:
 			result.setInfo("Stop", "Stops playback", menu, 0);
-			result.addDefaultKeypress(KeyPress::spaceKey, ModifierKeys::commandModifier);
+			//result.addDefaultKeypress(KeyPress::spaceKey, ModifierKeys::commandModifier);
 			break;
 
 		case CommandIDs::SETTINGS:
 			result.setInfo("Settings", "Open settings menu", menu, 0);
-			result.addDefaultKeypress('Q', ModifierKeys::commandModifier);
+			//result.addDefaultKeypress('Q', ModifierKeys::commandModifier);
 			break;
 
 		case CommandIDs::RUDIMENTS:
@@ -270,6 +274,16 @@ public:
 		else if (key == KeyPress::F2Key)
 		{
 			rudimentBrowserTriggered();
+		}
+		else if (key == KeyPress::rightKey)
+		{
+			int64 localCurrentPosition = transportSource.getNextReadPosition();
+			transportSource.setNextReadPosition(localCurrentPosition + (currentSampleRate * 5)); // skip 5 seconds
+		}
+		else if (key == KeyPress::leftKey)
+		{
+			int64 localCurrentPosition = transportSource.getNextReadPosition();
+			transportSource.setNextReadPosition(localCurrentPosition - (currentSampleRate * 5)); // go back 5 seconds
 		}
 
 		return true;
@@ -417,8 +431,7 @@ private:
 			{
 				// add new source to transport, remove old source
 				ScopedPointer<AudioFormatReaderSource> newSource = new AudioFormatReaderSource(reader, false);
-				//transportSource.setSource(newSource, 0, nullptr, reader->sampleRate); 
-				mixerSource->addInputSource(newSource, true);
+				transportSource.setSource(newSource);
 				readerSource = newSource.release();
 			}
 		}
@@ -434,7 +447,8 @@ private:
 
 	void stopButtonPressed()
 	{
-		changeState(Stopping);
+		if (state == Playing || state == Paused)
+			changeState(Stopping);
 	}
 
 	void settingsButtonPressed() 
@@ -506,7 +520,7 @@ private:
 
 	// AudioSources
 	AudioTransportSource transportSource;
-	ScopedPointer<PositionableMixerAudioSource> mixerSource;
+	PositionableMixerAudioSource mixerSource;
 	ScopedPointer<AudioFormatReader> formatReader;
 	ScopedPointer<AudioFormatReaderSource> readerSource;
 	ScopedPointer<LowPassFilterAudioSource> lowPassFilterSource;

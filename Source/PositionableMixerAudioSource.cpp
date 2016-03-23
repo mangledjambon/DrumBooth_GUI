@@ -12,6 +12,8 @@
 
 PositionableMixerAudioSource::PositionableMixerAudioSource() 
 	:	tempBuffer(2, 0),
+		track1Gain(0.5f),
+		track2Gain(0.5f),
 		currentSampleRate(0.0),
 		bufferSizeExpected(0),
 		currentPlayingPosition(0),
@@ -23,7 +25,7 @@ PositionableMixerAudioSource::~PositionableMixerAudioSource()
 	//removeAllInputs();
 }
 
-void PositionableMixerAudioSource::addInputSource(PositionableAudioSource* newInput, const bool deleteWhenRemoved)
+void PositionableMixerAudioSource::addInputSource(GainAudioFormatReaderSource* newInput, const bool deleteWhenRemoved)
 {
 	if (newInput != nullptr && !inputs.contains(newInput))
 	{
@@ -42,7 +44,7 @@ void PositionableMixerAudioSource::addInputSource(PositionableAudioSource* newIn
 	}
 }
 
-void PositionableMixerAudioSource::removeInputSource(PositionableAudioSource* inputToRemove, const bool deleteSource)
+void PositionableMixerAudioSource::removeInputSource(GainAudioFormatReaderSource* inputToRemove, const bool deleteSource)
 {
 	if (inputToRemove != nullptr)
 	{
@@ -70,7 +72,7 @@ void PositionableMixerAudioSource::removeInputSource(PositionableAudioSource* in
 void PositionableMixerAudioSource::removeAllInputs()
 {
 	lock.enter();
-	Array<PositionableAudioSource*> inputsCopy(inputs);
+	Array<GainAudioFormatReaderSource*> inputsCopy(inputs);
 	BigInteger inputsToDeleteCopy(inputsToDelete);
 	inputs.clear();
 	lock.exit();
@@ -104,21 +106,23 @@ void PositionableMixerAudioSource::getNextAudioBlock(const AudioSourceChannelInf
 
 	if (inputs.size() > 0)
 	{
+		// causes artifacts in audio when gain applied here
+		//bufferToFill.buffer->applyGain(track1Gain);
 		inputs.getUnchecked(0)->getNextAudioBlock(bufferToFill);
 
 		if (inputs.size() > 1)
 		{
 			tempBuffer.setSize(jmax(1, bufferToFill.buffer->getNumChannels()), bufferToFill.buffer->getNumSamples());
-
 			AudioSourceChannelInfo buffer2(&tempBuffer, 0, bufferToFill.numSamples);
 
 			for (int i = 1; i < inputs.size(); ++i)
 			{
 				inputs.getUnchecked(i)->getNextAudioBlock(buffer2);
+				//buffer2.buffer->applyGain(track1Gain);
 
 				for (int channel = 0; channel < bufferToFill.buffer->getNumChannels(); ++channel)
 				{
-					bufferToFill.buffer->addFrom(channel, bufferToFill.startSample, tempBuffer, channel, 0, bufferToFill.numSamples);
+					bufferToFill.buffer->addFrom(channel, bufferToFill.startSample, tempBuffer, channel, 0, bufferToFill.numSamples, track2Gain);
 				}
 			}
 		}
@@ -159,6 +163,8 @@ int64 PositionableMixerAudioSource::getNextReadPosition() const
 
 int64 PositionableMixerAudioSource::getTotalLength() const
 {
+	const ScopedLock sl(lock);
+
 	int64 maxLength = 0;
 
 	for (int i = inputs.size(); --i >= 0;)
@@ -170,4 +176,20 @@ int64 PositionableMixerAudioSource::getTotalLength() const
 bool PositionableMixerAudioSource::isLooping() const
 {
 	return isPlayingLoop;
+}
+
+GainAudioFormatReaderSource* PositionableMixerAudioSource::getInput(int index)
+{
+	if (index < 2)
+	{
+		return inputs.getUnchecked(index);
+	}
+	
+	return nullptr;
+}
+
+void PositionableMixerAudioSource::applyGain(float track1, float track2)
+{
+	track1Gain = track1;
+	track2Gain = track2;
 }

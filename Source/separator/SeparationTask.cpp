@@ -10,11 +10,12 @@
 
 #include "SeparationTask.h"
 
-SeparationTask::SeparationTask(AudioFormatReader* readerForFile, String fileName) : 
+SeparationTask::SeparationTask(AudioFormatReader* readerForFile, String fileName, double rate) : 
 	ThreadWithProgressWindow("Separator running...", true, true, 10000, "Cancel")
 {
 	separator = new MedianSeparator(readerForFile);
 	separator->fileNameNoExt = fileName;
+	separator->sampleRate = rate;
 }
 
 SeparationTask::~SeparationTask()

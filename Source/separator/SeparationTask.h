@@ -22,7 +22,7 @@
 class SeparationTask : public ThreadWithProgressWindow
 {
 public:
-	SeparationTask(AudioFormatReader* readerForFile, String fileName);
+	SeparationTask(AudioFormatReader* readerForFile, String fileName, double sampleRate);
 	~SeparationTask();
 
 	void run() override;

@@ -13,7 +13,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 
 //==============================================================================
-MediaBar::MediaBar(AudioTransportSource& transport) : transportSource(transport)
+MediaBar::MediaBar(AudioTransportSource& transport, PositionableMixerAudioSource& mixer) : transportSource(transport), mixerSource(mixer)
 {
 
 	// Add Buttons
@@ -33,8 +33,8 @@ MediaBar::MediaBar(AudioTransportSource& transport) : transportSource(transport)
 
 	// set up filter labels
 	// high pass
-	addAndMakeVisible(label_HighPassFilterFreq = new Label("High Pass Filter Frequency"));
-	label_HighPassFilterFreq->setText("High Pass Freq:", dontSendNotification);
+	addAndMakeVisible(label_SeparationControl = new Label("Separation Control"));
+	label_SeparationControl->setText("Separation:", dontSendNotification);
 
 	// set up volume slider
 	addAndMakeVisible(slider_Gain = new Slider("Gain"));
@@ -45,10 +45,12 @@ MediaBar::MediaBar(AudioTransportSource& transport) : transportSource(transport)
 
 
 	// set up filter sliders
-	addAndMakeVisible(slider_HighPassFilterFreq = new Slider("Filter Frequency"));
-	slider_HighPassFilterFreq->setSliderStyle(Slider::SliderStyle::LinearBar);
-	slider_HighPassFilterFreq->setRange(20, 20000, 2);
-	slider_HighPassFilterFreq->setValue(20);
+	addAndMakeVisible(slider_SeparationControl = new Slider("Separation control knob"));
+	slider_SeparationControl->setSliderStyle(Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+	slider_SeparationControl->setTextBoxStyle(Slider::NoTextBox, true, 50, 20);
+	slider_SeparationControl->setRange(0, 100, 1);
+	slider_SeparationControl->setValue(50);
+	//slider_SeparationControl->setEnabled(false);
 
 	// begin timer
 	startTimerHz(5);
@@ -64,10 +66,10 @@ void MediaBar::paint (Graphics& g)
 	Rectangle<int> localBounds = getLocalBounds().reduced(5); // get area
 
 	// draw filter sliders and labels
-	Rectangle<int> filterSliderArea = localBounds.removeFromBottom(30).reduced(2);
+	Rectangle<int> filterSliderArea = localBounds.removeFromBottom(60).reduced(4);
 	Rectangle<int> filterLabelArea = filterSliderArea.removeFromLeft(80);
-	label_HighPassFilterFreq->setBounds(filterLabelArea);
-	slider_HighPassFilterFreq->setBounds(filterSliderArea);
+	label_SeparationControl->setBounds(filterLabelArea);
+	slider_SeparationControl->setBounds(filterSliderArea);
 
 	g.setColour(Colours::darkblue);
 	g.drawRect(localBounds, 1);   // draw an outline around the component
@@ -180,6 +182,27 @@ void MediaBar::sliderValueChanged(Slider* sliderThatWasChanged)
 
 		transportSource.setGain(gain);
 	}
+	else if (sliderThatWasChanged == slider_SeparationControl)
+	{
+		float gain = 0.0f;
+
+		gain = slider_SeparationControl->getValue() / 100;
+
+		if (gain > 0.5f)
+		{
+			// increase gain in input 1
+			mixerSource.applyGain(gain, (0.5f - gain));
+		}
+		else if (gain < 0.5f)
+		{
+			// increase gain in input 2
+			mixerSource.applyGain((0.5f - gain), gain);
+		}
+		else
+		{
+			mixerSource.applyGain(gain, gain);
+		}
+	}
 }
 
 void MediaBar::addButtonListeners(Button::Listener* listenerToAdd)
@@ -193,6 +216,5 @@ void MediaBar::addButtonListeners(Button::Listener* listenerToAdd)
 
 void MediaBar::addSliderListeners(Slider::Listener* listenerToAdd)
 {
-	slider_HighPassFilterFreq->addListener(listenerToAdd);
-	//slider_LowPassFilterFreq->addListener(listenerToAdd);
+	slider_SeparationControl->addListener(listenerToAdd);
 }

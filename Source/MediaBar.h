@@ -16,12 +16,15 @@
 //==============================================================================
 /*
 */
+
+#include "PositionableMixerAudioSource.h"
+
 class MediaBar    : public Component,
 					public Timer,
 					public Slider::Listener
 {
 public:
-    MediaBar(AudioTransportSource& transport);
+    MediaBar(AudioTransportSource& transport, PositionableMixerAudioSource& mixer);
     ~MediaBar();
 
     void paint (Graphics&);
@@ -38,7 +41,7 @@ public:
 	void setTrackInfo(String name);
 
 	ScopedPointer<TextButton> button_LoadFile, button_PlayPause, button_Stop, button_Process;
-	ScopedPointer<Slider> slider_HighPassFilterFreq;
+	ScopedPointer<Slider> slider_SeparationControl;
 	ScopedPointer<ToggleButton> button_spectrogramEnabled;
 
 private:
@@ -47,13 +50,14 @@ private:
 	// Audio
 	int playbackState;
 	AudioTransportSource& transportSource;
+	PositionableMixerAudioSource& mixerSource;
 
 	// GUI
 	String artistName, trackName, fileName;
 	ScopedPointer<Label> label_artistName, label_trackName;
 	ScopedPointer<Label> label_Gain;
 	ScopedPointer<Slider> slider_Gain;
-	ScopedPointer<Label> label_HighPassFilterFreq;
+	ScopedPointer<Label> label_SeparationControl;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MediaBar)
 };

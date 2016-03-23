@@ -11,6 +11,8 @@
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "DrumBooth_Components.h"
+#include "GainAudioFormatReaderSource.h"
+
 using juce::Rectangle;
 
 //==============================================================================
@@ -22,8 +24,7 @@ class MainContentComponent   :	public AudioAppComponent,
 								public ApplicationCommandTarget,
 								public MenuBarModel,
 								public ChangeListener,
-								public Button::Listener,
-								public Slider::Listener
+								public Button::Listener
 {
 public:
     //==============================================================================
@@ -42,7 +43,7 @@ public:
 
 		//GUI - add components here
 		addAndMakeVisible(infoBar = new InfoBar());						// bar containing cpu usage, sample-rate, etc...
-		addAndMakeVisible(mediaBar = new MediaBar(transportSource));	// pause/play/stop buttons, spectrogram toggle button
+		addAndMakeVisible(mediaBar = new MediaBar(transportSource, mixerSource));	// pause/play/stop buttons, spectrogram toggle button
 		addAndMakeVisible(menuBar = new MenuBarComponent(this));		// Options menus
 
 		// menu bar setup
@@ -52,13 +53,10 @@ public:
 		// update mediaBar with current playback state
 		mediaBar->setPlaybackState(state);
 		mediaBar->addButtonListeners(this);
-		//mediaBar->addSliderListeners(this);
 
 		// optional at the moment - may remove
 		addAndMakeVisible(spectrogram = new SpectrogramComponent());
 
-		//mixerSource = new PositionableMixerAudioSource();
-		//transportSource.setSource(&mixerSource);
     }
 
     ~MainContentComponent()
@@ -73,6 +71,7 @@ public:
 		currentBufferSize = samplesPerBlockExpected;
 		currentSampleRate = sampleRate;
 
+		mixerSource.prepareToPlay(samplesPerBlockExpected, sampleRate);
 		transportSource.prepareToPlay(samplesPerBlockExpected, sampleRate);
     }
 
@@ -90,7 +89,9 @@ public:
 		}
 
 		transportSource.getNextAudioBlock(bufferToFill);
-		spectrogram->getNextAudioBlock(bufferToFill);
+
+		if (spectrogram->isEnabled())
+			spectrogram->getNextAudioBlock(bufferToFill);
     }
 
     void releaseResources() override
@@ -341,16 +342,6 @@ public:
 	}
 	// =======================================
 
-	// method inherited from Slider::Listener
-	void sliderValueChanged(Slider* sliderThatWasChanged)
-	{
-		if (sliderThatWasChanged == mediaBar->slider_HighPassFilterFreq)
-		{
-			int newFreq = mediaBar->slider_HighPassFilterFreq->getValue();
-			highPassFilterSource->setHighPassFilterFrequency(newFreq);
-		}
-
-	}
 	// =======================================
 	
 	
@@ -413,7 +404,7 @@ private:
 	void processButtonPressed()
 	{
 		// perform separation
-		ScopedPointer<SeparationTask> separationTask = new SeparationTask(reader);
+		ScopedPointer<SeparationTask> separationTask = new SeparationTask(reader, currentFileNameNoExtension, currentSampleRate);
 
 		if (separationTask->runThread())
 		{
@@ -423,14 +414,37 @@ private:
 				+ "\n\t" + String(currentFileNameNoExtension + "_percussive.wav"),
 				false
 				);
+
+			File pFile = File(File::getCurrentWorkingDirectory().getChildFile(currentFileNameNoExtension + "_percussive.wav"));
+			File hFile = File(File::getCurrentWorkingDirectory().getChildFile(currentFileNameNoExtension + "_harmonic.wav"));
+
+			formatReader_P = formatManager.createReaderFor(pFile);
+			formatReader_H = formatManager.createReaderFor(hFile);
+
+			ScopedPointer<GainAudioFormatReaderSource> pReaderSource = new GainAudioFormatReaderSource(formatReader_P, false);
+			ScopedPointer<GainAudioFormatReaderSource> hReaderSource = new GainAudioFormatReaderSource(formatReader_H, false);
+
+			readerSource_H = hReaderSource.release();
+			readerSource_P = pReaderSource.release();
+
+			if (formatReader_H != nullptr && formatReader_P != nullptr)
+			{
+				mixerSource.addInputSource(readerSource_H, false);
+				mixerSource.addInputSource(readerSource_P, false);
+			}
+
+			transportSource.setSource(&mixerSource, 0, nullptr, 44100.0, 2);	
+			mediaBar->addSliderListeners(mediaBar);
+
 		}
 		else
 		{
 			// user pressed cancel
+			AlertWindow::showNativeDialogBox("Audio Separation failed.",
+				"Operation cancelled.",
+				false
+				);
 		}
-
-		// add extracted harmonic + percussive files to mixer
-		// add mixer as transportSource source
 	}
 
 	void loadButtonPressed()
@@ -459,7 +473,7 @@ private:
 			{
 				// add new source to transport, remove old source
 				ScopedPointer<AudioFormatReaderSource> newSource = new AudioFormatReaderSource(reader, false);
-				transportSource.setSource(newSource);
+				transportSource.setSource(newSource, 0, nullptr, 44100, 2);
 				readerSource = newSource.release();
 				mediaBar->button_Process->setEnabled(true);
 			}
@@ -551,10 +565,9 @@ private:
 	// AudioSources
 	AudioTransportSource transportSource;
 	PositionableMixerAudioSource mixerSource;
-	ScopedPointer<AudioFormatReader> formatReader;
-	ScopedPointer<AudioFormatReaderSource> readerSource;
-	ScopedPointer<LowPassFilterAudioSource> lowPassFilterSource;
-	ScopedPointer<HighPassFilterAudioSource> highPassFilterSource;
+	ScopedPointer<AudioFormatReader> formatReader, formatReader_P, formatReader_H;
+	ScopedPointer<AudioFormatReaderSource> readerSource; // , readerSource_P, readerSource_H;
+	ScopedPointer<GainAudioFormatReaderSource>readerSource_P, readerSource_H;
 	
 	// Application Components
 	ScopedPointer<InfoBar> infoBar;

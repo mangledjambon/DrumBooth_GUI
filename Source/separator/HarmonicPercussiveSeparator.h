@@ -37,6 +37,7 @@ public:
 	void writeFiles();
 
 	String fileNameNoExt;
+	double sampleRate;
 
 private:
 	int numSamples, numCols, numChannels, startSample;

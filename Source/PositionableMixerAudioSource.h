@@ -11,6 +11,7 @@
 #ifndef POSITIONABLEMIXERAUDIOSOURCE_H_INCLUDED
 #define POSITIONABLEMIXERAUDIOSOURCE_H_INCLUDED
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "GainAudioFormatReaderSource.h"
 
 class PositionableMixerAudioSource : public PositionableAudioSource
 {
@@ -19,8 +20,8 @@ public:
 	~PositionableMixerAudioSource();
 
 	// MixerAudioSource methods
-	void addInputSource(PositionableAudioSource* newInput, const bool deleteWhenRemoved);
-	void removeInputSource(PositionableAudioSource* inputToRemove, const bool deleteSource);
+	void addInputSource(GainAudioFormatReaderSource* newInput, const bool deleteWhenRemoved);
+	void removeInputSource(GainAudioFormatReaderSource* inputToRemove, const bool deleteSource);
 	void removeAllInputs();
 
 	// PositionableAudioSource methods
@@ -33,8 +34,13 @@ public:
 	int64 getTotalLength() const override;
 	bool isLooping() const override;
 
+	void applyGain(float track1, float track2);
+
+	GainAudioFormatReaderSource* getInput(int index);
+
 private:
-	Array<PositionableAudioSource*> inputs;
+	float track1Gain, track2Gain;
+	Array<GainAudioFormatReaderSource*> inputs;
 	BigInteger inputsToDelete;
 	CriticalSection lock;
 	AudioSampleBuffer tempBuffer;

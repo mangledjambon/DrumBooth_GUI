@@ -115,7 +115,6 @@ void MedianSeparator::filterBins()
 	// loop through rows of spectrogram
 	for (int row = 0; row < numRows; row++)
 	{
-
 		// loop through columns of spectrogram
 		for (int col = 0; col < spectrogram[0].cols(); col++)
 		{
@@ -201,6 +200,10 @@ void MedianSeparator::filterFrames()
 
 void MedianSeparator::resynthesize()
 {
+	/*
+		Apply masks to spectrograms.
+	*/
+
 	MatrixXf pest2[2];
 	pest2[0] = filteredSpectrogram_P[0].cwiseProduct(filteredSpectrogram_P[0]);
 	pest2[1] = filteredSpectrogram_P[1].cwiseProduct(filteredSpectrogram_P[1]);
@@ -227,34 +230,49 @@ void MedianSeparator::resynthesize()
 
 void MedianSeparator::writeFiles()
 {
+
 	ScopedPointer<ISTFT> istft = new ISTFT();
 	istft->initWindow(1);
 
-	float ifftResults_Left[WINDOW_SIZE], ifftResults_Right[WINDOW_SIZE];
-	float temp_L[WINDOW_SIZE] = {};
-	float temp_R[WINDOW_SIZE] = {};
+	// Matrices to hold real number data after conversion
+	Eigen::MatrixXf harmonicSpectrogramReal_Left;
+	Eigen::MatrixXf harmonicSpectrogramReal_Right;
+	Eigen::MatrixXf percussiveSpectrogramReal_Left;
+	Eigen::MatrixXf percussiveSpectrogramReal_Right;
 
-	Eigen::MatrixXf realMatrix_Left, realMatrix_Right;
-	realMatrix_Left = MatrixXf::Zero(WINDOW_SIZE, numCols);
-	realMatrix_Right = MatrixXf::Zero(WINDOW_SIZE, numCols);
+	// initialise with zeros
+	harmonicSpectrogramReal_Left = MatrixXf::Zero(WINDOW_SIZE, numCols);
+	harmonicSpectrogramReal_Right = MatrixXf::Zero(WINDOW_SIZE, numCols);
+	percussiveSpectrogramReal_Left = MatrixXf::Zero(WINDOW_SIZE, numCols);
+	percussiveSpectrogramReal_Right = MatrixXf::Zero(WINDOW_SIZE, numCols);
 
-	realMatrix_Left = istft->complexToReal(resynthSpectrogram_H[0]);
-	realMatrix_Right = istft->complexToReal(resynthSpectrogram_H[1]);
+	// convert complex spectrogram data to real spectrogram data
+	harmonicSpectrogramReal_Left = istft->complexToReal(resynthSpectrogram_H[0]);
+	harmonicSpectrogramReal_Right = istft->complexToReal(resynthSpectrogram_H[1]);
+	percussiveSpectrogramReal_Left = istft->complexToReal(resynthSpectrogram_P[0]);
+	percussiveSpectrogramReal_Right = istft->complexToReal(resynthSpectrogram_P[1]);
 
-	for (int i = 0; i < numSamples; i++)
-	{
-		outputSignal_Left.set(i, 0.0f);
-		outputSignal_Right.set(i, 0.0f);
-	}
+	Array<float> outputSignal_P[2];
+	Array<float> outputSignal_H[2];
+
+	outputSignal_P[0].insertMultiple(0, 0.0f, numSamples);
+	outputSignal_P[1].insertMultiple(0, 0.0f, numSamples);
+	outputSignal_H[0].insertMultiple(0, 0.0f, numSamples);
+	outputSignal_H[1].insertMultiple(0, 0.0f, numSamples);
 
 	// add-overlap ====================
 	int offset = 0;
+	float temp_L[WINDOW_SIZE] = {};
+	float temp_R[WINDOW_SIZE] = {};
+	float ifftResults_Left[WINDOW_SIZE] = {};
+	float ifftResults_Right[WINDOW_SIZE] = {};
+
 	for (int col = 0; col < numCols; col++)
 	{
 		for (int row = 0; row < WINDOW_SIZE; row++)
 		{
-			temp_L[row] = realMatrix_Left(row, col);
-			temp_R[row] = realMatrix_Right(row, col);
+			temp_L[row] = harmonicSpectrogramReal_Left(row, col);
+			temp_R[row] = harmonicSpectrogramReal_Right(row, col);
 		}
 
 		istft->performInverseTransform(temp_L, ifftResults_Left);
@@ -264,45 +282,93 @@ void MedianSeparator::writeFiles()
 
 		for (int i = 0; i < WINDOW_SIZE; i++)
 		{
-			outputSignal_Left.set(offset + i, (outputSignal_Left[offset + i] + (ifftResults_Left[i] * istft->window[i])));
-			outputSignal_Right.set(offset + i, (outputSignal_Right[offset + i] + (ifftResults_Right[i] * istft->window[i])));
+			outputSignal_H[0].set(offset + i, (outputSignal_H[0][offset + i] + (ifftResults_Left[i] * istft->window[i])));
+			outputSignal_H[1].set(offset + i, (outputSignal_H[1][offset + i] + (ifftResults_Right[i] * istft->window[i])));
+		}
+
+		for (int row = 0; row < WINDOW_SIZE; row++)
+		{
+			temp_L[row] = percussiveSpectrogramReal_Left(row, col);
+			temp_R[row] = percussiveSpectrogramReal_Right(row, col);
+		}
+
+		istft->performInverseTransform(temp_L, ifftResults_Left);
+		istft->rescale(ifftResults_Left);
+		istft->performInverseTransform(temp_R, ifftResults_Right);
+		istft->rescale(ifftResults_Right);
+
+		for (int i = 0; i < WINDOW_SIZE; i++)
+		{
+			outputSignal_P[0].set(offset + i, (outputSignal_P[0][offset + i] + (ifftResults_Left[i] * istft->window[i])));
+			outputSignal_P[1].set(offset + i, (outputSignal_P[1][offset + i] + (ifftResults_Right[i] * istft->window[i])));
 		}
 
 		offset += HOP_SIZE;
 	}
 
-	// TODO
+	//===================================================== WRITE FILES ==
 	float gain = 0.5f;
-	juce::AudioSampleBuffer outSamples(2, numSamples);
-	outSamples.clear();
-	const float* leftData = outputSignal_Left.getRawDataPointer();
-	const float* rightData = outputSignal_Right.getRawDataPointer();
 
-	outSamples.addFrom(0, 0, leftData, numSamples, gain);
-	outSamples.addFrom(1, 0, rightData, numSamples, gain);
+	AudioSampleBuffer outSamples_H(2, numSamples);
+	AudioSampleBuffer outSamples_P(2, numSamples);
 
-	FileOutputStream* output;
-	File* outputFile = new File(File::getCurrentWorkingDirectory().getChildFile(/*fileNameNoExt + "_perc" + fileExtension*/ "test.wav"));
+	outSamples_H.clear();
+	outSamples_P.clear();
 
-	if (outputFile->exists())
+	const float* leftData_H = outputSignal_H[0].getRawDataPointer();
+	const float* rightData_H = outputSignal_H[1].getRawDataPointer();
+	const float* leftData_P = outputSignal_P[0].getRawDataPointer();
+	const float* rightData_P = outputSignal_P[1].getRawDataPointer();
+
+	outSamples_H.addFrom(0, 0, leftData_H, numSamples, gain);
+	outSamples_H.addFrom(1, 0, rightData_H, numSamples, gain);
+
+	outSamples_P.addFrom(0, 0, leftData_P, numSamples, gain);
+	outSamples_P.addFrom(1, 0, rightData_P, numSamples, gain);
+
+	File* outputFile_H = new File(File::getCurrentWorkingDirectory().getChildFile(fileNameNoExt + "_harmonic.wav"));
+	File* outputFile_P = new File(File::getCurrentWorkingDirectory().getChildFile(fileNameNoExt + "_percussive.wav"));
+	
+	if (outputFile_H->exists())
 	{
-		outputFile->deleteFile();
+		outputFile_H->deleteFile();
 	}
 
-	output = outputFile->createOutputStream();
+	if (outputFile_P->exists())
+	{
+		outputFile_P->deleteFile();
+	}
+
+	FileOutputStream* output_H;
+	FileOutputStream* output_P;
+
+	output_H = outputFile_H->createOutputStream();
+	output_P = outputFile_P->createOutputStream();
+
 	WavAudioFormat* wavFormat = new WavAudioFormat();
-	AudioFormatWriter* writer = wavFormat->createWriterFor(output, 44100.0, numChannels, 16, NULL, 0);
+
+	AudioFormatWriter* writer = wavFormat->createWriterFor(output_H, 44100.0, numChannels, 16, NULL, 0);
 
 	// write from sample buffer
 	writer->flush();
-	writer->writeFromAudioSampleBuffer(outSamples, 0, numSamples);
+	writer->writeFromAudioSampleBuffer(outSamples_H, 0, numSamples);
+	delete writer;
+
+	writer = wavFormat->createWriterFor(output_P, 44100.0, numChannels, 16, NULL, 0);
 	writer->flush();
+	writer->writeFromAudioSampleBuffer(outSamples_P, 0, numSamples);
 
 	// cleanup
 	delete writer;
 	delete wavFormat;
 	wavFormat = nullptr;
 	writer = nullptr;
-	outputSignal_Left.clearQuick();
-	outputSignal_Right.clearQuick();
+
+	outSamples_H.clear();
+	outSamples_P.clear();
+	outputSignal_H[0].clear();
+	outputSignal_H[1].clear();
+	outputSignal_P[0].clear();
+	outputSignal_P[1].clear();
+
 }

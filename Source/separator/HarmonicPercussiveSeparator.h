@@ -36,9 +36,9 @@ public:
 	void resynthesize();
 	void writeFiles();
 
+	String fileNameNoExt;
 
 private:
-	StringArray fileNameNoExt1;
 	int numSamples, numCols, numChannels, startSample;
 	AudioSampleBuffer samples;
 	AudioFormatReader* reader;
@@ -47,7 +47,8 @@ private:
 	MatrixXf filteredSpectrogram_H[2];
 	MatrixXcf resynthSpectrogram_P[2];
 	MatrixXcf resynthSpectrogram_H[2];
-	Array<float> outputSignal_Left, outputSignal_Right;
+
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MedianSeparator)
 };
 
 

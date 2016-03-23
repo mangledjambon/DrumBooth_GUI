@@ -418,6 +418,11 @@ private:
 		if (separationTask->runThread())
 		{
 			// thread finished normally
+			AlertWindow::showNativeDialogBox("Audio Separation complete.", 
+				"Files written:\n\t" + String(currentFileNameNoExtension + "_harmonic.wav")
+				+ "\n\t" + String(currentFileNameNoExtension + "_percussive.wav"),
+				false
+				);
 		}
 		else
 		{

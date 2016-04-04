@@ -421,8 +421,8 @@ private:
 			formatReader_P = formatManager.createReaderFor(pFile);
 			formatReader_H = formatManager.createReaderFor(hFile);
 
-			ScopedPointer<GainAudioFormatReaderSource> pReaderSource = new GainAudioFormatReaderSource(formatReader_P, false);
-			ScopedPointer<GainAudioFormatReaderSource> hReaderSource = new GainAudioFormatReaderSource(formatReader_H, false);
+			ScopedPointer<AudioFormatReaderSource> pReaderSource = new AudioFormatReaderSource(formatReader_P, false);
+			ScopedPointer<AudioFormatReaderSource> hReaderSource = new AudioFormatReaderSource(formatReader_H, false);
 
 			readerSource_H = hReaderSource.release();
 			readerSource_P = pReaderSource.release();
@@ -567,7 +567,7 @@ private:
 	PositionableMixerAudioSource mixerSource;
 	ScopedPointer<AudioFormatReader> formatReader, formatReader_P, formatReader_H;
 	ScopedPointer<AudioFormatReaderSource> readerSource; // , readerSource_P, readerSource_H;
-	ScopedPointer<GainAudioFormatReaderSource>readerSource_P, readerSource_H;
+	ScopedPointer<AudioFormatReaderSource> readerSource_P, readerSource_H;
 	
 	// Application Components
 	ScopedPointer<InfoBar> infoBar;

@@ -48,7 +48,7 @@ MediaBar::MediaBar(AudioTransportSource& transport, PositionableMixerAudioSource
 	addAndMakeVisible(slider_SeparationControl = new Slider("Separation control knob"));
 	slider_SeparationControl->setSliderStyle(Slider::SliderStyle::RotaryHorizontalVerticalDrag);
 	slider_SeparationControl->setTextBoxStyle(Slider::NoTextBox, true, 50, 20);
-	slider_SeparationControl->setRange(0, 100, 1);
+	slider_SeparationControl->setRange(0, 1.0f, 0.01f);
 	slider_SeparationControl->setValue(50);
 	//slider_SeparationControl->setEnabled(false);
 
@@ -184,23 +184,21 @@ void MediaBar::sliderValueChanged(Slider* sliderThatWasChanged)
 	}
 	else if (sliderThatWasChanged == slider_SeparationControl)
 	{
-		float gain = 0.0f;
+		float mix = slider_SeparationControl->getValue();
 
-		gain = slider_SeparationControl->getValue() / 100;
-
-		if (gain > 0.5f)
+		if (mix > 0.5f)
 		{
 			// increase gain in input 1
-			mixerSource.applyGain(gain, (0.5f - gain));
+			mixerSource.applyGain(mix, (1.0f - mix));
 		}
-		else if (gain < 0.5f)
+		else if (mix < 0.5f)
 		{
 			// increase gain in input 2
-			mixerSource.applyGain((0.5f - gain), gain);
+			mixerSource.applyGain((1.0f - mix), mix);
 		}
 		else
 		{
-			mixerSource.applyGain(gain, gain);
+			mixerSource.applyGain(mix, mix);
 		}
 	}
 }

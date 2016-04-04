@@ -20,8 +20,8 @@ public:
 	~PositionableMixerAudioSource();
 
 	// MixerAudioSource methods
-	void addInputSource(GainAudioFormatReaderSource* newInput, const bool deleteWhenRemoved);
-	void removeInputSource(GainAudioFormatReaderSource* inputToRemove, const bool deleteSource);
+	void addInputSource(AudioFormatReaderSource* newInput, const bool deleteWhenRemoved);
+	void removeInputSource(AudioFormatReaderSource* inputToRemove, const bool deleteSource);
 	void removeAllInputs();
 
 	// PositionableAudioSource methods
@@ -36,11 +36,11 @@ public:
 
 	void applyGain(float track1, float track2);
 
-	GainAudioFormatReaderSource* getInput(int index);
+	AudioFormatReaderSource* getInput(int index);
 
 private:
 	float track1Gain, track2Gain;
-	Array<GainAudioFormatReaderSource*> inputs;
+	Array<AudioFormatReaderSource*> inputs;
 	BigInteger inputsToDelete;
 	CriticalSection lock;
 	AudioSampleBuffer tempBuffer;

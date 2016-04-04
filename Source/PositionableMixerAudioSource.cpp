@@ -25,7 +25,7 @@ PositionableMixerAudioSource::~PositionableMixerAudioSource()
 	//removeAllInputs();
 }
 
-void PositionableMixerAudioSource::addInputSource(GainAudioFormatReaderSource* newInput, const bool deleteWhenRemoved)
+void PositionableMixerAudioSource::addInputSource(AudioFormatReaderSource* newInput, const bool deleteWhenRemoved)
 {
 	if (newInput != nullptr && !inputs.contains(newInput))
 	{
@@ -44,7 +44,7 @@ void PositionableMixerAudioSource::addInputSource(GainAudioFormatReaderSource* n
 	}
 }
 
-void PositionableMixerAudioSource::removeInputSource(GainAudioFormatReaderSource* inputToRemove, const bool deleteSource)
+void PositionableMixerAudioSource::removeInputSource(AudioFormatReaderSource* inputToRemove, const bool deleteSource)
 {
 	if (inputToRemove != nullptr)
 	{
@@ -72,7 +72,7 @@ void PositionableMixerAudioSource::removeInputSource(GainAudioFormatReaderSource
 void PositionableMixerAudioSource::removeAllInputs()
 {
 	lock.enter();
-	Array<GainAudioFormatReaderSource*> inputsCopy(inputs);
+	Array<AudioFormatReaderSource*> inputsCopy(inputs);
 	BigInteger inputsToDeleteCopy(inputsToDelete);
 	inputs.clear();
 	lock.exit();
@@ -106,7 +106,6 @@ void PositionableMixerAudioSource::getNextAudioBlock(const AudioSourceChannelInf
 
 	if (inputs.size() > 0)
 	{
-		// causes artifacts in audio when gain applied here
 		//bufferToFill.buffer->applyGain(track1Gain);
 		inputs.getUnchecked(0)->getNextAudioBlock(bufferToFill);
 
@@ -178,7 +177,7 @@ bool PositionableMixerAudioSource::isLooping() const
 	return isPlayingLoop;
 }
 
-GainAudioFormatReaderSource* PositionableMixerAudioSource::getInput(int index)
+AudioFormatReaderSource* PositionableMixerAudioSource::getInput(int index)
 {
 	if (index < 2)
 	{

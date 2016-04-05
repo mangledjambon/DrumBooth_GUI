@@ -11,7 +11,6 @@
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "DrumBooth_Components.h"
-#include "GainAudioFormatReaderSource.h"
 
 using juce::Rectangle;
 
@@ -30,7 +29,7 @@ public:
     //==============================================================================
     MainContentComponent() : state(Stopped)
     {
-        setSize (800, 600);
+        setSize (800, 300);
 		setWantsKeyboardFocus(true);
 
 		// Audio setup
@@ -42,20 +41,21 @@ public:
 		transportSource.addChangeListener(this);
 
 		//GUI - add components here
-		addAndMakeVisible(infoBar = new InfoBar());						// bar containing cpu usage, sample-rate, etc...
+		addAndMakeVisible(infoBar = new InfoBar());									// bar containing cpu usage, sample-rate, etc...
 		addAndMakeVisible(mediaBar = new MediaBar(transportSource, mixerSource));	// pause/play/stop buttons, spectrogram toggle button
-		addAndMakeVisible(menuBar = new MenuBarComponent(this));		// Options menus
+		addAndMakeVisible(menuBar = new MenuBarComponent(this));					// Options menus
 
 		// menu bar setup
 		commandManager.registerAllCommandsForTarget(this);
 		//menuBar->toFront(true);
 
 		// update mediaBar with current playback state
+		mediaBar->button_spectrogramEnabled->setToggleState(false, dontSendNotification);
 		mediaBar->setPlaybackState(state);
 		mediaBar->addButtonListeners(this);
 
 		// optional at the moment - may remove
-		addAndMakeVisible(spectrogram = new SpectrogramComponent());
+		//addAndMakeVisible(spectrogram = new SpectrogramComponent());
 
     }
 
@@ -90,7 +90,7 @@ public:
 
 		transportSource.getNextAudioBlock(bufferToFill);
 
-		if (spectrogram->isEnabled())
+		if (spectrogram != nullptr)
 			spectrogram->getNextAudioBlock(bufferToFill);
     }
 
@@ -101,23 +101,32 @@ public:
     }
 
     //=======================================================================
-    void paint (Graphics& g) override
-    {
-        // (Our component is opaque, so we must completely fill the background with a solid colour)
-        g.fillAll (Colours::whitesmoke);
+	void paint(Graphics& g) override
+	{
+		// (Our component is opaque, so we must completely fill the background with a solid colour)
+		g.fillAll(Colours::whitesmoke);
 
-        // get each components position relative to window size
+		// get each components position relative to window size
 		Rectangle<int> localBounds = getLocalBounds();
 		Rectangle<int> menuBarArea = localBounds.removeFromTop(LookAndFeel::getDefaultLookAndFeel().getDefaultMenuBarHeight());
 		Rectangle<int> infoBarArea = localBounds.removeFromBottom(30);
-		Rectangle<int> mediaBarArea = localBounds.removeFromTop(localBounds.getHeight()/2);
-		Rectangle<int> spectrogramArea = localBounds;
+		Rectangle<int> mediaBarArea;
+
+		if (spectrogram == nullptr)
+		{
+			mediaBarArea = localBounds;
+		}
+		else
+		{
+			mediaBarArea = localBounds.removeFromTop(getHeight()/2);
+			spectrogramArea = localBounds;
+			spectrogram->setBounds(spectrogramArea.reduced(2));
+		}
 		
 		// set bounds for each component in window
 		menuBar->setBounds(menuBarArea);
 		mediaBar->setBounds(mediaBarArea);
 		infoBar->setBounds(infoBarArea);
-		spectrogram->setBounds(spectrogramArea.reduced(2));
 
 		// update InfoBar labels with current CPU usage, sample rate and buffer size
 		infoBar->updateCpu(deviceManager.getCpuUsage() * 100);
@@ -331,9 +340,19 @@ public:
 		else if (buttonThatWasClicked == mediaBar->button_spectrogramEnabled)
 		{
 			// TODO: adjust screen size here to hide spectrogram when not in use
-			bool enable = mediaBar->button_spectrogramEnabled->getToggleState();
-
-			spectrogram->setEnabled(enable);
+			bool spectrogramEnabled = mediaBar->button_spectrogramEnabled->getToggleState();
+			
+			if (spectrogramEnabled)
+			{
+				setSize(800, 494);
+				addAndMakeVisible(spectrogram = new SpectrogramComponent());
+				spectrogram->setEnabled(true);
+			}
+			else
+			{
+				setSize(800, 300);
+				spectrogram = nullptr;
+			}
 		}
 		else if (buttonThatWasClicked == mediaBar->button_Process)
 		{
@@ -379,7 +398,8 @@ private:
 
 			case Starting:
 				transportSource.start();
-				spectrogram->setEnabled(true);
+				if (spectrogram != nullptr)
+					spectrogram->setEnabled(true);
 				break;
 
 			case Playing:
@@ -387,7 +407,8 @@ private:
 
 			case Pausing:
 				transportSource.stop();
-				spectrogram->setEnabled(false);
+				if (spectrogram != nullptr)
+					spectrogram->setEnabled(false);
 				break;
 
 			case Paused:
@@ -395,7 +416,8 @@ private:
 
 			case Stopping:
 				transportSource.stop();
-				spectrogram->setEnabled(false);
+				if (spectrogram != nullptr)
+					spectrogram->setEnabled(false);
 				break;
 			}
 		}
@@ -566,8 +588,7 @@ private:
 	AudioTransportSource transportSource;
 	PositionableMixerAudioSource mixerSource;
 	ScopedPointer<AudioFormatReader> formatReader, formatReader_P, formatReader_H;
-	ScopedPointer<AudioFormatReaderSource> readerSource; // , readerSource_P, readerSource_H;
-	ScopedPointer<AudioFormatReaderSource> readerSource_P, readerSource_H;
+	ScopedPointer<AudioFormatReaderSource> readerSource, readerSource_P, readerSource_H;
 	
 	// Application Components
 	ScopedPointer<InfoBar> infoBar;

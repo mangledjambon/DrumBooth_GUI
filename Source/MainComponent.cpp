@@ -49,13 +49,9 @@ public:
 		commandManager.registerAllCommandsForTarget(this);
 		//menuBar->toFront(true);
 
-		// update mediaBar with current playback state
-		mediaBar->button_spectrogramEnabled->setToggleState(false, dontSendNotification);
-		mediaBar->setPlaybackState(state);
+		mediaBar->button_spectrogramEnabled->setToggleState(false, dontSendNotification);	// set spectrogram on/off button to off state
+		mediaBar->setPlaybackState(state);											// set playback state to current state
 		mediaBar->addButtonListeners(this);
-
-		// optional at the moment - may remove
-		//addAndMakeVisible(spectrogram = new SpectrogramComponent());
 
     }
 
@@ -112,15 +108,16 @@ public:
 		Rectangle<int> infoBarArea = localBounds.removeFromBottom(30);
 		Rectangle<int> mediaBarArea;
 
+		// if spectrogram is disabled
 		if (spectrogram == nullptr)
 		{
-			mediaBarArea = localBounds;
+			mediaBarArea = localBounds;		// set mediaBarArea to take up entire window
 		}
 		else
 		{
-			mediaBarArea = localBounds.removeFromTop(getHeight()/2);
-			spectrogramArea = localBounds;
-			spectrogram->setBounds(spectrogramArea.reduced(2));
+			mediaBarArea = localBounds.removeFromTop(getHeight()/2);		// set mediaBarArea to take up half of window size
+			spectrogramArea = localBounds;									// set spectrogramArea to take up remaining space in window
+			spectrogram->setBounds(spectrogramArea.reduced(2));				// place spectrogram in spectrogramArea
 		}
 		
 		// set bounds for each component in window
@@ -274,23 +271,23 @@ public:
 		return true;
 	}
 
-	// Not sure if i need this for keyboard shortcuts	
+	// Handle key presses	
 	bool keyPressed(const KeyPress& key) override
 	{
-		if (key == KeyPress::spaceKey)
+		if (key == KeyPress::spaceKey)		// user pressed spacebar
 		{
-			playButtonPressed();
+			playButtonPressed();			// play/pause
 		}
-		else if (key == KeyPress::F2Key)
+		else if (key == KeyPress::F2Key)	// user pressed F2
 		{
-			rudimentBrowserTriggered();
+			rudimentBrowserTriggered();		// show rudiment browser
 		}
-		else if (key == KeyPress::rightKey)
+		else if (key == KeyPress::rightKey)	// user pressed right arrow
 		{
 			int64 localCurrentPosition = transportSource.getNextReadPosition();
 			transportSource.setNextReadPosition(localCurrentPosition + (currentSampleRate * 5)); // skip 5 seconds
 		}
-		else if (key == KeyPress::leftKey)
+		else if (key == KeyPress::leftKey)	// user pressed left arrow
 		{
 			int64 localCurrentPosition = transportSource.getNextReadPosition();
 			transportSource.setNextReadPosition(localCurrentPosition - (currentSampleRate * 5)); // go back 5 seconds
@@ -339,7 +336,6 @@ public:
 		}
 		else if (buttonThatWasClicked == mediaBar->button_spectrogramEnabled)
 		{
-			// TODO: adjust screen size here to hide spectrogram when not in use
 			bool spectrogramEnabled = mediaBar->button_spectrogramEnabled->getToggleState();
 			
 			if (spectrogramEnabled)
@@ -359,15 +355,11 @@ public:
 			processButtonPressed();
 		}
 	}
-	// =======================================
+	// =======================================	
 
-	// =======================================
-	
-	
-
+    //==============================================================================
 
 private:
-    //==============================================================================
 	enum CommandIDs
 	{
 		LOAD = 0x2001,

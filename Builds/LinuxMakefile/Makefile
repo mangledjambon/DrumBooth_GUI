@@ -18,7 +18,7 @@ ifeq ($(CONFIG),Debug)
     TARGET_ARCH := -march=native
   endif
 
-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "JUCER_LINUX_MAKE_6D53C8B4=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ../../../../Cpp/git/juce/modules
+  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "DEBUG=1" -D "_DEBUG=1" -D "JUCER_LINUX_MAKE_6D53C8B4=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode -I ../../../../Cpp/git/juce/modules
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -g -ggdb -O0
   CXXFLAGS += $(CFLAGS) -std=c++11
   LDFLAGS += $(TARGET_ARCH) -L$(BINDIR) -L$(LIBDIR) -L/usr/X11R6/lib/ -lX11 -lXext -lXinerama -lasound -ldl -lfreetype -lpthread -lrt 
@@ -38,7 +38,7 @@ ifeq ($(CONFIG),Release)
     TARGET_ARCH := -march=native
   endif
 
-  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -D "JUCER_LINUX_MAKE_6D53C8B4=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode -I ../../JuceLibraryCode/modules -I ../../../../Cpp/git/juce/modules
+  CPPFLAGS := $(DEPFLAGS) -D "LINUX=1" -D "NDEBUG=1" -D "JUCER_LINUX_MAKE_6D53C8B4=1" -D "JUCE_APP_VERSION=1.0.0" -D "JUCE_APP_VERSION_HEX=0x10000" -I /usr/include -I /usr/include/freetype2 -I ../../JuceLibraryCode -I ../../../../Cpp/git/juce/modules
   CFLAGS += $(CPPFLAGS) $(TARGET_ARCH) -O3
   CXXFLAGS += $(CFLAGS) -std=c++11
   LDFLAGS += $(TARGET_ARCH) -L$(BINDIR) -L$(LIBDIR) -fvisibility=hidden -L/usr/X11R6/lib/ -lX11 -lXext -lXinerama -lasound -ldl -lfreetype -lpthread -lrt 
@@ -49,13 +49,21 @@ ifeq ($(CONFIG),Release)
 endif
 
 OBJECTS := \
-  $(OBJDIR)/SeparationProcessor_9963b04d.o \
+  $(OBJDIR)/HarmonicPercussiveSeparator_5ab3aca6.o \
+  $(OBJDIR)/SeparationTask_d4795a5e.o \
+  $(OBJDIR)/ISTFT_8e411399.o \
+  $(OBJDIR)/STFT_83ae5278.o \
+  $(OBJDIR)/HighPassFilterAudioSource_8da6dec7.o \
+  $(OBJDIR)/LowPassFilterAudioSource_9519da7d.o \
+  $(OBJDIR)/PositionableMixerAudioSource_e3220ef4.o \
+  $(OBJDIR)/RudimentBrowser_83460043.o \
   $(OBJDIR)/AboutPage_766bc31d.o \
   $(OBJDIR)/MediaBar_75c4b498.o \
   $(OBJDIR)/InfoBar_7ae8be66.o \
   $(OBJDIR)/MainComponent_a6ffb4a5.o \
   $(OBJDIR)/Main_90ebc5c2.o \
-  $(OBJDIR)/juce_audio_basics_2442e4ea.o \
+  $(OBJDIR)/BinaryData_ce4232d4.o \
+  $(OBJDIR)/juce_audio_basics_590649e5.o \
   $(OBJDIR)/juce_audio_devices_b646b963.o \
   $(OBJDIR)/juce_audio_formats_e4c80303.o \
   $(OBJDIR)/juce_audio_processors_20d96e9d.o \
@@ -84,9 +92,44 @@ strip:
 	@echo Stripping DrumBooth
 	-@strip --strip-unneeded $(OUTDIR)/$(TARGET)
 
-$(OBJDIR)/SeparationProcessor_9963b04d.o: ../../Source/SeparationProcessor.cpp
+$(OBJDIR)/HarmonicPercussiveSeparator_5ab3aca6.o: ../../Source/separator/HarmonicPercussiveSeparator.cpp
 	-@mkdir -p $(OBJDIR)
-	@echo "Compiling SeparationProcessor.cpp"
+	@echo "Compiling HarmonicPercussiveSeparator.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/SeparationTask_d4795a5e.o: ../../Source/separator/SeparationTask.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling SeparationTask.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/ISTFT_8e411399.o: ../../Source/transforms/ISTFT.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling ISTFT.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/STFT_83ae5278.o: ../../Source/transforms/STFT.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling STFT.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/HighPassFilterAudioSource_8da6dec7.o: ../../Source/HighPassFilterAudioSource.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling HighPassFilterAudioSource.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/LowPassFilterAudioSource_9519da7d.o: ../../Source/LowPassFilterAudioSource.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling LowPassFilterAudioSource.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/PositionableMixerAudioSource_e3220ef4.o: ../../Source/PositionableMixerAudioSource.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling PositionableMixerAudioSource.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/RudimentBrowser_83460043.o: ../../Source/RudimentBrowser.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling RudimentBrowser.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/AboutPage_766bc31d.o: ../../Source/AboutPage.cpp
@@ -114,7 +157,12 @@ $(OBJDIR)/Main_90ebc5c2.o: ../../Source/Main.cpp
 	@echo "Compiling Main.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
-$(OBJDIR)/juce_audio_basics_2442e4ea.o: ../../JuceLibraryCode/modules/juce_audio_basics/juce_audio_basics.cpp
+$(OBJDIR)/BinaryData_ce4232d4.o: ../../JuceLibraryCode/BinaryData.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling BinaryData.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/juce_audio_basics_590649e5.o: ../../../../Cpp/git/juce/modules/juce_audio_basics/juce_audio_basics.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling juce_audio_basics.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"

@@ -11,7 +11,6 @@
 #ifndef POSITIONABLEMIXERAUDIOSOURCE_H_INCLUDED
 #define POSITIONABLEMIXERAUDIOSOURCE_H_INCLUDED
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "GainAudioFormatReaderSource.h"
 
 class PositionableMixerAudioSource : public PositionableAudioSource
 {

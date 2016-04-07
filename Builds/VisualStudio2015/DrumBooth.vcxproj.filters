@@ -8,8 +8,176 @@
     <Filter Include="DrumBooth\Source">
       <UniqueIdentifier>{E71BC395-879A-230C-DD77-B2A151AF5889}</UniqueIdentifier>
     </Filter>
-    <Filter Include="DrumBooth\Source\Processors">
-      <UniqueIdentifier>{36C7179C-33BB-CBEB-AF1E-FAD628E5779A}</UniqueIdentifier>
+    <Filter Include="DrumBooth\Source\Eigen">
+      <UniqueIdentifier>{00EEDAEA-491D-6DB3-D9B8-D80218BEEEED}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src">
+      <UniqueIdentifier>{54919F6C-2EEE-4A15-D264-0AD27AE93BEC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\Cholesky">
+      <UniqueIdentifier>{FCE71041-7309-5339-7202-A32EE5F6C9C9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\CholmodSupport">
+      <UniqueIdentifier>{60554EB8-D591-910E-A3C5-ACC70177D767}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\Core">
+      <UniqueIdentifier>{27824094-5DEC-EBE4-E55E-22D6077E5824}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\Core\arch">
+      <UniqueIdentifier>{3189CB4E-EEE6-D4AD-CB1D-0B51627559E9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\Core\arch\AltiVec">
+      <UniqueIdentifier>{2A1C3150-183A-FAAE-F2A4-89667569CDDB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\Core\arch\Default">
+      <UniqueIdentifier>{C26CB5E5-EC60-762D-0AC5-585898EBD69C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\Core\arch\NEON">
+      <UniqueIdentifier>{FC13FE0D-7E8D-D517-3DE7-135D8F7DEBC3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\Core\arch\SSE">
+      <UniqueIdentifier>{761C3586-4D32-28B3-3A8E-CAE0397E6810}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\Core\products">
+      <UniqueIdentifier>{602F2B16-1590-8C18-1404-49BDFF3EC17D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\Core\util">
+      <UniqueIdentifier>{BA424F39-5CF8-2C82-B000-D94878587B54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\Eigen2Support">
+      <UniqueIdentifier>{6959A5D9-2419-E949-D276-53D80A6E3FC9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\Eigen2Support\Geometry">
+      <UniqueIdentifier>{C9902F75-529A-4608-6D6B-0AC5D9654A5E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\Eigenvalues">
+      <UniqueIdentifier>{13F2182B-3CB9-03DB-EB18-8E40326785B1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\Geometry">
+      <UniqueIdentifier>{34D5D1AF-1F9B-8F4D-4218-7D3EEBE49F5F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\Geometry\arch">
+      <UniqueIdentifier>{AE2C6340-9356-19BF-1B20-D53360FF70C2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\Householder">
+      <UniqueIdentifier>{0F07954D-548C-A382-D994-A7F68B30B8A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\IterativeLinearSolvers">
+      <UniqueIdentifier>{3177864B-ACF7-6359-9C39-5ED47BBF9D45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\Jacobi">
+      <UniqueIdentifier>{67254BCB-204F-377C-9D32-6A85FB9E9C31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\LU">
+      <UniqueIdentifier>{733719BF-0787-D8F2-F819-562DDDEC7268}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\LU\arch">
+      <UniqueIdentifier>{D8867C59-60B7-714F-D47C-FE9842F0FB79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\MetisSupport">
+      <UniqueIdentifier>{0F7F92F8-F9D1-EEFF-C773-7A79DD128F00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\misc">
+      <UniqueIdentifier>{C86D9DD3-1CC7-2509-E91B-FDC5202BD706}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\OrderingMethods">
+      <UniqueIdentifier>{2CB0B953-D9FC-E930-2A9D-B999B8523BEB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\PardisoSupport">
+      <UniqueIdentifier>{946574C9-E52D-01BE-D25A-910EE940D0EC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\PaStiXSupport">
+      <UniqueIdentifier>{F47E9951-00C0-78A7-B4DD-6409F7360099}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\plugins">
+      <UniqueIdentifier>{5DFE78F2-E63C-A0CB-9A4F-E851E7C16D78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\QR">
+      <UniqueIdentifier>{533C46BC-54B5-6631-F0BC-562A4E4FED8A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\SparseCholesky">
+      <UniqueIdentifier>{1788DE3A-E8C9-88A1-6D6F-AF261D2E5532}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\SparseCore">
+      <UniqueIdentifier>{3CDDF9E6-83D1-4E63-D885-A6179B332C09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\SparseLU">
+      <UniqueIdentifier>{971B099E-592C-E9F3-790C-C96A7ECE0E56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\SparseQR">
+      <UniqueIdentifier>{B61DCC08-DE5D-0E05-740A-2E3CED94F50B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\SPQRSupport">
+      <UniqueIdentifier>{12288384-2740-8F50-3628-4BF7AF724BBD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\StlSupport">
+      <UniqueIdentifier>{4F3E63B0-B41E-7883-140E-519DAD885AAE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\SuperLUSupport">
+      <UniqueIdentifier>{E1EF5A56-3D97-7F5A-E4F2-82EC3442C6CA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\SVD">
+      <UniqueIdentifier>{070D72EF-04B5-2061-597E-DA5E9182DDFF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Eigen\src\UmfPackSupport">
+      <UniqueIdentifier>{D5EE1E4C-2BAA-23BA-D98D-B84D7630EFC4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\rudiments">
+      <UniqueIdentifier>{C13EF83C-5538-55A7-8B36-062674DDE27D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\rudiments\1. Roll">
+      <UniqueIdentifier>{15B1D292-A5E7-711C-F3B7-3F6D234A2C7D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\rudiments\1. Roll\1.1 Single Stroke">
+      <UniqueIdentifier>{C03912F9-C46F-C286-97D1-1370705439DF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\rudiments\1. Roll\1.2 Multiple Bounce">
+      <UniqueIdentifier>{828F45F5-DEE3-DB3B-7813-089E3A2C78F4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\rudiments\1. Roll\1.3 Double Stroke">
+      <UniqueIdentifier>{8FE7C3EC-1378-60ED-AAD7-3AF7734D9A5A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\rudiments\2. Diddle">
+      <UniqueIdentifier>{63F4893C-9FD5-4D65-4218-D757BF0725F4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\rudiments\3. Flam">
+      <UniqueIdentifier>{4F46F24C-9DF9-6683-3D4E-DFDDF29210D8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\rudiments\4. Drag">
+      <UniqueIdentifier>{3B8E14B2-E21C-5E25-F830-F0F1AD50CB94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\rudiments\5. Exercises">
+      <UniqueIdentifier>{E8498C55-5FEA-509D-E7C2-5F4C6DCA5F8C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\rudiments\5. Exercises\5.1 Single Stroke Roll Exercises">
+      <UniqueIdentifier>{E48B2F54-A1B4-8288-D9B6-27A3ED66DB80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises">
+      <UniqueIdentifier>{B90EBC72-5556-BB94-184C-C832E06258FE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises">
+      <UniqueIdentifier>{DF07058C-FDF9-1A6A-123C-987F478F02CC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\rudiments\5. Exercises\5.4 Diddle Exercises">
+      <UniqueIdentifier>{BEAE0B9C-6F9C-9ADB-4FAE-900C3015A653}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\rudiments\5. Exercises\5.5 Flam Exercises">
+      <UniqueIdentifier>{499F834B-74D1-48EF-D026-FAC4B4D12ACA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\rudiments\5. Exercises\5.6 Drag Exercises">
+      <UniqueIdentifier>{143E366A-A3B0-7DF1-2CC3-2D77D2D6FF20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\separator">
+      <UniqueIdentifier>{DE5E2BD6-ABC8-5BCD-9467-14DDE661587D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\ffft">
+      <UniqueIdentifier>{AA0C7C04-FF53-098E-643B-3A949D070D20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\transforms">
+      <UniqueIdentifier>{F232991A-7380-BB66-1FF4-B47E0BEC2DEA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DrumBooth\Source\Sources">
+      <UniqueIdentifier>{F9FEFCF3-3348-4935-78BA-5C3656C45581}</UniqueIdentifier>
     </Filter>
     <Filter Include="DrumBooth\Source\Components">
       <UniqueIdentifier>{32C624A5-5661-7C6C-DC1F-9B5197FC60DB}</UniqueIdentifier>
@@ -289,8 +457,29 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\SeparationProcessor.cpp">
-      <Filter>DrumBooth\Source\Processors</Filter>
+    <ClCompile Include="..\..\Source\separator\HarmonicPercussiveSeparator.cpp">
+      <Filter>DrumBooth\Source\separator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\separator\SeparationTask.cpp">
+      <Filter>DrumBooth\Source\separator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\transforms\ISTFT.cpp">
+      <Filter>DrumBooth\Source\transforms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\transforms\STFT.cpp">
+      <Filter>DrumBooth\Source\transforms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\HighPassFilterAudioSource.cpp">
+      <Filter>DrumBooth\Source\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\LowPassFilterAudioSource.cpp">
+      <Filter>DrumBooth\Source\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\PositionableMixerAudioSource.cpp">
+      <Filter>DrumBooth\Source\Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\RudimentBrowser.cpp">
+      <Filter>DrumBooth\Source\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\AboutPage.cpp">
       <Filter>DrumBooth\Source\Components</Filter>
@@ -307,88 +496,91 @@
     <ClCompile Include="..\..\Source\Main.cpp">
       <Filter>DrumBooth\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\buffers\juce_AudioDataConverters.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\buffers\juce_AudioDataConverters.cpp">
       <Filter>Juce Modules\juce_audio_basics\buffers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\buffers\juce_FloatVectorOperations.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\buffers\juce_FloatVectorOperations.cpp">
       <Filter>Juce Modules\juce_audio_basics\buffers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_FFT.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_CatmullRomInterpolator.cpp">
       <Filter>Juce Modules\juce_audio_basics\effects</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_IIRFilter.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_FFT.cpp">
       <Filter>Juce Modules\juce_audio_basics\effects</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_LagrangeInterpolator.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_IIRFilter.cpp">
       <Filter>Juce Modules\juce_audio_basics\effects</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiBuffer.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_LagrangeInterpolator.cpp">
+      <Filter>Juce Modules\juce_audio_basics\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiBuffer.cpp">
       <Filter>Juce Modules\juce_audio_basics\midi</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiFile.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiFile.cpp">
       <Filter>Juce Modules\juce_audio_basics\midi</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiKeyboardState.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiKeyboardState.cpp">
       <Filter>Juce Modules\juce_audio_basics\midi</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiMessage.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiMessage.cpp">
       <Filter>Juce Modules\juce_audio_basics\midi</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiMessageSequence.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiMessageSequence.cpp">
       <Filter>Juce Modules\juce_audio_basics\midi</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiRPN.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiRPN.cpp">
       <Filter>Juce Modules\juce_audio_basics\midi</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEInstrument.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEInstrument.cpp">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEMessages.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEMessages.cpp">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPENote.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPENote.cpp">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPESynthesiser.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPESynthesiser.cpp">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPESynthesiserBase.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPESynthesiserBase.cpp">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPESynthesiserVoice.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPESynthesiserVoice.cpp">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEValue.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEValue.cpp">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEZone.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEZone.cpp">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEZoneLayout.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEZoneLayout.cpp">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_BufferingAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_BufferingAudioSource.cpp">
       <Filter>Juce Modules\juce_audio_basics\sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_ChannelRemappingAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_ChannelRemappingAudioSource.cpp">
       <Filter>Juce Modules\juce_audio_basics\sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_IIRFilterAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_IIRFilterAudioSource.cpp">
       <Filter>Juce Modules\juce_audio_basics\sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_MixerAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_MixerAudioSource.cpp">
       <Filter>Juce Modules\juce_audio_basics\sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_ResamplingAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_ResamplingAudioSource.cpp">
       <Filter>Juce Modules\juce_audio_basics\sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_ReverbAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_ReverbAudioSource.cpp">
       <Filter>Juce Modules\juce_audio_basics\sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_ToneGeneratorAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_ToneGeneratorAudioSource.cpp">
       <Filter>Juce Modules\juce_audio_basics\sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\synthesisers\juce_Synthesiser.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\synthesisers\juce_Synthesiser.cpp">
       <Filter>Juce Modules\juce_audio_basics\synthesisers</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_devices\audio_io\juce_AudioDeviceManager.cpp">
@@ -784,6 +976,9 @@
     <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_core\misc\juce_Result.cpp">
       <Filter>Juce Modules\juce_core\misc</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_core\misc\juce_RuntimePermissions.cpp">
+      <Filter>Juce Modules\juce_core\misc</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_core\misc\juce_Uuid.cpp">
       <Filter>Juce Modules\juce_core\misc</Filter>
     </ClCompile>
@@ -794,6 +989,9 @@
       <Filter>Juce Modules\juce_core\native</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_core\native\juce_android_Network.cpp">
+      <Filter>Juce Modules\juce_core\native</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_core\native\juce_android_RuntimePermissions.cpp">
       <Filter>Juce Modules\juce_core\native</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_core\native\juce_android_SystemStats.cpp">
@@ -1489,7 +1687,10 @@
     <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_gui_extra\native\juce_win32_WebBrowserComponent.cpp">
       <Filter>Juce Modules\juce_gui_extra\native</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_audio_basics.cpp">
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp">
+      <Filter>Juce Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\juce_audio_basics.cpp">
       <Filter>Juce Library Code</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_devices\juce_audio_devices.cpp">
@@ -1524,8 +1725,863 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\SeparationProcessor.h">
-      <Filter>DrumBooth\Source\Processors</Filter>
+    <ClInclude Include="..\..\Source\Eigen\src\Cholesky\LDLT.h">
+      <Filter>DrumBooth\Source\Eigen\src\Cholesky</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Cholesky\LLT.h">
+      <Filter>DrumBooth\Source\Eigen\src\Cholesky</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Cholesky\LLT_MKL.h">
+      <Filter>DrumBooth\Source\Eigen\src\Cholesky</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\CholmodSupport\CholmodSupport.h">
+      <Filter>DrumBooth\Source\Eigen\src\CholmodSupport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\arch\AltiVec\Complex.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\arch\AltiVec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\arch\AltiVec\PacketMath.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\arch\AltiVec</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\arch\Default\Settings.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\arch\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\arch\NEON\Complex.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\arch\NEON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\arch\NEON\PacketMath.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\arch\NEON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\arch\SSE\Complex.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\arch\SSE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\arch\SSE\MathFunctions.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\arch\SSE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\arch\SSE\PacketMath.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\arch\SSE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\CoeffBasedProduct.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\GeneralBlockPanelKernel.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\GeneralMatrixMatrix.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\GeneralMatrixMatrix_MKL.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\GeneralMatrixMatrixTriangular.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\GeneralMatrixMatrixTriangular_MKL.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\GeneralMatrixVector.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\GeneralMatrixVector_MKL.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\Parallelizer.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\SelfadjointMatrixMatrix.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\SelfadjointMatrixMatrix_MKL.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\SelfadjointMatrixVector.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\SelfadjointMatrixVector_MKL.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\SelfadjointProduct.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\SelfadjointRank2Update.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\TriangularMatrixMatrix.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\TriangularMatrixMatrix_MKL.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\TriangularMatrixVector.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\TriangularMatrixVector_MKL.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\TriangularSolverMatrix.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\TriangularSolverMatrix_MKL.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\TriangularSolverVector.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\BlasUtil.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\Constants.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\DisableStupidWarnings.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\ForwardDeclarations.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\Macros.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\Memory.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\Meta.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\MKL_support.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\NonMPL2.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\ReenableStupidWarnings.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\StaticAssert.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\XprHelper.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Array.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\ArrayBase.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\ArrayWrapper.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Assign.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Assign_MKL.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\BandMatrix.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Block.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\BooleanRedux.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\CommaInitializer.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\CoreIterators.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\CwiseBinaryOp.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\CwiseNullaryOp.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\CwiseUnaryOp.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\CwiseUnaryView.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\DenseBase.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\DenseCoeffsBase.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\DenseStorage.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Diagonal.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\DiagonalMatrix.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\DiagonalProduct.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Dot.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\EigenBase.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Flagged.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\ForceAlignedAccess.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Functors.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Fuzzy.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\GeneralProduct.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\GenericPacketMath.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\GlobalFunctions.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\IO.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Map.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\MapBase.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\MathFunctions.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Matrix.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\MatrixBase.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\NestByValue.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\NoAlias.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\NumTraits.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\PermutationMatrix.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\PlainObjectBase.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\ProductBase.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Random.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Redux.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Ref.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Replicate.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\ReturnByValue.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Reverse.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Select.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\SelfAdjointView.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\SelfCwiseBinaryOp.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\SolveTriangular.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\StableNorm.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Stride.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Swap.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Transpose.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Transpositions.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\TriangularMatrix.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\VectorBlock.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\VectorwiseOp.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Visitor.h">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\AlignedBox.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\All.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\AngleAxis.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\Hyperplane.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\ParametrizedLine.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\Quaternion.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\Rotation2D.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\RotationBase.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\Scaling.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\Transform.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\Translation.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Block.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Cwise.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\CwiseOperators.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Lazy.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\LeastSquares.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\LU.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Macros.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\MathFunctions.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Memory.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Meta.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Minor.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\QR.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\SVD.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\TriangularSolver.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\VectorBlock.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\ComplexEigenSolver.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigenvalues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\ComplexSchur.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigenvalues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\ComplexSchur_MKL.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigenvalues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\EigenSolver.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigenvalues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\GeneralizedEigenSolver.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigenvalues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\GeneralizedSelfAdjointEigenSolver.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigenvalues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\HessenbergDecomposition.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigenvalues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\MatrixBaseEigenvalues.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigenvalues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\RealQZ.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigenvalues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\RealSchur.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigenvalues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\RealSchur_MKL.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigenvalues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\SelfAdjointEigenSolver.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigenvalues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\SelfAdjointEigenSolver_MKL.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigenvalues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\Tridiagonalization.h">
+      <Filter>DrumBooth\Source\Eigen\src\Eigenvalues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\arch\Geometry_SSE.h">
+      <Filter>DrumBooth\Source\Eigen\src\Geometry\arch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\AlignedBox.h">
+      <Filter>DrumBooth\Source\Eigen\src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\AngleAxis.h">
+      <Filter>DrumBooth\Source\Eigen\src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\EulerAngles.h">
+      <Filter>DrumBooth\Source\Eigen\src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\Homogeneous.h">
+      <Filter>DrumBooth\Source\Eigen\src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\Hyperplane.h">
+      <Filter>DrumBooth\Source\Eigen\src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\OrthoMethods.h">
+      <Filter>DrumBooth\Source\Eigen\src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\ParametrizedLine.h">
+      <Filter>DrumBooth\Source\Eigen\src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\Quaternion.h">
+      <Filter>DrumBooth\Source\Eigen\src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\Rotation2D.h">
+      <Filter>DrumBooth\Source\Eigen\src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\RotationBase.h">
+      <Filter>DrumBooth\Source\Eigen\src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\Scaling.h">
+      <Filter>DrumBooth\Source\Eigen\src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\Transform.h">
+      <Filter>DrumBooth\Source\Eigen\src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\Translation.h">
+      <Filter>DrumBooth\Source\Eigen\src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\Umeyama.h">
+      <Filter>DrumBooth\Source\Eigen\src\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Householder\BlockHouseholder.h">
+      <Filter>DrumBooth\Source\Eigen\src\Householder</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Householder\Householder.h">
+      <Filter>DrumBooth\Source\Eigen\src\Householder</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Householder\HouseholderSequence.h">
+      <Filter>DrumBooth\Source\Eigen\src\Householder</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\IterativeLinearSolvers\BasicPreconditioners.h">
+      <Filter>DrumBooth\Source\Eigen\src\IterativeLinearSolvers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\IterativeLinearSolvers\BiCGSTAB.h">
+      <Filter>DrumBooth\Source\Eigen\src\IterativeLinearSolvers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\IterativeLinearSolvers\ConjugateGradient.h">
+      <Filter>DrumBooth\Source\Eigen\src\IterativeLinearSolvers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\IterativeLinearSolvers\IncompleteLUT.h">
+      <Filter>DrumBooth\Source\Eigen\src\IterativeLinearSolvers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\IterativeLinearSolvers\IterativeSolverBase.h">
+      <Filter>DrumBooth\Source\Eigen\src\IterativeLinearSolvers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\Jacobi\Jacobi.h">
+      <Filter>DrumBooth\Source\Eigen\src\Jacobi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\LU\arch\Inverse_SSE.h">
+      <Filter>DrumBooth\Source\Eigen\src\LU\arch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\LU\Determinant.h">
+      <Filter>DrumBooth\Source\Eigen\src\LU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\LU\FullPivLU.h">
+      <Filter>DrumBooth\Source\Eigen\src\LU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\LU\Inverse.h">
+      <Filter>DrumBooth\Source\Eigen\src\LU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\LU\PartialPivLU.h">
+      <Filter>DrumBooth\Source\Eigen\src\LU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\LU\PartialPivLU_MKL.h">
+      <Filter>DrumBooth\Source\Eigen\src\LU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\MetisSupport\MetisSupport.h">
+      <Filter>DrumBooth\Source\Eigen\src\MetisSupport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\misc\blas.h">
+      <Filter>DrumBooth\Source\Eigen\src\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\misc\Image.h">
+      <Filter>DrumBooth\Source\Eigen\src\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\misc\Kernel.h">
+      <Filter>DrumBooth\Source\Eigen\src\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\misc\Solve.h">
+      <Filter>DrumBooth\Source\Eigen\src\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\misc\SparseSolve.h">
+      <Filter>DrumBooth\Source\Eigen\src\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\OrderingMethods\Amd.h">
+      <Filter>DrumBooth\Source\Eigen\src\OrderingMethods</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\OrderingMethods\Eigen_Colamd.h">
+      <Filter>DrumBooth\Source\Eigen\src\OrderingMethods</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\OrderingMethods\Ordering.h">
+      <Filter>DrumBooth\Source\Eigen\src\OrderingMethods</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\PardisoSupport\PardisoSupport.h">
+      <Filter>DrumBooth\Source\Eigen\src\PardisoSupport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\PaStiXSupport\PaStiXSupport.h">
+      <Filter>DrumBooth\Source\Eigen\src\PaStiXSupport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\plugins\ArrayCwiseBinaryOps.h">
+      <Filter>DrumBooth\Source\Eigen\src\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\plugins\ArrayCwiseUnaryOps.h">
+      <Filter>DrumBooth\Source\Eigen\src\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\plugins\BlockMethods.h">
+      <Filter>DrumBooth\Source\Eigen\src\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\plugins\CommonCwiseBinaryOps.h">
+      <Filter>DrumBooth\Source\Eigen\src\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\plugins\CommonCwiseUnaryOps.h">
+      <Filter>DrumBooth\Source\Eigen\src\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\plugins\MatrixCwiseBinaryOps.h">
+      <Filter>DrumBooth\Source\Eigen\src\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\plugins\MatrixCwiseUnaryOps.h">
+      <Filter>DrumBooth\Source\Eigen\src\plugins</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\QR\ColPivHouseholderQR.h">
+      <Filter>DrumBooth\Source\Eigen\src\QR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\QR\ColPivHouseholderQR_MKL.h">
+      <Filter>DrumBooth\Source\Eigen\src\QR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\QR\FullPivHouseholderQR.h">
+      <Filter>DrumBooth\Source\Eigen\src\QR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\QR\HouseholderQR.h">
+      <Filter>DrumBooth\Source\Eigen\src\QR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\QR\HouseholderQR_MKL.h">
+      <Filter>DrumBooth\Source\Eigen\src\QR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCholesky\SimplicialCholesky.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCholesky</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCholesky\SimplicialCholesky_impl.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCholesky</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\AmbiVector.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\CompressedStorage.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\ConservativeSparseSparseProduct.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\MappedSparseMatrix.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseBlock.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseColEtree.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseCwiseBinaryOp.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseCwiseUnaryOp.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseDenseProduct.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseDiagonalProduct.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseDot.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseFuzzy.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseMatrix.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseMatrixBase.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparsePermutation.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseProduct.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseRedux.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseSelfAdjointView.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseSparseProductWithPruning.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseTranspose.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseTriangularView.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseUtil.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseVector.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseView.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\TriangularSolver.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_column_bmod.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_column_dfs.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_copy_to_ucol.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_gemm_kernel.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_heap_relax_snode.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_kernel_bmod.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_Memory.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_panel_bmod.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_panel_dfs.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_pivotL.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_pruneL.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_relax_snode.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_Structs.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_SupernodalMatrix.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_Utils.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLUImpl.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseQR\SparseQR.h">
+      <Filter>DrumBooth\Source\Eigen\src\SparseQR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SPQRSupport\SuiteSparseQRSupport.h">
+      <Filter>DrumBooth\Source\Eigen\src\SPQRSupport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\StlSupport\details.h">
+      <Filter>DrumBooth\Source\Eigen\src\StlSupport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\StlSupport\StdDeque.h">
+      <Filter>DrumBooth\Source\Eigen\src\StlSupport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\StlSupport\StdList.h">
+      <Filter>DrumBooth\Source\Eigen\src\StlSupport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\StlSupport\StdVector.h">
+      <Filter>DrumBooth\Source\Eigen\src\StlSupport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SuperLUSupport\SuperLUSupport.h">
+      <Filter>DrumBooth\Source\Eigen\src\SuperLUSupport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SVD\JacobiSVD.h">
+      <Filter>DrumBooth\Source\Eigen\src\SVD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SVD\JacobiSVD_MKL.h">
+      <Filter>DrumBooth\Source\Eigen\src\SVD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\SVD\UpperBidiagonalization.h">
+      <Filter>DrumBooth\Source\Eigen\src\SVD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Eigen\src\UmfPackSupport\UmfPackSupport.h">
+      <Filter>DrumBooth\Source\Eigen\src\UmfPackSupport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\separator\ArraySorter.h">
+      <Filter>DrumBooth\Source\separator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\separator\HarmonicPercussiveSeparator.h">
+      <Filter>DrumBooth\Source\separator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\separator\SeparationTask.h">
+      <Filter>DrumBooth\Source\separator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\Array.h">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\Array.hpp">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\def.h">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\DynArray.h">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\DynArray.hpp">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\FFTReal.h">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\FFTReal.hpp">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\FFTRealFixLen.h">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\FFTRealFixLen.hpp">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\FFTRealFixLenParam.h">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\FFTRealPassDirect.h">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\FFTRealPassDirect.hpp">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\FFTRealPassInverse.h">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\FFTRealPassInverse.hpp">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\FFTRealSelect.h">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\FFTRealSelect.hpp">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\FFTRealUseTrigo.h">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\FFTRealUseTrigo.hpp">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\OscSinCos.h">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ffft\OscSinCos.hpp">
+      <Filter>DrumBooth\Source\ffft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Constants.h">
+      <Filter>DrumBooth\Source\transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\transforms\ISTFT.h">
+      <Filter>DrumBooth\Source\transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\transforms\STFT.h">
+      <Filter>DrumBooth\Source\transforms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\HighPassFilterAudioSource.h">
+      <Filter>DrumBooth\Source\Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\LowPassFilterAudioSource.h">
+      <Filter>DrumBooth\Source\Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PositionableMixerAudioSource.h">
+      <Filter>DrumBooth\Source\Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\RudimentBrowser.h">
+      <Filter>DrumBooth\Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TransportState.h">
+      <Filter>DrumBooth\Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DrumBooth_Components.h">
+      <Filter>DrumBooth\Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\AboutPage.h">
       <Filter>DrumBooth\Source\Components</Filter>
@@ -1539,115 +2595,112 @@
     <ClInclude Include="..\..\Source\Spectrogram.h">
       <Filter>DrumBooth\Source\Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\DrumBooth_Components.h">
-      <Filter>DrumBooth\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\TransportState.h">
-      <Filter>DrumBooth\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h">
       <Filter>Juce Modules\juce_audio_basics\buffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\buffers\juce_AudioSampleBuffer.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\buffers\juce_AudioSampleBuffer.h">
       <Filter>Juce Modules\juce_audio_basics\buffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\buffers\juce_FloatVectorOperations.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\buffers\juce_FloatVectorOperations.h">
       <Filter>Juce Modules\juce_audio_basics\buffers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_Decibels.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_CatmullRomInterpolator.h">
       <Filter>Juce Modules\juce_audio_basics\effects</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_FFT.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_Decibels.h">
       <Filter>Juce Modules\juce_audio_basics\effects</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_IIRFilter.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_FFT.h">
       <Filter>Juce Modules\juce_audio_basics\effects</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_LagrangeInterpolator.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_IIRFilter.h">
       <Filter>Juce Modules\juce_audio_basics\effects</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_LinearSmoothedValue.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_LagrangeInterpolator.h">
       <Filter>Juce Modules\juce_audio_basics\effects</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_Reverb.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_LinearSmoothedValue.h">
       <Filter>Juce Modules\juce_audio_basics\effects</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiBuffer.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_Reverb.h">
+      <Filter>Juce Modules\juce_audio_basics\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiBuffer.h">
       <Filter>Juce Modules\juce_audio_basics\midi</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiFile.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiFile.h">
       <Filter>Juce Modules\juce_audio_basics\midi</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiKeyboardState.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiKeyboardState.h">
       <Filter>Juce Modules\juce_audio_basics\midi</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiMessage.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiMessage.h">
       <Filter>Juce Modules\juce_audio_basics\midi</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiMessageSequence.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiMessageSequence.h">
       <Filter>Juce Modules\juce_audio_basics\midi</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiRPN.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiRPN.h">
       <Filter>Juce Modules\juce_audio_basics\midi</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEInstrument.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEInstrument.h">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEMessages.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEMessages.h">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPENote.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPENote.h">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPESynthesiser.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPESynthesiser.h">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPESynthesiserBase.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPESynthesiserBase.h">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPESynthesiserVoice.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPESynthesiserVoice.h">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEValue.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEValue.h">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEZone.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEZone.h">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEZoneLayout.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEZoneLayout.h">
       <Filter>Juce Modules\juce_audio_basics\mpe</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_AudioSource.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_AudioSource.h">
       <Filter>Juce Modules\juce_audio_basics\sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_BufferingAudioSource.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_BufferingAudioSource.h">
       <Filter>Juce Modules\juce_audio_basics\sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_ChannelRemappingAudioSource.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_ChannelRemappingAudioSource.h">
       <Filter>Juce Modules\juce_audio_basics\sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_IIRFilterAudioSource.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_IIRFilterAudioSource.h">
       <Filter>Juce Modules\juce_audio_basics\sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_MixerAudioSource.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_MixerAudioSource.h">
       <Filter>Juce Modules\juce_audio_basics\sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_PositionableAudioSource.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_PositionableAudioSource.h">
       <Filter>Juce Modules\juce_audio_basics\sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_ResamplingAudioSource.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_ResamplingAudioSource.h">
       <Filter>Juce Modules\juce_audio_basics\sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_ReverbAudioSource.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_ReverbAudioSource.h">
       <Filter>Juce Modules\juce_audio_basics\sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_ToneGeneratorAudioSource.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_ToneGeneratorAudioSource.h">
       <Filter>Juce Modules\juce_audio_basics\sources</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\synthesisers\juce_Synthesiser.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\synthesisers\juce_Synthesiser.h">
       <Filter>Juce Modules\juce_audio_basics\synthesisers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_audio_basics.h">
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\juce_audio_basics.h">
       <Filter>Juce Modules\juce_audio_basics</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_devices\audio_io\juce_AudioDeviceManager.h">
@@ -2185,6 +3238,9 @@
       <Filter>Juce Modules\juce_core\unit_tests</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_core\misc\juce_Result.h">
+      <Filter>Juce Modules\juce_core\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_core\misc\juce_RuntimePermissions.h">
       <Filter>Juce Modules\juce_core\misc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_core\misc\juce_Uuid.h">
@@ -2880,12 +3936,486 @@
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h">
       <Filter>Juce Library Code</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h">
+      <Filter>Juce Library Code</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>Juce Library Code</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_module_info">
+    <None Include="..\..\Source\Eigen\src\CholmodSupport\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\CholmodSupport</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\Core\arch\AltiVec\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\Core\arch\AltiVec</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\Core\arch\Default\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\Core\arch\Default</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\Core\arch\NEON\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\Core\arch\NEON</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\Core\arch\SSE\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\Core\arch\SSE</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\Core\arch\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\Core\arch</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\Core\products\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\Core\products</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\Core\util\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\Core\util</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\Core\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\Core</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support\Geometry</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\Eigen2Support\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\Eigen2Support</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\Eigenvalues\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\Eigenvalues</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\Geometry\arch\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\Geometry\arch</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\Geometry\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\Geometry</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\Householder\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\Householder</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\IterativeLinearSolvers\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\IterativeLinearSolvers</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\Jacobi\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\Jacobi</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\LU\arch\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\LU\arch</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\LU\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\LU</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\MetisSupport\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\MetisSupport</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\misc\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\misc</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\OrderingMethods\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\OrderingMethods</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\PardisoSupport\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\PardisoSupport</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\PaStiXSupport\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\PaStiXSupport</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\plugins\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\plugins</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\QR\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\QR</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\SparseCholesky\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCholesky</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\SparseCore\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\SparseCore</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\SparseLU\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\SparseLU</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\SparseQR\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\SparseQR</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\SPQRSupport\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\SPQRSupport</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\StlSupport\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\StlSupport</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\SuperLUSupport\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\SuperLUSupport</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\SVD\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\SVD</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\UmfPackSupport\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src\UmfPackSupport</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\src\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen\src</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\Array">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\Cholesky">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\CholmodSupport">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\CMakeLists.txt">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\Core">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\Dense">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\Eigen">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\Eigen2Support">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\Eigenvalues">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\Geometry">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\Householder">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\IterativeLinearSolvers">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\Jacobi">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\LeastSquares">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\LU">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\MetisSupport">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\OrderingMethods">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\PardisoSupport">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\PaStiXSupport">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\QR">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\QtAlignedMalloc">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\Sparse">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\SparseCholesky">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\SparseCore">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\SparseLU">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\SparseQR">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\SPQRSupport">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\StdDeque">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\StdList">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\StdVector">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\SuperLUSupport">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\SVD">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\Eigen\UmfPackSupport">
+      <Filter>DrumBooth\Source\Eigen</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\1. Roll\1.1 Single Stroke\01 Single Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\1. Roll\1.1 Single Stroke</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\1. Roll\1.1 Single Stroke\02 Single Stroke 4.gif">
+      <Filter>DrumBooth\Source\rudiments\1. Roll\1.1 Single Stroke</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\1. Roll\1.1 Single Stroke\03 Single Stroke 7.gif">
+      <Filter>DrumBooth\Source\rudiments\1. Roll\1.1 Single Stroke</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\1. Roll\1.2 Multiple Bounce\04 Buzz Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\1. Roll\1.2 Multiple Bounce</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\1. Roll\1.2 Multiple Bounce\05 Triple Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\1. Roll\1.2 Multiple Bounce</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\06 Double Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\1. Roll\1.3 Double Stroke</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\07 Five Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\1. Roll\1.3 Double Stroke</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\08 Six Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\1. Roll\1.3 Double Stroke</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\09 Seven Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\1. Roll\1.3 Double Stroke</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\10 Nine Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\1. Roll\1.3 Double Stroke</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\11 Ten Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\1. Roll\1.3 Double Stroke</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\12 Eleven Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\1. Roll\1.3 Double Stroke</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\13 Thirteen Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\1. Roll\1.3 Double Stroke</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\14 Fifteen Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\1. Roll\1.3 Double Stroke</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\15 Seventeen Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\1. Roll\1.3 Double Stroke</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\2. Diddle\16 Single Paradiddle.gif">
+      <Filter>DrumBooth\Source\rudiments\2. Diddle</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\2. Diddle\17 Double Paradiddle.gif">
+      <Filter>DrumBooth\Source\rudiments\2. Diddle</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\2. Diddle\18 Triple Paradiddle.gif">
+      <Filter>DrumBooth\Source\rudiments\2. Diddle</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\2. Diddle\19 Paradiddle-diddle.gif">
+      <Filter>DrumBooth\Source\rudiments\2. Diddle</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\3. Flam\20 Flam.gif">
+      <Filter>DrumBooth\Source\rudiments\3. Flam</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\3. Flam\21 Flam Accent.gif">
+      <Filter>DrumBooth\Source\rudiments\3. Flam</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\3. Flam\22 Flam Tap.gif">
+      <Filter>DrumBooth\Source\rudiments\3. Flam</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\3. Flam\23 Flamacue.gif">
+      <Filter>DrumBooth\Source\rudiments\3. Flam</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\3. Flam\24 Flamadiddle.gif">
+      <Filter>DrumBooth\Source\rudiments\3. Flam</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\3. Flam\25 Flammed Mill.gif">
+      <Filter>DrumBooth\Source\rudiments\3. Flam</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\3. Flam\26 Flamparadiddle-diddle.gif">
+      <Filter>DrumBooth\Source\rudiments\3. Flam</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\3. Flam\27 Pataflafla.gif">
+      <Filter>DrumBooth\Source\rudiments\3. Flam</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\3. Flam\28 Swiss Army Triplet.gif">
+      <Filter>DrumBooth\Source\rudiments\3. Flam</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\3. Flam\29 Inverted Flam Tap.gif">
+      <Filter>DrumBooth\Source\rudiments\3. Flam</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\3. Flam\30 Flam Drag.gif">
+      <Filter>DrumBooth\Source\rudiments\3. Flam</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\4. Drag\31 Drag.gif">
+      <Filter>DrumBooth\Source\rudiments\4. Drag</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\4. Drag\32 Single Drag Tap.gif">
+      <Filter>DrumBooth\Source\rudiments\4. Drag</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\4. Drag\33 Double Drag Tap.gif">
+      <Filter>DrumBooth\Source\rudiments\4. Drag</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\4. Drag\34 Lesson 25.gif">
+      <Filter>DrumBooth\Source\rudiments\4. Drag</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\4. Drag\35 Dragadiddle.gif">
+      <Filter>DrumBooth\Source\rudiments\4. Drag</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\4. Drag\36 Drag Paradiddle i.gif">
+      <Filter>DrumBooth\Source\rudiments\4. Drag</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\4. Drag\37 Drag Paradiddle ii.gif">
+      <Filter>DrumBooth\Source\rudiments\4. Drag</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\4. Drag\38 Single Ratamacue.gif">
+      <Filter>DrumBooth\Source\rudiments\4. Drag</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\4. Drag\39 Double Ratamacue.gif">
+      <Filter>DrumBooth\Source\rudiments\4. Drag</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\4. Drag\40 Triple Ratamacue.gif">
+      <Filter>DrumBooth\Source\rudiments\4. Drag</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.1 Single Stroke Roll Exercises\01 Single Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.1 Single Stroke Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.1 Single Stroke Roll Exercises\02 Single Stroke 4.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.1 Single Stroke Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.1 Single Stroke Roll Exercises\03 Single Stroke 7.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.1 Single Stroke Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises\04 Buzz Roll 1.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises\04 Buzz Roll 2.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises\04 Buzz Roll 3.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises\04 Buzz Roll 4.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises\05 Buzz Roll 5.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises\05 Triple Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\06 Double Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\07 Five Stroke Roll 1.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\07 Five Stroke Roll 2.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\08 Six Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\09 Seven Stroke Roll 1.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\09 Seven Stroke Roll 2.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\10 Nine Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\11 Ten Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\12 Eleven Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\13 Thirteen Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\14 Fifteen Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\15 Seventeen Stroke Roll.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.4 Diddle Exercises\16 Single Paradiddle.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.4 Diddle Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.4 Diddle Exercises\17 Double Paradiddle.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.4 Diddle Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.4 Diddle Exercises\18 Triple Paradiddle.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.4 Diddle Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.4 Diddle Exercises\19 Paradiddle-diddle.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.4 Diddle Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\20 Flam.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.5 Flam Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\21 Flam Accent.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.5 Flam Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\22 Flam Tap.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.5 Flam Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\23 Flamacue.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.5 Flam Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\24 Flamadiddle.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.5 Flam Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\25 Flammed Mill.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.5 Flam Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\26 Flamparadiddle-diddle.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.5 Flam Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\27 Pataflafla.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.5 Flam Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\28 Swiss Army Triplet.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.5 Flam Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\29 Inverted Flam Tap.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.5 Flam Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\30 Flam Drag.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.5 Flam Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\31 Drag 1.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.6 Drag Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\31 Drag 2.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.6 Drag Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\31 Drag 3.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.6 Drag Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\32 Single Drag Tap.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.6 Drag Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\33 Double Drag Tap.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.6 Drag Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\34 Lesson 25.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.6 Drag Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\35 Dragadiddle.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.6 Drag Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\36 Drag Paradiddle i.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.6 Drag Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\37 Drag Paradiddle ii.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.6 Drag Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\38 Single Ratamacue.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.6 Drag Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\39 Double Ratamacue.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.6 Drag Exercises</Filter>
+    </None>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\40 Triple Ratamacue.gif">
+      <Filter>DrumBooth\Source\rudiments\5. Exercises\5.6 Drag Exercises</Filter>
+    </None>
+    <None Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\juce_module_info">
       <Filter>Juce Modules\juce_audio_basics</Filter>
     </None>
     <None Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_devices\juce_module_info">

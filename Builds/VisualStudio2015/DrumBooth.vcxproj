@@ -54,7 +54,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Full</Optimization>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\JuceLibraryCode\modules;..\..\..\..\Cpp\git\juce\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\..\..\Cpp\git\juce\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;NDEBUG;JUCER_VS2015_78A5022=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -97,7 +97,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\JuceLibraryCode\modules;..\..\..\..\Cpp\git\juce\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\JuceLibraryCode;..\..\..\..\Cpp\git\juce\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_WINDOWS;DEBUG;_DEBUG;JUCER_VS2015_78A5022=1;JUCE_APP_VERSION=1.0.0;JUCE_APP_VERSION_HEX=0x10000;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -129,94 +129,104 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\SeparationProcessor.cpp"/>
+    <ClCompile Include="..\..\Source\separator\HarmonicPercussiveSeparator.cpp"/>
+    <ClCompile Include="..\..\Source\separator\SeparationTask.cpp"/>
+    <ClCompile Include="..\..\Source\transforms\ISTFT.cpp"/>
+    <ClCompile Include="..\..\Source\transforms\STFT.cpp"/>
+    <ClCompile Include="..\..\Source\HighPassFilterAudioSource.cpp"/>
+    <ClCompile Include="..\..\Source\LowPassFilterAudioSource.cpp"/>
+    <ClCompile Include="..\..\Source\PositionableMixerAudioSource.cpp"/>
+    <ClCompile Include="..\..\Source\RudimentBrowser.cpp"/>
     <ClCompile Include="..\..\Source\AboutPage.cpp"/>
     <ClCompile Include="..\..\Source\MediaBar.cpp"/>
     <ClCompile Include="..\..\Source\InfoBar.cpp"/>
     <ClCompile Include="..\..\Source\MainComponent.cpp"/>
     <ClCompile Include="..\..\Source\Main.cpp"/>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\buffers\juce_AudioDataConverters.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\buffers\juce_AudioDataConverters.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\buffers\juce_FloatVectorOperations.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\buffers\juce_FloatVectorOperations.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_FFT.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_CatmullRomInterpolator.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_IIRFilter.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_FFT.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_LagrangeInterpolator.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_IIRFilter.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiBuffer.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_LagrangeInterpolator.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiFile.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiBuffer.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiKeyboardState.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiFile.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiMessage.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiKeyboardState.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiMessageSequence.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiMessage.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiRPN.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiMessageSequence.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEInstrument.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiRPN.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEMessages.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEInstrument.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPENote.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEMessages.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPESynthesiser.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPENote.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPESynthesiserBase.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPESynthesiser.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPESynthesiserVoice.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPESynthesiserBase.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEValue.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPESynthesiserVoice.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEZone.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEValue.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEZoneLayout.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEZone.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_BufferingAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEZoneLayout.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_ChannelRemappingAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_BufferingAudioSource.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_IIRFilterAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_ChannelRemappingAudioSource.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_MixerAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_IIRFilterAudioSource.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_ResamplingAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_MixerAudioSource.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_ReverbAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_ResamplingAudioSource.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_ToneGeneratorAudioSource.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_ReverbAudioSource.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\synthesisers\juce_Synthesiser.cpp">
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_ToneGeneratorAudioSource.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\synthesisers\juce_Synthesiser.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_devices\audio_io\juce_AudioDeviceManager.cpp">
@@ -597,6 +607,9 @@
     <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_core\misc\juce_Result.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_core\misc\juce_RuntimePermissions.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_core\misc\juce_Uuid.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
@@ -607,6 +620,9 @@
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_core\native\juce_android_Network.cpp">
+      <ExcludedFromBuild>true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_core\native\juce_android_RuntimePermissions.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_core\native\juce_android_SystemStats.cpp">
@@ -1242,7 +1258,8 @@
     <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_gui_extra\native\juce_win32_WebBrowserComponent.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_audio_basics.cpp"/>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp"/>
+    <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\juce_audio_basics.cpp"/>
     <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_devices\juce_audio_devices.cpp"/>
     <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_formats\juce_audio_formats.cpp"/>
     <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_processors\juce_audio_processors.cpp"/>
@@ -1255,48 +1272,332 @@
     <ClCompile Include="..\..\..\..\Cpp\git\juce\modules\juce_gui_extra\juce_gui_extra.cpp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\SeparationProcessor.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Cholesky\LDLT.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Cholesky\LLT.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Cholesky\LLT_MKL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\CholmodSupport\CholmodSupport.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\arch\AltiVec\Complex.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\arch\AltiVec\PacketMath.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\arch\Default\Settings.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\arch\NEON\Complex.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\arch\NEON\PacketMath.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\arch\SSE\Complex.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\arch\SSE\MathFunctions.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\arch\SSE\PacketMath.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\CoeffBasedProduct.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\GeneralBlockPanelKernel.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\GeneralMatrixMatrix.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\GeneralMatrixMatrix_MKL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\GeneralMatrixMatrixTriangular.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\GeneralMatrixMatrixTriangular_MKL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\GeneralMatrixVector.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\GeneralMatrixVector_MKL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\Parallelizer.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\SelfadjointMatrixMatrix.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\SelfadjointMatrixMatrix_MKL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\SelfadjointMatrixVector.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\SelfadjointMatrixVector_MKL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\SelfadjointProduct.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\SelfadjointRank2Update.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\TriangularMatrixMatrix.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\TriangularMatrixMatrix_MKL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\TriangularMatrixVector.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\TriangularMatrixVector_MKL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\TriangularSolverMatrix.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\TriangularSolverMatrix_MKL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\products\TriangularSolverVector.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\BlasUtil.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\Constants.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\DisableStupidWarnings.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\ForwardDeclarations.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\Macros.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\Memory.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\Meta.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\MKL_support.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\NonMPL2.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\ReenableStupidWarnings.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\StaticAssert.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\util\XprHelper.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Array.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\ArrayBase.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\ArrayWrapper.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Assign.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Assign_MKL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\BandMatrix.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Block.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\BooleanRedux.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\CommaInitializer.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\CoreIterators.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\CwiseBinaryOp.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\CwiseNullaryOp.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\CwiseUnaryOp.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\CwiseUnaryView.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\DenseBase.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\DenseCoeffsBase.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\DenseStorage.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Diagonal.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\DiagonalMatrix.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\DiagonalProduct.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Dot.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\EigenBase.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Flagged.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\ForceAlignedAccess.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Functors.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Fuzzy.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\GeneralProduct.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\GenericPacketMath.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\GlobalFunctions.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\IO.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Map.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\MapBase.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\MathFunctions.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Matrix.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\MatrixBase.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\NestByValue.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\NoAlias.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\NumTraits.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\PermutationMatrix.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\PlainObjectBase.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\ProductBase.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Random.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Redux.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Ref.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Replicate.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\ReturnByValue.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Reverse.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Select.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\SelfAdjointView.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\SelfCwiseBinaryOp.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\SolveTriangular.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\StableNorm.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Stride.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Swap.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Transpose.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Transpositions.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\TriangularMatrix.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\VectorBlock.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\VectorwiseOp.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Core\Visitor.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\AlignedBox.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\All.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\AngleAxis.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\Hyperplane.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\ParametrizedLine.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\Quaternion.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\Rotation2D.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\RotationBase.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\Scaling.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\Transform.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\Translation.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Block.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Cwise.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\CwiseOperators.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Lazy.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\LeastSquares.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\LU.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Macros.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\MathFunctions.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Memory.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Meta.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\Minor.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\QR.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\SVD.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\TriangularSolver.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigen2Support\VectorBlock.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\ComplexEigenSolver.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\ComplexSchur.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\ComplexSchur_MKL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\EigenSolver.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\GeneralizedEigenSolver.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\GeneralizedSelfAdjointEigenSolver.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\HessenbergDecomposition.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\MatrixBaseEigenvalues.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\RealQZ.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\RealSchur.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\RealSchur_MKL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\SelfAdjointEigenSolver.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\SelfAdjointEigenSolver_MKL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Eigenvalues\Tridiagonalization.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\arch\Geometry_SSE.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\AlignedBox.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\AngleAxis.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\EulerAngles.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\Homogeneous.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\Hyperplane.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\OrthoMethods.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\ParametrizedLine.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\Quaternion.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\Rotation2D.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\RotationBase.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\Scaling.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\Transform.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\Translation.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Geometry\Umeyama.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Householder\BlockHouseholder.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Householder\Householder.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Householder\HouseholderSequence.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\IterativeLinearSolvers\BasicPreconditioners.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\IterativeLinearSolvers\BiCGSTAB.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\IterativeLinearSolvers\ConjugateGradient.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\IterativeLinearSolvers\IncompleteLUT.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\IterativeLinearSolvers\IterativeSolverBase.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\Jacobi\Jacobi.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\LU\arch\Inverse_SSE.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\LU\Determinant.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\LU\FullPivLU.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\LU\Inverse.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\LU\PartialPivLU.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\LU\PartialPivLU_MKL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\MetisSupport\MetisSupport.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\misc\blas.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\misc\Image.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\misc\Kernel.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\misc\Solve.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\misc\SparseSolve.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\OrderingMethods\Amd.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\OrderingMethods\Eigen_Colamd.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\OrderingMethods\Ordering.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\PardisoSupport\PardisoSupport.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\PaStiXSupport\PaStiXSupport.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\plugins\ArrayCwiseBinaryOps.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\plugins\ArrayCwiseUnaryOps.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\plugins\BlockMethods.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\plugins\CommonCwiseBinaryOps.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\plugins\CommonCwiseUnaryOps.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\plugins\MatrixCwiseBinaryOps.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\plugins\MatrixCwiseUnaryOps.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\QR\ColPivHouseholderQR.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\QR\ColPivHouseholderQR_MKL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\QR\FullPivHouseholderQR.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\QR\HouseholderQR.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\QR\HouseholderQR_MKL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCholesky\SimplicialCholesky.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCholesky\SimplicialCholesky_impl.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\AmbiVector.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\CompressedStorage.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\ConservativeSparseSparseProduct.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\MappedSparseMatrix.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseBlock.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseColEtree.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseCwiseBinaryOp.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseCwiseUnaryOp.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseDenseProduct.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseDiagonalProduct.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseDot.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseFuzzy.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseMatrix.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseMatrixBase.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparsePermutation.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseProduct.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseRedux.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseSelfAdjointView.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseSparseProductWithPruning.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseTranspose.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseTriangularView.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseUtil.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseVector.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\SparseView.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseCore\TriangularSolver.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_column_bmod.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_column_dfs.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_copy_to_ucol.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_gemm_kernel.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_heap_relax_snode.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_kernel_bmod.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_Memory.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_panel_bmod.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_panel_dfs.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_pivotL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_pruneL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_relax_snode.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_Structs.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_SupernodalMatrix.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLU_Utils.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseLU\SparseLUImpl.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SparseQR\SparseQR.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SPQRSupport\SuiteSparseQRSupport.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\StlSupport\details.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\StlSupport\StdDeque.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\StlSupport\StdList.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\StlSupport\StdVector.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SuperLUSupport\SuperLUSupport.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SVD\JacobiSVD.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SVD\JacobiSVD_MKL.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\SVD\UpperBidiagonalization.h"/>
+    <ClInclude Include="..\..\Source\Eigen\src\UmfPackSupport\UmfPackSupport.h"/>
+    <ClInclude Include="..\..\Source\separator\ArraySorter.h"/>
+    <ClInclude Include="..\..\Source\separator\HarmonicPercussiveSeparator.h"/>
+    <ClInclude Include="..\..\Source\separator\SeparationTask.h"/>
+    <ClInclude Include="..\..\Source\ffft\Array.h"/>
+    <ClInclude Include="..\..\Source\ffft\Array.hpp"/>
+    <ClInclude Include="..\..\Source\ffft\def.h"/>
+    <ClInclude Include="..\..\Source\ffft\DynArray.h"/>
+    <ClInclude Include="..\..\Source\ffft\DynArray.hpp"/>
+    <ClInclude Include="..\..\Source\ffft\FFTReal.h"/>
+    <ClInclude Include="..\..\Source\ffft\FFTReal.hpp"/>
+    <ClInclude Include="..\..\Source\ffft\FFTRealFixLen.h"/>
+    <ClInclude Include="..\..\Source\ffft\FFTRealFixLen.hpp"/>
+    <ClInclude Include="..\..\Source\ffft\FFTRealFixLenParam.h"/>
+    <ClInclude Include="..\..\Source\ffft\FFTRealPassDirect.h"/>
+    <ClInclude Include="..\..\Source\ffft\FFTRealPassDirect.hpp"/>
+    <ClInclude Include="..\..\Source\ffft\FFTRealPassInverse.h"/>
+    <ClInclude Include="..\..\Source\ffft\FFTRealPassInverse.hpp"/>
+    <ClInclude Include="..\..\Source\ffft\FFTRealSelect.h"/>
+    <ClInclude Include="..\..\Source\ffft\FFTRealSelect.hpp"/>
+    <ClInclude Include="..\..\Source\ffft\FFTRealUseTrigo.h"/>
+    <ClInclude Include="..\..\Source\ffft\FFTRealUseTrigo.hpp"/>
+    <ClInclude Include="..\..\Source\ffft\OscSinCos.h"/>
+    <ClInclude Include="..\..\Source\ffft\OscSinCos.hpp"/>
+    <ClInclude Include="..\..\Source\Constants.h"/>
+    <ClInclude Include="..\..\Source\transforms\ISTFT.h"/>
+    <ClInclude Include="..\..\Source\transforms\STFT.h"/>
+    <ClInclude Include="..\..\Source\HighPassFilterAudioSource.h"/>
+    <ClInclude Include="..\..\Source\LowPassFilterAudioSource.h"/>
+    <ClInclude Include="..\..\Source\PositionableMixerAudioSource.h"/>
+    <ClInclude Include="..\..\Source\RudimentBrowser.h"/>
+    <ClInclude Include="..\..\Source\TransportState.h"/>
+    <ClInclude Include="..\..\Source\DrumBooth_Components.h"/>
     <ClInclude Include="..\..\Source\AboutPage.h"/>
     <ClInclude Include="..\..\Source\MediaBar.h"/>
     <ClInclude Include="..\..\Source\InfoBar.h"/>
     <ClInclude Include="..\..\Source\Spectrogram.h"/>
-    <ClInclude Include="..\..\Source\DrumBooth_Components.h"/>
-    <ClInclude Include="..\..\Source\TransportState.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\buffers\juce_AudioSampleBuffer.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\buffers\juce_FloatVectorOperations.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_Decibels.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_FFT.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_IIRFilter.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_LagrangeInterpolator.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_LinearSmoothedValue.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\effects\juce_Reverb.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiBuffer.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiFile.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiKeyboardState.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiMessage.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiMessageSequence.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\midi\juce_MidiRPN.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEInstrument.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEMessages.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPENote.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPESynthesiser.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPESynthesiserBase.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPESynthesiserVoice.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEValue.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEZone.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\mpe\juce_MPEZoneLayout.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_AudioSource.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_BufferingAudioSource.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_ChannelRemappingAudioSource.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_IIRFilterAudioSource.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_MixerAudioSource.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_PositionableAudioSource.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_ResamplingAudioSource.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_ReverbAudioSource.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\sources\juce_ToneGeneratorAudioSource.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\synthesisers\juce_Synthesiser.h"/>
-    <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_audio_basics.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\buffers\juce_AudioSampleBuffer.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\buffers\juce_FloatVectorOperations.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_CatmullRomInterpolator.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_Decibels.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_FFT.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_IIRFilter.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_LagrangeInterpolator.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_LinearSmoothedValue.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\effects\juce_Reverb.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiBuffer.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiFile.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiKeyboardState.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiMessage.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiMessageSequence.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\midi\juce_MidiRPN.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEInstrument.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEMessages.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPENote.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPESynthesiser.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPESynthesiserBase.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPESynthesiserVoice.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEValue.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEZone.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\mpe\juce_MPEZoneLayout.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_AudioSource.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_BufferingAudioSource.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_ChannelRemappingAudioSource.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_IIRFilterAudioSource.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_MixerAudioSource.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_PositionableAudioSource.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_ResamplingAudioSource.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_ReverbAudioSource.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\sources\juce_ToneGeneratorAudioSource.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\synthesisers\juce_Synthesiser.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\juce_audio_basics.h"/>
     <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_devices\audio_io\juce_AudioDeviceManager.h"/>
     <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_devices\audio_io\juce_AudioIODevice.h"/>
     <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_devices\audio_io\juce_AudioIODeviceType.h"/>
@@ -1476,6 +1777,7 @@
     <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_core\zip\juce_ZipFile.h"/>
     <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_core\unit_tests\juce_UnitTest.h"/>
     <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_core\misc\juce_Result.h"/>
+    <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_core\misc\juce_RuntimePermissions.h"/>
     <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_core\misc\juce_Uuid.h"/>
     <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_core\misc\juce_WindowsRegistry.h"/>
     <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_core\native\juce_android_JNIHelpers.h"/>
@@ -1707,10 +2009,168 @@
     <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_gui_extra\native\juce_mac_CarbonViewWrapperComponent.h"/>
     <ClInclude Include="..\..\..\..\Cpp\git\juce\modules\juce_gui_extra\juce_gui_extra.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h"/>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h"/>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h"/>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_module_info"/>
+    <None Include="..\..\Source\Eigen\src\CholmodSupport\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\Core\arch\AltiVec\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\Core\arch\Default\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\Core\arch\NEON\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\Core\arch\SSE\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\Core\arch\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\Core\products\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\Core\util\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\Core\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\Eigen2Support\Geometry\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\Eigen2Support\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\Eigenvalues\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\Geometry\arch\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\Geometry\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\Householder\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\IterativeLinearSolvers\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\Jacobi\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\LU\arch\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\LU\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\MetisSupport\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\misc\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\OrderingMethods\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\PardisoSupport\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\PaStiXSupport\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\plugins\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\QR\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\SparseCholesky\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\SparseCore\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\SparseLU\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\SparseQR\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\SPQRSupport\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\StlSupport\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\SuperLUSupport\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\SVD\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\UmfPackSupport\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\src\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\Array"/>
+    <None Include="..\..\Source\Eigen\Cholesky"/>
+    <None Include="..\..\Source\Eigen\CholmodSupport"/>
+    <None Include="..\..\Source\Eigen\CMakeLists.txt"/>
+    <None Include="..\..\Source\Eigen\Core"/>
+    <None Include="..\..\Source\Eigen\Dense"/>
+    <None Include="..\..\Source\Eigen\Eigen"/>
+    <None Include="..\..\Source\Eigen\Eigen2Support"/>
+    <None Include="..\..\Source\Eigen\Eigenvalues"/>
+    <None Include="..\..\Source\Eigen\Geometry"/>
+    <None Include="..\..\Source\Eigen\Householder"/>
+    <None Include="..\..\Source\Eigen\IterativeLinearSolvers"/>
+    <None Include="..\..\Source\Eigen\Jacobi"/>
+    <None Include="..\..\Source\Eigen\LeastSquares"/>
+    <None Include="..\..\Source\Eigen\LU"/>
+    <None Include="..\..\Source\Eigen\MetisSupport"/>
+    <None Include="..\..\Source\Eigen\OrderingMethods"/>
+    <None Include="..\..\Source\Eigen\PardisoSupport"/>
+    <None Include="..\..\Source\Eigen\PaStiXSupport"/>
+    <None Include="..\..\Source\Eigen\QR"/>
+    <None Include="..\..\Source\Eigen\QtAlignedMalloc"/>
+    <None Include="..\..\Source\Eigen\Sparse"/>
+    <None Include="..\..\Source\Eigen\SparseCholesky"/>
+    <None Include="..\..\Source\Eigen\SparseCore"/>
+    <None Include="..\..\Source\Eigen\SparseLU"/>
+    <None Include="..\..\Source\Eigen\SparseQR"/>
+    <None Include="..\..\Source\Eigen\SPQRSupport"/>
+    <None Include="..\..\Source\Eigen\StdDeque"/>
+    <None Include="..\..\Source\Eigen\StdList"/>
+    <None Include="..\..\Source\Eigen\StdVector"/>
+    <None Include="..\..\Source\Eigen\SuperLUSupport"/>
+    <None Include="..\..\Source\Eigen\SVD"/>
+    <None Include="..\..\Source\Eigen\UmfPackSupport"/>
+    <None Include="..\..\Source\rudiments\1. Roll\1.1 Single Stroke\01 Single Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\1. Roll\1.1 Single Stroke\02 Single Stroke 4.gif"/>
+    <None Include="..\..\Source\rudiments\1. Roll\1.1 Single Stroke\03 Single Stroke 7.gif"/>
+    <None Include="..\..\Source\rudiments\1. Roll\1.2 Multiple Bounce\04 Buzz Roll.gif"/>
+    <None Include="..\..\Source\rudiments\1. Roll\1.2 Multiple Bounce\05 Triple Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\06 Double Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\07 Five Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\08 Six Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\09 Seven Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\10 Nine Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\11 Ten Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\12 Eleven Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\13 Thirteen Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\14 Fifteen Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\1. Roll\1.3 Double Stroke\15 Seventeen Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\2. Diddle\16 Single Paradiddle.gif"/>
+    <None Include="..\..\Source\rudiments\2. Diddle\17 Double Paradiddle.gif"/>
+    <None Include="..\..\Source\rudiments\2. Diddle\18 Triple Paradiddle.gif"/>
+    <None Include="..\..\Source\rudiments\2. Diddle\19 Paradiddle-diddle.gif"/>
+    <None Include="..\..\Source\rudiments\3. Flam\20 Flam.gif"/>
+    <None Include="..\..\Source\rudiments\3. Flam\21 Flam Accent.gif"/>
+    <None Include="..\..\Source\rudiments\3. Flam\22 Flam Tap.gif"/>
+    <None Include="..\..\Source\rudiments\3. Flam\23 Flamacue.gif"/>
+    <None Include="..\..\Source\rudiments\3. Flam\24 Flamadiddle.gif"/>
+    <None Include="..\..\Source\rudiments\3. Flam\25 Flammed Mill.gif"/>
+    <None Include="..\..\Source\rudiments\3. Flam\26 Flamparadiddle-diddle.gif"/>
+    <None Include="..\..\Source\rudiments\3. Flam\27 Pataflafla.gif"/>
+    <None Include="..\..\Source\rudiments\3. Flam\28 Swiss Army Triplet.gif"/>
+    <None Include="..\..\Source\rudiments\3. Flam\29 Inverted Flam Tap.gif"/>
+    <None Include="..\..\Source\rudiments\3. Flam\30 Flam Drag.gif"/>
+    <None Include="..\..\Source\rudiments\4. Drag\31 Drag.gif"/>
+    <None Include="..\..\Source\rudiments\4. Drag\32 Single Drag Tap.gif"/>
+    <None Include="..\..\Source\rudiments\4. Drag\33 Double Drag Tap.gif"/>
+    <None Include="..\..\Source\rudiments\4. Drag\34 Lesson 25.gif"/>
+    <None Include="..\..\Source\rudiments\4. Drag\35 Dragadiddle.gif"/>
+    <None Include="..\..\Source\rudiments\4. Drag\36 Drag Paradiddle i.gif"/>
+    <None Include="..\..\Source\rudiments\4. Drag\37 Drag Paradiddle ii.gif"/>
+    <None Include="..\..\Source\rudiments\4. Drag\38 Single Ratamacue.gif"/>
+    <None Include="..\..\Source\rudiments\4. Drag\39 Double Ratamacue.gif"/>
+    <None Include="..\..\Source\rudiments\4. Drag\40 Triple Ratamacue.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.1 Single Stroke Roll Exercises\01 Single Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.1 Single Stroke Roll Exercises\02 Single Stroke 4.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.1 Single Stroke Roll Exercises\03 Single Stroke 7.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises\04 Buzz Roll 1.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises\04 Buzz Roll 2.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises\04 Buzz Roll 3.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises\04 Buzz Roll 4.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises\05 Buzz Roll 5.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.2 Multiple Bounce Roll Exercises\05 Triple Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\06 Double Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\07 Five Stroke Roll 1.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\07 Five Stroke Roll 2.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\08 Six Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\09 Seven Stroke Roll 1.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\09 Seven Stroke Roll 2.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\10 Nine Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\11 Ten Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\12 Eleven Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\13 Thirteen Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\14 Fifteen Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.3 Double Stroke Roll Exercises\15 Seventeen Stroke Roll.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.4 Diddle Exercises\16 Single Paradiddle.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.4 Diddle Exercises\17 Double Paradiddle.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.4 Diddle Exercises\18 Triple Paradiddle.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.4 Diddle Exercises\19 Paradiddle-diddle.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\20 Flam.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\21 Flam Accent.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\22 Flam Tap.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\23 Flamacue.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\24 Flamadiddle.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\25 Flammed Mill.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\26 Flamparadiddle-diddle.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\27 Pataflafla.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\28 Swiss Army Triplet.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\29 Inverted Flam Tap.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.5 Flam Exercises\30 Flam Drag.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\31 Drag 1.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\31 Drag 2.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\31 Drag 3.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\32 Single Drag Tap.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\33 Double Drag Tap.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\34 Lesson 25.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\35 Dragadiddle.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\36 Drag Paradiddle i.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\37 Drag Paradiddle ii.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\38 Single Ratamacue.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\39 Double Ratamacue.gif"/>
+    <None Include="..\..\Source\rudiments\5. Exercises\5.6 Drag Exercises\40 Triple Ratamacue.gif"/>
+    <None Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_basics\juce_module_info"/>
     <None Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_devices\juce_module_info"/>
     <None Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_formats\juce_module_info"/>
     <None Include="..\..\..\..\Cpp\git\juce\modules\juce_audio_processors\juce_module_info"/>

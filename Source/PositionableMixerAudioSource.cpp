@@ -12,8 +12,8 @@
 
 PositionableMixerAudioSource::PositionableMixerAudioSource() 
 	:	tempBuffer(2, 0),
-		track1Gain(0.5f),
-		track2Gain(0.5f),
+		track1Gain(1.0f),
+		track2Gain(0.0f),
 		currentSampleRate(0.0),
 		bufferSizeExpected(0),
 		currentPlayingPosition(0),
@@ -121,7 +121,7 @@ void PositionableMixerAudioSource::getNextAudioBlock(const AudioSourceChannelInf
 
 				for (int channel = 0; channel < bufferToFill.buffer->getNumChannels(); ++channel)
 				{
-					bufferToFill.buffer->addFrom(channel, bufferToFill.startSample, tempBuffer, channel, 0, bufferToFill.numSamples, track2Gain);
+					//bufferToFill.buffer->addFrom(channel, bufferToFill.startSample, tempBuffer, channel, 0, bufferToFill.numSamples, track2Gain);
 				}
 			}
 		}

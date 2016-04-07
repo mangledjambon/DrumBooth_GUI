@@ -5,15 +5,16 @@
     Created: 22 Mar 2016 1:00:45pm
     Author:  Sean
 
+	This class performs the separation on the audio data, read from 
+	the AudioFormatReader object.
+
   ==============================================================================
 */
 
 #include "HarmonicPercussiveSeparator.h"
 
 MedianSeparator::MedianSeparator(AudioFormatReader* fileReader) : reader(fileReader)
-{
-	
-}
+{}
 
 MedianSeparator::~MedianSeparator()
 {}
@@ -345,11 +346,9 @@ void MedianSeparator::writeFiles()
 	output_H = outputFile_H->createOutputStream();
 	output_P = outputFile_P->createOutputStream();
 
-	WavAudioFormat* wavFormat = new WavAudioFormat();
-
-	AudioFormatWriter* writer = wavFormat->createWriterFor(output_H, 44100.0, numChannels, 16, NULL, 0);
-
 	// write from sample buffer
+	WavAudioFormat* wavFormat = new WavAudioFormat();
+	AudioFormatWriter* writer = wavFormat->createWriterFor(output_H, 44100.0, numChannels, 16, NULL, 0);
 	writer->flush();
 	writer->writeFromAudioSampleBuffer(outSamples_H, 0, numSamples);
 	delete writer;

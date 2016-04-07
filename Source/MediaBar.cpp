@@ -32,7 +32,6 @@ MediaBar::MediaBar(AudioTransportSource& transport, PositionableMixerAudioSource
 	label_Gain->setText("Volume:", dontSendNotification);
 
 	// set up filter labels
-	// high pass
 	addAndMakeVisible(label_SeparationControl = new Label("Separation Control"));
 	label_SeparationControl->setText("Separation:", dontSendNotification);
 
@@ -49,7 +48,7 @@ MediaBar::MediaBar(AudioTransportSource& transport, PositionableMixerAudioSource
 	slider_SeparationControl->setSliderStyle(Slider::SliderStyle::RotaryHorizontalVerticalDrag);
 	slider_SeparationControl->setTextBoxStyle(Slider::NoTextBox, true, 50, 20);
 	slider_SeparationControl->setRange(0, 1.0f, 0.01f);
-	slider_SeparationControl->setValue(50);
+	slider_SeparationControl->setValue(0.5f);
 	//slider_SeparationControl->setEnabled(false);
 
 	// begin timer
@@ -64,23 +63,25 @@ void MediaBar::paint (Graphics& g)
 	g.fillAll(Colours::slategrey);   // clear the background
 
 	Rectangle<int> localBounds = getLocalBounds().reduced(5); // get area
-
-	// draw filter sliders and labels
-	Rectangle<int> filterSliderArea = localBounds.removeFromBottom(60).reduced(4);
-	Rectangle<int> filterLabelArea = filterSliderArea.removeFromLeft(80);
-	label_SeparationControl->setBounds(filterLabelArea);
-	slider_SeparationControl->setBounds(filterSliderArea);
-
 	g.setColour(Colours::darkblue);
 	g.drawRect(localBounds, 1);   // draw an outline around the component
+
+	const int BUTTON_WIDTH = localBounds.getWidth() / 8;	// set button width as constant int value (1/8 of localBound's width)
+	const int BUTTON_HEIGHT = localBounds.getHeight() / 10;
+
+	// draw volume sliders and labels
+	Rectangle<int> volumeSliderArea = localBounds.removeFromLeft(getWidth() / 15);
+	Rectangle<int> volumeLabelArea = volumeSliderArea.removeFromTop(25);
+	slider_Gain->setBounds(volumeSliderArea.reduced(5));
+	label_Gain->setBounds(volumeLabelArea);
+
+	// draw separation control label and slider
+	Rectangle<int> filterSliderArea = localBounds.removeFromLeft(getWidth()/10);
+	Rectangle<int> filterLabelArea = filterSliderArea.removeFromTop(25);
+	label_SeparationControl->setBounds(filterLabelArea.reduced(5));
+	slider_SeparationControl->setBounds(filterSliderArea);
 	
 	// draw buttons
-	const int BUTTON_WIDTH = localBounds.getWidth() / 8;	// set button width as constant int value (1/3 of localBound's width)
-	
-	Rectangle<int> sliderArea = localBounds.removeFromLeft(getWidth() / 15);
-	Rectangle<int> labelArea = sliderArea.removeFromTop(20);
-	slider_Gain->setBounds(sliderArea.reduced(5));
-	label_Gain->setBounds(labelArea);
 
 	Rectangle<int> buttonArea = localBounds.reduced(10).removeFromBottom(getHeight() / 10);
 	button_LoadFile->setBounds(buttonArea.removeFromLeft(BUTTON_WIDTH));

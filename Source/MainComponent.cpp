@@ -339,6 +339,8 @@ public:
 		}
 		else if (buttonThatWasClicked == mediaBar->button_spectrogramEnabled)
 		{
+			// changes size here to accomodate enabling and disabling the spectrogram
+
 			bool spectrogramEnabled = mediaBar->button_spectrogramEnabled->getToggleState();
 			
 			if (spectrogramEnabled)

@@ -42,7 +42,7 @@ private:
 	Array<AudioFormatReaderSource*> inputs;
 	BigInteger inputsToDelete;
 	CriticalSection lock;
-	AudioSampleBuffer tempBuffer;
+	AudioSampleBuffer tempBuffer1, tempBuffer2;
 
 	int64 currentPlayingPosition;
 	double currentSampleRate;

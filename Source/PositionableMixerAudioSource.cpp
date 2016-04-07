@@ -11,9 +11,10 @@
 #include "PositionableMixerAudioSource.h"
 
 PositionableMixerAudioSource::PositionableMixerAudioSource() 
-	:	tempBuffer(2, 0),
-		track1Gain(1.0f),
-		track2Gain(0.0f),
+	:	tempBuffer1(2, 0),
+		tempBuffer2(2, 0),
+		track1Gain(0.5f),
+		track2Gain(0.5f),
 		currentSampleRate(0.0),
 		bufferSizeExpected(0),
 		currentPlayingPosition(0),
@@ -87,7 +88,8 @@ void PositionableMixerAudioSource::removeAllInputs()
 // PositionableAudioSource methods
 void PositionableMixerAudioSource::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
-	tempBuffer.setSize(2, samplesPerBlockExpected);
+	tempBuffer1.setSize(2, samplesPerBlockExpected);
+	tempBuffer2.setSize(2, samplesPerBlockExpected);
 
 	const ScopedLock sl(lock);
 
@@ -106,22 +108,24 @@ void PositionableMixerAudioSource::getNextAudioBlock(const AudioSourceChannelInf
 
 	if (inputs.size() > 0)
 	{
-		//bufferToFill.buffer->applyGain(track1Gain);
+
+		//tempBuffer1.setSize(jmax(1, bufferToFill.buffer->getNumChannels()), bufferToFill.buffer->getNumSamples());
+		//AudioSourceChannelInfo buffer1(&tempBuffer1, 0, bufferToFill.numSamples);
 		inputs.getUnchecked(0)->getNextAudioBlock(bufferToFill);
 
 		if (inputs.size() > 1)
 		{
-			tempBuffer.setSize(jmax(1, bufferToFill.buffer->getNumChannels()), bufferToFill.buffer->getNumSamples());
-			AudioSourceChannelInfo buffer2(&tempBuffer, 0, bufferToFill.numSamples);
+			tempBuffer2.setSize(jmax(1, bufferToFill.buffer->getNumChannels()), bufferToFill.buffer->getNumSamples());
+			AudioSourceChannelInfo buffer2(&tempBuffer2, 0, bufferToFill.numSamples);
 
 			for (int i = 1; i < inputs.size(); ++i)
 			{
 				inputs.getUnchecked(i)->getNextAudioBlock(buffer2);
-				//buffer2.buffer->applyGain(track1Gain);
 
 				for (int channel = 0; channel < bufferToFill.buffer->getNumChannels(); ++channel)
 				{
-					//bufferToFill.buffer->addFrom(channel, bufferToFill.startSample, tempBuffer, channel, 0, bufferToFill.numSamples, track2Gain);
+					//bufferToFill.buffer->addFrom(channel, bufferToFill.startSample, tempBuffer1, channel, 0, bufferToFill.numSamples, track1Gain);
+					bufferToFill.buffer->addFrom(channel, bufferToFill.startSample, tempBuffer2, channel, 0, bufferToFill.numSamples/*, track2Gain*/);
 				}
 			}
 		}
@@ -139,7 +143,8 @@ void PositionableMixerAudioSource::releaseResources()
 	for (int i = inputs.size(); --i >= 0;)
 		inputs.getUnchecked(i)->releaseResources();
 
-	tempBuffer.setSize(2, 0);
+	tempBuffer1.setSize(2, 0);
+	tempBuffer2.setSize(2, 0);
 
 	currentSampleRate = 0;
 	bufferSizeExpected = 0;

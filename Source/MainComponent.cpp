@@ -1,8 +1,16 @@
 /*
   ==============================================================================
 
+  DrumBooth 
+  DCOM4 Final Year Project 2015/2016
+  Author: Sean Breen
+
+	MainComponent.cpp
+
+	This is the main application window.
+
     TODO:
-		- line 309: adjust screen size when spectrogram disabled	
+		- Separator: written file missing last second of audio	
 
   ==============================================================================
 */
@@ -14,11 +22,6 @@
 
 using juce::Rectangle;
 
-//==============================================================================
-/*
-    This component lives inside our window, and this is where you should put all
-    your controls and content.
-*/
 class MainContentComponent   :	public AudioAppComponent,
 								public ApplicationCommandTarget,
 								public MenuBarModel,
@@ -148,6 +151,7 @@ public:
 		return names;
 	}
 
+	// show popup menu when menubar option clicked
 	PopupMenu getMenuForIndex(int topLevelMenuIndex, const String& menuName)
 	{
 		PopupMenu menu;
@@ -177,8 +181,7 @@ public:
 	}
 
 	void menuItemSelected(int menuItemID, int topLevelMenuIndex)
-	{
-	}
+	{}
 	// ===================================
 
 	// methods inherited from ApplicationCommandTarget

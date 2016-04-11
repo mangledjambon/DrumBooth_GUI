@@ -19,8 +19,8 @@ public:
 	~PositionableMixerAudioSource();
 
 	// MixerAudioSource methods
-	void addInputSource(AudioFormatReaderSource* newInput, const bool deleteWhenRemoved);
-	void removeInputSource(AudioFormatReaderSource* inputToRemove, const bool deleteSource);
+	void addInputSource(AudioTransportSource* newInput, const bool deleteWhenRemoved);
+	void removeInputSource(AudioTransportSource* inputToRemove, const bool deleteSource);
 	void removeAllInputs();
 
 	// PositionableAudioSource methods
@@ -34,15 +34,17 @@ public:
 	bool isLooping() const override;
 
 	void applyGain(float track1, float track2);
+	void start();
+	void stop();
 
-	AudioFormatReaderSource* getInput(int index);
+	AudioTransportSource* getInput(int index);
 
 private:
 	float track1Gain, track2Gain;
-	Array<AudioFormatReaderSource*> inputs;
+	Array<AudioTransportSource*> inputs;
 	BigInteger inputsToDelete;
 	CriticalSection lock;
-	AudioSampleBuffer tempBuffer1, tempBuffer2;
+	AudioSampleBuffer tempBuffer;
 
 	int64 currentPlayingPosition;
 	double currentSampleRate;

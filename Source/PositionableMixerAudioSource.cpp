@@ -11,8 +11,7 @@
 #include "PositionableMixerAudioSource.h"
 
 PositionableMixerAudioSource::PositionableMixerAudioSource() 
-	:	tempBuffer1(2, 0),
-		tempBuffer2(2, 0),
+	:	tempBuffer(2, 0),
 		track1Gain(0.5f),
 		track2Gain(0.5f),
 		currentSampleRate(0.0),
@@ -26,7 +25,7 @@ PositionableMixerAudioSource::~PositionableMixerAudioSource()
 	//removeAllInputs();
 }
 
-void PositionableMixerAudioSource::addInputSource(AudioFormatReaderSource* newInput, const bool deleteWhenRemoved)
+void PositionableMixerAudioSource::addInputSource(AudioTransportSource* newInput, const bool deleteWhenRemoved)
 {
 	if (newInput != nullptr && !inputs.contains(newInput))
 	{
@@ -45,7 +44,7 @@ void PositionableMixerAudioSource::addInputSource(AudioFormatReaderSource* newIn
 	}
 }
 
-void PositionableMixerAudioSource::removeInputSource(AudioFormatReaderSource* inputToRemove, const bool deleteSource)
+void PositionableMixerAudioSource::removeInputSource(AudioTransportSource* inputToRemove, const bool deleteSource)
 {
 	if (inputToRemove != nullptr)
 	{
@@ -73,7 +72,7 @@ void PositionableMixerAudioSource::removeInputSource(AudioFormatReaderSource* in
 void PositionableMixerAudioSource::removeAllInputs()
 {
 	lock.enter();
-	Array<AudioFormatReaderSource*> inputsCopy(inputs);
+	Array<AudioTransportSource*> inputsCopy(inputs);
 	BigInteger inputsToDeleteCopy(inputsToDelete);
 	inputs.clear();
 	lock.exit();
@@ -88,8 +87,7 @@ void PositionableMixerAudioSource::removeAllInputs()
 // PositionableAudioSource methods
 void PositionableMixerAudioSource::prepareToPlay(int samplesPerBlockExpected, double sampleRate)
 {
-	tempBuffer1.setSize(2, samplesPerBlockExpected);
-	tempBuffer2.setSize(2, samplesPerBlockExpected);
+	tempBuffer.setSize(2, samplesPerBlockExpected);
 
 	const ScopedLock sl(lock);
 
@@ -108,24 +106,22 @@ void PositionableMixerAudioSource::getNextAudioBlock(const AudioSourceChannelInf
 
 	if (inputs.size() > 0)
 	{
-
-		//tempBuffer1.setSize(jmax(1, bufferToFill.buffer->getNumChannels()), bufferToFill.buffer->getNumSamples());
-		//AudioSourceChannelInfo buffer1(&tempBuffer1, 0, bufferToFill.numSamples);
+		inputs.getUnchecked(0)->setGain(track1Gain);
 		inputs.getUnchecked(0)->getNextAudioBlock(bufferToFill);
 
 		if (inputs.size() > 1)
 		{
-			tempBuffer2.setSize(jmax(1, bufferToFill.buffer->getNumChannels()), bufferToFill.buffer->getNumSamples());
-			AudioSourceChannelInfo buffer2(&tempBuffer2, 0, bufferToFill.numSamples);
+			tempBuffer.setSize(jmax(1, bufferToFill.buffer->getNumChannels()), bufferToFill.buffer->getNumSamples());
+			AudioSourceChannelInfo buffer2(&tempBuffer, 0, bufferToFill.numSamples);
 
 			for (int i = 1; i < inputs.size(); ++i)
 			{
+				inputs.getUnchecked(i)->setGain(track2Gain);
 				inputs.getUnchecked(i)->getNextAudioBlock(buffer2);
 
 				for (int channel = 0; channel < bufferToFill.buffer->getNumChannels(); ++channel)
 				{
-					//bufferToFill.buffer->addFrom(channel, bufferToFill.startSample, tempBuffer1, channel, 0, bufferToFill.numSamples, track1Gain);
-					bufferToFill.buffer->addFrom(channel, bufferToFill.startSample, tempBuffer2, channel, 0, bufferToFill.numSamples/*, track2Gain*/);
+					bufferToFill.buffer->addFrom(channel, bufferToFill.startSample, tempBuffer, channel, 0, bufferToFill.numSamples);
 				}
 			}
 		}
@@ -143,8 +139,7 @@ void PositionableMixerAudioSource::releaseResources()
 	for (int i = inputs.size(); --i >= 0;)
 		inputs.getUnchecked(i)->releaseResources();
 
-	tempBuffer1.setSize(2, 0);
-	tempBuffer2.setSize(2, 0);
+	tempBuffer.setSize(2, 0);
 
 	currentSampleRate = 0;
 	bufferSizeExpected = 0;
@@ -182,7 +177,7 @@ bool PositionableMixerAudioSource::isLooping() const
 	return isPlayingLoop;
 }
 
-AudioFormatReaderSource* PositionableMixerAudioSource::getInput(int index)
+AudioTransportSource* PositionableMixerAudioSource::getInput(int index)
 {
 	if (index < 2)
 	{
@@ -196,4 +191,20 @@ void PositionableMixerAudioSource::applyGain(float track1, float track2)
 {
 	track1Gain = track1;
 	track2Gain = track2;
+}
+
+void PositionableMixerAudioSource::start()
+{
+	for (int i = 0; i < inputs.size(); i++)
+	{
+		inputs.getUnchecked(i)->start();
+	}
+}
+
+void PositionableMixerAudioSource::stop()
+{
+	for (int i = 0; i < inputs.size(); i++)
+	{
+		inputs.getUnchecked(i)->stop();
+	}
 }

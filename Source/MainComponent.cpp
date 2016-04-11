@@ -325,18 +325,22 @@ public:
 	// methods inherited from Button::Listener
 	void buttonClicked(Button* buttonThatWasClicked)
 	{
+		// user clicked Load
 		if (buttonThatWasClicked == mediaBar->button_LoadFile)
 		{
 			loadButtonPressed();
 		}
+		// user clicked Play/Pause
 		else if (buttonThatWasClicked == mediaBar->button_PlayPause)
 		{
 			playButtonPressed();
 		}
+		// user clicked Stop
 		else if (buttonThatWasClicked == mediaBar->button_Stop)
 		{
 			stopButtonPressed();
 		}
+		// user enabled/disabled spectrogram
 		else if (buttonThatWasClicked == mediaBar->button_spectrogramEnabled)
 		{
 			// changes size here to accomodate enabling and disabling the spectrogram
@@ -355,6 +359,7 @@ public:
 				spectrogram = nullptr;
 			}
 		}
+		// user clicked Process Audio
 		else if (buttonThatWasClicked == mediaBar->button_Process)
 		{
 			processButtonPressed();
@@ -395,6 +400,7 @@ private:
 
 			case Starting:
 				transportSource.start();
+				mixerSource.start();
 				if (spectrogram != nullptr)
 					spectrogram->setEnabled(true);
 				break;
@@ -404,6 +410,7 @@ private:
 
 			case Pausing:
 				transportSource.stop();
+				mixerSource.stop();
 				if (spectrogram != nullptr)
 					spectrogram->setEnabled(false);
 				break;
@@ -413,6 +420,7 @@ private:
 
 			case Stopping:
 				transportSource.stop();
+				mixerSource.stop();
 				if (spectrogram != nullptr)
 					spectrogram->setEnabled(false);
 				break;
@@ -443,13 +451,25 @@ private:
 			ScopedPointer<AudioFormatReaderSource> pReaderSource = new AudioFormatReaderSource(formatReader_P, false);
 			ScopedPointer<AudioFormatReaderSource> hReaderSource = new AudioFormatReaderSource(formatReader_H, false);
 
+			ScopedPointer<AudioTransportSource> pTransportSource = new AudioTransportSource();
+			ScopedPointer<AudioTransportSource> hTransportSource = new AudioTransportSource();
+
+			pTransportSource->setSource(pReaderSource);
+			hTransportSource->setSource(hReaderSource);
+
+			pTransport = pTransportSource.release();
+			hTransport = hTransportSource.release();
+
 			readerSource_H = hReaderSource.release();
 			readerSource_P = pReaderSource.release();
 
+			// unload previous inputs
+			mixerSource.removeAllInputs();
+
 			if (formatReader_H != nullptr && formatReader_P != nullptr)
 			{
-				mixerSource.addInputSource(readerSource_H, false);
-				mixerSource.addInputSource(readerSource_P, false);
+				mixerSource.addInputSource(pTransport, false);
+				mixerSource.addInputSource(hTransport, false);
 			}
 
 			transportSource.setSource(&mixerSource, 0, nullptr, 44100.0, 2);	
@@ -586,6 +606,7 @@ private:
 	PositionableMixerAudioSource mixerSource;
 	ScopedPointer<AudioFormatReader> formatReader, formatReader_P, formatReader_H;
 	ScopedPointer<AudioFormatReaderSource> readerSource, readerSource_P, readerSource_H;
+	ScopedPointer<AudioTransportSource> pTransport, hTransport;
 	
 	// Application Components
 	ScopedPointer<InfoBar> infoBar;

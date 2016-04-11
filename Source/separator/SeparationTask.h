@@ -9,8 +9,6 @@
 	It will run on it's own thread, and the progress will be displayed in a progress window while the 
 	operation is ongoing.
 
-	TODO: Consult PanRev for appropriate constructor to use.
-
   ==============================================================================
 */
 

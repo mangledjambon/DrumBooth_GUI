@@ -433,9 +433,14 @@ private:
 		// perform separation
 		ScopedPointer<SeparationTask> separationTask = new SeparationTask(reader, currentFileNameNoExtension, currentSampleRate);
 
+		// this starts the thread, and returns true if it finishes, false if it is cancelled
 		if (separationTask->runThread())
 		{
-			// thread finished normally
+
+			// unload previous inputs
+			mixerSource.removeAllInputs();
+
+			// display dialog confirmation with names of files containing separated audio
 			AlertWindow::showNativeDialogBox("Audio Separation complete.", 
 				"Files written:\n\t" + String(currentFileNameNoExtension + "_harmonic.wav")
 				+ "\n\t" + String(currentFileNameNoExtension + "_percussive.wav"),
@@ -462,9 +467,6 @@ private:
 
 			readerSource_H = hReaderSource.release();
 			readerSource_P = pReaderSource.release();
-
-			// unload previous inputs
-			mixerSource.removeAllInputs();
 
 			if (formatReader_H != nullptr && formatReader_P != nullptr)
 			{

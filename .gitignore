@@ -7,6 +7,8 @@
 *.userosscache
 *.sln.docstates
 
+diagrams/
+
 # Juce files
 JuceLibraryCode/
 
@@ -15,6 +17,7 @@ JuceLibraryCode/
 
 # Build results
 [Dd]ebug/
+[Dd]ebug/*.wav
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/

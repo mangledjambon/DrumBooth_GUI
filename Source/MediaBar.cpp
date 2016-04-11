@@ -187,20 +187,7 @@ void MediaBar::sliderValueChanged(Slider* sliderThatWasChanged)
 	{
 		float mix = slider_SeparationControl->getValue();
 
-		if (mix > 0.5f)
-		{
-			// increase gain in input 1
-			mixerSource.applyGain(mix, (1.0f - mix));
-		}
-		else if (mix < 0.5f)
-		{
-			// increase gain in input 2
-			mixerSource.applyGain((1.0f - mix), mix);
-		}
-		else
-		{
-			mixerSource.applyGain(mix, mix);
-		}
+		mixerSource.applyGain(mix, (1.0f - mix));
 	}
 }
 

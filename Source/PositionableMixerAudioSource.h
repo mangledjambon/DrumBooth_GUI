@@ -23,6 +23,8 @@ public:
 	void removeInputSource(AudioTransportSource* inputToRemove, const bool deleteSource);
 	void removeAllInputs();
 
+	void setPosition(double newPosition);
+
 	// PositionableAudioSource methods
 	void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
 	void getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill) override;

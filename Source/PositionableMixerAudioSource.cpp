@@ -145,6 +145,12 @@ void PositionableMixerAudioSource::releaseResources()
 	bufferSizeExpected = 0;
 }
 
+void PositionableMixerAudioSource::setPosition(double newPosition)
+{
+	if (currentSampleRate > 0)
+			setNextReadPosition((int64)(newPosition * currentSampleRate));
+}
+
 void PositionableMixerAudioSource::setNextReadPosition(int64 newReadPosition)
 {
 	currentPlayingPosition = newReadPosition;
@@ -179,7 +185,7 @@ bool PositionableMixerAudioSource::isLooping() const
 
 AudioTransportSource* PositionableMixerAudioSource::getInput(int index)
 {
-	if (index < 2)
+	if (index < inputs.size())
 	{
 		return inputs.getUnchecked(index);
 	}

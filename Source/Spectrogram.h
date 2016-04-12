@@ -28,6 +28,9 @@ public:
 		setAudioChannels(2, 0);  // we want a couple of input channels but no outputs
 		startTimerHz(60);
 		//setSize(700, 500);
+
+		addAndMakeVisible(minHz = new Label("Minimum Hz", "0 Hz"));
+		addAndMakeVisible(maxHz = new Label("Maximum Hz", "22050 Hz"));
 	}
 
 	~SpectrogramComponent()
@@ -64,14 +67,21 @@ public:
 		{
 			g.fillAll(Colours::lightslategrey);
 			spectrogramImage.clear(spectrogramImage.getBounds());
-			g.drawFittedText("(Spectrogram disabled)", getLocalBounds(), Justification::centred, 1);
+			g.drawFittedText("Playback stopped.", getLocalBounds(), Justification::centred, 1);
 			return;
 		}
 
 		g.fillAll(Colours::lightslategrey);
 
 		g.setOpacity(1.0f);
-		g.drawImageWithin(spectrogramImage, 0, 0, getWidth(), getHeight(), RectanglePlacement::stretchToFit);
+
+		Rectangle<int> localBounds = getLocalBounds();
+		Rectangle<int> labelArea = localBounds.removeFromLeft(60);
+
+		maxHz->setBounds(labelArea.removeFromTop(20));
+		minHz->setBounds(labelArea.removeFromBottom(20));
+
+		g.drawImageWithin(spectrogramImage, 60, 0, localBounds.getWidth(), localBounds.getHeight(), RectanglePlacement::stretchToFit);
 	}
 
 	void timerCallback() override
@@ -160,6 +170,8 @@ private:
 	float fftData[2 * fftSize];
 	int fifoIndex;
 	bool nextFFTBlockReady;
+
+	ScopedPointer<Label> maxHz, minHz;
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SpectrogramComponent)
 };

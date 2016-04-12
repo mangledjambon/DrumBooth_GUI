@@ -401,6 +401,7 @@ private:
 			case Starting:
 				transportSource.start();
 				mixerSource.start();
+				mediaBar->button_Stop->setEnabled(true);
 				if (spectrogram != nullptr)
 					spectrogram->setEnabled(true);
 				break;
@@ -411,6 +412,7 @@ private:
 			case Pausing:
 				transportSource.stop();
 				mixerSource.stop();
+				mediaBar->button_Stop->setEnabled(false);
 				if (spectrogram != nullptr)
 					spectrogram->setEnabled(false);
 				break;
@@ -421,6 +423,7 @@ private:
 			case Stopping:
 				transportSource.stop();
 				mixerSource.stop();
+				mediaBar->button_Stop->setEnabled(false);
 				if (spectrogram != nullptr)
 					spectrogram->setEnabled(false);
 				break;
@@ -430,13 +433,58 @@ private:
 
 	void processButtonPressed()
 	{
+
+		File* pF = new File(File::getCurrentWorkingDirectory().getChildFile(currentFileNameNoExtension + "_percussive.wav"));
+		File* hF = new File(File::getCurrentWorkingDirectory().getChildFile(currentFileNameNoExtension + "_harmonic.wav"));
+
+		if (pF->existsAsFile() && hF->existsAsFile())
+		{
+			AlertWindow::showNativeDialogBox("Files already on disk.",
+				"Files found:\n\t" + String(currentFileNameNoExtension + "_harmonic.wav")
+				+ "\n\t" + String(currentFileNameNoExtension + "_percussive.wav"),
+				false
+				);
+
+			formatReader_P = formatManager.createReaderFor(*pF);
+			formatReader_H = formatManager.createReaderFor(*hF);
+
+			ScopedPointer<AudioFormatReaderSource> pReaderSource = new AudioFormatReaderSource(formatReader_P, false);
+			ScopedPointer<AudioFormatReaderSource> hReaderSource = new AudioFormatReaderSource(formatReader_H, false);
+
+			ScopedPointer<AudioTransportSource> pTransportSource = new AudioTransportSource();
+			ScopedPointer<AudioTransportSource> hTransportSource = new AudioTransportSource();
+
+			pTransportSource->setSource(pReaderSource);
+			hTransportSource->setSource(hReaderSource);
+
+			pTransport = pTransportSource.release();
+			hTransport = hTransportSource.release();
+
+			readerSource_H = hReaderSource.release();
+			readerSource_P = pReaderSource.release();
+
+			if (formatReader_H != nullptr && formatReader_P != nullptr)
+			{
+				mixerSource.addInputSource(pTransport, false);
+				mixerSource.addInputSource(hTransport, false);
+			}
+
+			transportSource.setSource(&mixerSource, 0, nullptr, 44100.0, 2);
+			mediaBar->addSliderListeners(mediaBar);
+			return;
+		}
+		else
+		{
+			pF->create();
+			hF->create();
+		}
+
 		// perform separation
 		ScopedPointer<SeparationTask> separationTask = new SeparationTask(reader, currentFileNameNoExtension, currentSampleRate);
 
 		// this starts the thread, and returns true if it finishes, false if it is cancelled
 		if (separationTask->runThread())
 		{
-
 			// unload previous inputs
 			mixerSource.removeAllInputs();
 

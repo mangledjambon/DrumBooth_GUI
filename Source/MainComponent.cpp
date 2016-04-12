@@ -81,11 +81,6 @@ public:
 			bufferToFill.clearActiveBufferRegion();
 			return;
 		}
-		else if (transportSource.hasStreamFinished())
-		{
-			changeState(Stopping);
-			return;
-		}
 
 		transportSource.getNextAudioBlock(bufferToFill);
 
@@ -102,6 +97,7 @@ public:
     //=======================================================================
 	void paint(Graphics& g) override
 	{
+
 		// (Our component is opaque, so we must completely fill the background with a solid colour)
 		g.fillAll(Colours::whitesmoke);
 
@@ -288,12 +284,21 @@ public:
 		else if (key == KeyPress::rightKey)	// user pressed right arrow
 		{
 			int64 localCurrentPosition = transportSource.getNextReadPosition();
+
 			transportSource.setNextReadPosition(localCurrentPosition + (currentSampleRate * 5)); // skip 5 seconds
 		}
 		else if (key == KeyPress::leftKey)	// user pressed left arrow
 		{
 			int64 localCurrentPosition = transportSource.getNextReadPosition();
-			transportSource.setNextReadPosition(localCurrentPosition - (currentSampleRate * 5)); // go back 5 seconds
+
+			if ((localCurrentPosition + (currentSampleRate * 5)) <= (currentSampleRate * 5))
+			{
+				transportSource.setPosition(0.0);
+			}
+			else
+			{
+				transportSource.setNextReadPosition(localCurrentPosition - (currentSampleRate * 5)); // go back 5 seconds
+			}
 		}
 
 		return true;
@@ -303,6 +308,11 @@ public:
 	// methods inherited from ChangeListener
 	void changeListenerCallback(ChangeBroadcaster* source)
 	{
+		if (transportSource.hasStreamFinished())
+		{
+			changeState(Stopped);
+		}
+
 		if (source == &transportSource)
 		{
 			if (transportSource.isPlaying())
@@ -433,18 +443,21 @@ private:
 
 	void processButtonPressed()
 	{
-
+		// create pointers to files with the same name as extracted files
 		File* pF = new File(File::getCurrentWorkingDirectory().getChildFile(currentFileNameNoExtension + "_percussive.wav"));
 		File* hF = new File(File::getCurrentWorkingDirectory().getChildFile(currentFileNameNoExtension + "_harmonic.wav"));
 
+		// check if they exist
 		if (pF->existsAsFile() && hF->existsAsFile())
 		{
+			// if they do, display dialog saying files have been found
 			AlertWindow::showNativeDialogBox("Files already on disk.",
 				"Files found:\n\t" + String(currentFileNameNoExtension + "_harmonic.wav")
 				+ "\n\t" + String(currentFileNameNoExtension + "_percussive.wav"),
 				false
 				);
 
+			// load them into transport sources and into mixer
 			formatReader_P = formatManager.createReaderFor(*pF);
 			formatReader_H = formatManager.createReaderFor(*hF);
 

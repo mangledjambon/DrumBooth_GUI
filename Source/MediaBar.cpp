@@ -22,6 +22,8 @@ MediaBar::MediaBar(AudioTransportSource& transport, PositionableMixerAudioSource
 	addAndMakeVisible(button_Stop = new TextButton("Stop"));
 	addAndMakeVisible(button_Process = new TextButton("Process Audio"));
 	addAndMakeVisible(button_spectrogramEnabled = new ToggleButton("Spectrogram On/Off"));
+	
+	// set process button disabled
 	button_Process->setEnabled(false);
 
 	// set toggle button to checked (true)
@@ -63,6 +65,7 @@ void MediaBar::paint (Graphics& g)
 	g.fillAll(Colours::slategrey);   // clear the background
 
 	Rectangle<int> localBounds = getLocalBounds().reduced(5); // get area
+
 	g.setColour(Colours::darkblue);
 	g.drawRect(localBounds, 1);   // draw an outline around the component
 
@@ -98,22 +101,12 @@ void MediaBar::paint (Graphics& g)
 		length of the track, in minutes and seconds. It also displays the current 
 		status of the playback (Playing, Paused, etc...)		
 	*/
-	int min_elapsed, sec_elapsed, min_total, sec_total;
+	int64 min_elapsed, sec_elapsed, min_total, sec_total;
 
-	if (mixerSource.getTotalLength() > 0)
-	{
-		min_elapsed = (mixerSource.getNextReadPosition() / 44100) / 60;
-		sec_elapsed = (mixerSource.getNextReadPosition() / 44100) % 60;
-		min_total = (mixerSource.getTotalLength() / 44100) / 60;
-		sec_total = (mixerSource.getTotalLength() / 44100) % 60;
-	}
-	else
-	{
-		min_elapsed = (transportSource.getNextReadPosition() / 44100) / 60;
-		sec_elapsed = (transportSource.getNextReadPosition() / 44100) % 60;
-		min_total = (transportSource.getTotalLength() / 44100) / 60;
-		sec_total = (transportSource.getTotalLength() / 44100) % 60;
-	}
+	min_elapsed = (transportSource.getNextReadPosition() / 44100) / 60;
+	sec_elapsed = (transportSource.getNextReadPosition() / 44100) % 60;
+	min_total = (transportSource.getTotalLength() / 44100) / 60;
+	sec_total = (transportSource.getTotalLength() / 44100) % 60;
 
 	g.drawFittedText(
 		fileName + "\n"
@@ -151,7 +144,11 @@ String MediaBar::getPlaybackStatus()
 		button_PlayPause->setButtonText("Play");
 		button_Stop->setEnabled(false);
 		button_spectrogramEnabled->setEnabled(false);
-		button_Process->setEnabled(true);
+
+		// only enable when transportSource has data
+		if (transportSource.getTotalLength() > 0)
+			button_Process->setEnabled(true);
+
 		return "Stopped";
 		break;
 

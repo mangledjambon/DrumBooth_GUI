@@ -5,6 +5,10 @@
     Created: 19 Feb 2016 1:08:20pm
     Author:  Sean
 
+	TODO: 
+		1. Update this page text
+		2. Add CIT logo image
+
   ==============================================================================
 */
 

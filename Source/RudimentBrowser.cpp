@@ -5,6 +5,8 @@
     Created: 1 Mar 2016 4:12:09pm
     Author:  Sean
 
+	TODO:
+		1. fix crash when resizing to small width -> Possible fix: set minimum width of component
   ==============================================================================
 */
 

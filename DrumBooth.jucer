@@ -2,7 +2,7 @@
 
 <JUCERPROJECT id="Ay0032" name="DrumBooth" projectType="guiapp" version="1.0.0"
               bundleIdentifier="com.yourcompany.DrumBooth" includeBinaryInAppConfig="1"
-              jucerVersion="4.1.0" companyName="Sean Breen" companyEmail="sean.breen@mycit.ie">
+              jucerVersion="4.2.0" companyName="Sean Breen" companyEmail="sean.breen@mycit.ie">
   <MAINGROUP id="kimbUk" name="DrumBooth">
     <GROUP id="{2B12A334-D04A-3F49-7893-D8D94637D817}" name="Source">
       <GROUP id="{F0BC7379-DA6E-AC17-5E33-567117E603C2}" name="Eigen">
@@ -816,27 +816,6 @@
         <MODULEPATH id="juce_audio_utils" path="../../Cpp/git/juce/modules"/>
       </MODULEPATHS>
     </VS2015>
-    <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
-      <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" libraryPath="/usr/X11R6/lib/" isDebug="1" optimisation="1"
-                       targetName="DrumBooth"/>
-        <CONFIGURATION name="Release" libraryPath="/usr/X11R6/lib/" isDebug="0" optimisation="3"
-                       targetName="DrumBooth"/>
-      </CONFIGURATIONS>
-      <MODULEPATHS>
-        <MODULEPATH id="juce_gui_extra" path="../../Cpp/git/juce/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="../../Cpp/git/juce/modules"/>
-        <MODULEPATH id="juce_graphics" path="../../Cpp/git/juce/modules"/>
-        <MODULEPATH id="juce_events" path="../../Cpp/git/juce/modules"/>
-        <MODULEPATH id="juce_data_structures" path="../../Cpp/git/juce/modules"/>
-        <MODULEPATH id="juce_core" path="../../Cpp/git/juce/modules"/>
-        <MODULEPATH id="juce_audio_utils" path="../../Cpp/git/juce/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="../../Cpp/git/juce/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="../../Cpp/git/juce/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="../../Cpp/git/juce/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="../../Cpp/git/juce/modules"/>
-      </MODULEPATHS>
-    </LINUX_MAKE>
   </EXPORTFORMATS>
   <MODULES>
     <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" overwriteOnSave="0"/>
@@ -853,4 +832,7 @@
   </MODULES>
   <JUCEOPTIONS JUCE_USE_FLAC="enabled" JUCE_USE_OGGVORBIS="disabled" JUCE_USE_MP3AUDIOFORMAT="enabled"
                JUCE_USE_LAME_AUDIO_FORMAT="enabled"/>
+  <LIVE_SETTINGS>
+    <WINDOWS/>
+  </LIVE_SETTINGS>
 </JUCERPROJECT>

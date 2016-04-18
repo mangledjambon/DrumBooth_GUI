@@ -21,9 +21,9 @@ MedianSeparator::~MedianSeparator()
 
 void MedianSeparator::fillBuffer()
 {
-	numChannels = reader->numChannels;
-	numSamples = reader->lengthInSamples;
-	numCols = 1 + floor((numSamples - WINDOW_SIZE) / HOP_SIZE);
+	numChannels = reader->numChannels;	// num of Channels in audio file
+	numSamples = reader->lengthInSamples;	// length of audio file in samples
+	numCols = 1 + floor((numSamples - WINDOW_SIZE) / HOP_SIZE);		// calculate number of columns using FFT size (4096) and HOP_SIZE (1024)
 	startSample = 0;
 	int readerStartSample = 0;
 
@@ -49,6 +49,7 @@ void MedianSeparator::convertToSpectrogram()
 		spectrogramData[i] = new std::complex<float>[(WINDOW_SIZE/2) + 1];
 	}
 
+	// loop through each column of spectrogram
 	for (int column = 0; column < numCols; column++)
 	{
 		for (int i = 0; i < 2; i++)
@@ -64,6 +65,7 @@ void MedianSeparator::convertToSpectrogram()
 			}
 		}
 
+		// increment beginning sample by HOP_SIZE (1024)
 		startSample += HOP_SIZE;
 	}
 
@@ -163,7 +165,6 @@ void MedianSeparator::filterFrames()
 	// loop columns
 	for (int col = 0; col < numCols; col++)
 	{
-
 		// loop rows
 		for (int row = 0; row < spectrogram[0].rows(); row++)
 		{
@@ -205,6 +206,7 @@ void MedianSeparator::resynthesize()
 		Apply masks to spectrograms.
 	*/
 
+	 
 	MatrixXf pest2[2];
 	pest2[0] = filteredSpectrogram_P[0].cwiseProduct(filteredSpectrogram_P[0]);
 	pest2[1] = filteredSpectrogram_P[1].cwiseProduct(filteredSpectrogram_P[1]);
@@ -253,9 +255,11 @@ void MedianSeparator::writeFiles()
 	percussiveSpectrogramReal_Left = istft->complexToReal(resynthSpectrogram_P[0]);
 	percussiveSpectrogramReal_Right = istft->complexToReal(resynthSpectrogram_P[1]);
 
+	// arrays to hold output signals for harmonic and percussive files
 	Array<float> outputSignal_P[2];
 	Array<float> outputSignal_H[2];
 
+	// fill with zeros (faster than looping through)
 	outputSignal_P[0].insertMultiple(0, 0.0f, numSamples);
 	outputSignal_P[1].insertMultiple(0, 0.0f, numSamples);
 	outputSignal_H[0].insertMultiple(0, 0.0f, numSamples);
@@ -268,47 +272,54 @@ void MedianSeparator::writeFiles()
 	float ifftResults_Left[WINDOW_SIZE] = {};
 	float ifftResults_Right[WINDOW_SIZE] = {};
 
+	// loop through each column in spectrograms
 	for (int col = 0; col < numCols; col++)
 	{
+		// insert 4096 samples into temp arrays from harmonic spectrogram
 		for (int row = 0; row < WINDOW_SIZE; row++)
 		{
 			temp_L[row] = harmonicSpectrogramReal_Left(row, col);
 			temp_R[row] = harmonicSpectrogramReal_Right(row, col);
 		}
 
+		// inverse short time fourier transform on temp_L and temp_R
 		istft->performInverseTransform(temp_L, ifftResults_Left);
 		istft->rescale(ifftResults_Left);
 		istft->performInverseTransform(temp_R, ifftResults_Right);
 		istft->rescale(ifftResults_Right);
 
+		// set values in output signal arrays for Harmonic output signal
 		for (int i = 0; i < WINDOW_SIZE; i++)
 		{
 			outputSignal_H[0].set(offset + i, (outputSignal_H[0][offset + i] + (ifftResults_Left[i] * istft->window[i])));
 			outputSignal_H[1].set(offset + i, (outputSignal_H[1][offset + i] + (ifftResults_Right[i] * istft->window[i])));
 		}
 
+		// insert 4096 samples into temp arrays from percussive spectrogram
 		for (int row = 0; row < WINDOW_SIZE; row++)
 		{
 			temp_L[row] = percussiveSpectrogramReal_Left(row, col);
 			temp_R[row] = percussiveSpectrogramReal_Right(row, col);
 		}
 
+		// inverse short time fourier transform on temp arrays
 		istft->performInverseTransform(temp_L, ifftResults_Left);
 		istft->rescale(ifftResults_Left);
 		istft->performInverseTransform(temp_R, ifftResults_Right);
 		istft->rescale(ifftResults_Right);
 
+		// set values in output arrays for Percussive output signal
 		for (int i = 0; i < WINDOW_SIZE; i++)
 		{
 			outputSignal_P[0].set(offset + i, (outputSignal_P[0][offset + i] + (ifftResults_Left[i] * istft->window[i])));
 			outputSignal_P[1].set(offset + i, (outputSignal_P[1][offset + i] + (ifftResults_Right[i] * istft->window[i])));
 		}
 
-		offset += HOP_SIZE;
+		offset += HOP_SIZE;	// increment offset by HOP_SIZE (1024)
 	}
 
 	//===================================================== WRITE FILES ==
-	float gain = 0.5f;
+	float gain = 0.5f; // 1.0f divided by num of output files (2)
 
 	AudioSampleBuffer outSamples_H(2, numSamples);
 	AudioSampleBuffer outSamples_P(2, numSamples);

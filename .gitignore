@@ -17,7 +17,6 @@ JuceLibraryCode/
 
 # Build results
 [Dd]ebug/
-[Dd]ebug/*/*.wav
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/

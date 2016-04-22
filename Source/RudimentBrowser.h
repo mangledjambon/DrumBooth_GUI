@@ -14,10 +14,6 @@
 
 class RudimentBrowser : public Component,
 						public FileBrowserListener
-						/*
-						,	public Button::Listener,
-							public Slider::Listener
-						*/
 {
 public:
 
@@ -29,13 +25,22 @@ public:
 
 private:
 
+	// Label to display image name
 	Label imageTitleLabel;
-	// heap variables go here
+
+	// filter for certain file types
 	WildcardFileFilter wildcardFileFilter;
+
+	// thread which scans for images in background
 	TimeSliceThread imageScanThread;
+
+	//List of directory contents
 	DirectoryContentsList imageList;
+
+	// file tree component to display directories and image files
 	FileTreeComponent fileTree;
 
+	// Preview pane
 	ImageComponent imagePreview;
 
 	void selectionChanged() override

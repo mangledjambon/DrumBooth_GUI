@@ -18,7 +18,7 @@ RudimentBrowser::RudimentBrowser()
 		imageList(&wildcardFileFilter, imageScanThread),
 		fileTree(imageList)
 {
-	setSize(700, 300);
+	setSize(700, 400);
 	setOpaque(true);
 	imageList.setDirectory(File::getCurrentWorkingDirectory().getChildFile("../../Source/rudiments"), true, true);
 	imageScanThread.startThread(1);

@@ -30,18 +30,34 @@ public:
     void paint (Graphics&);
     void resized();
 
+	/*
+		Set the State that will be displayed in the audio player. 
+	*/
 	void setPlaybackState(int state);
+
+	/*
+		Set track name to be displayed in player.
+	*/
+	void setTrackInfo(String name);
+
+
+	// Timer method
 	void timerCallback() override;
 
+	// Slider::Listener method
 	void sliderValueChanged(Slider* sliderThatWasChanged) override;
 
+	// add listeners
 	void addButtonListeners(Button::Listener* listenerToAdd);
 	void addSliderListeners(Slider::Listener* listenerToAdd);
 
-	void setTrackInfo(String name);
-
+	// TextButtons for media controls
 	ScopedPointer<TextButton> button_LoadFile, button_PlayPause, button_Stop, button_Process;
+
+	// rotary slider for separation
 	ScopedPointer<Slider> slider_SeparationControl;
+
+	// toggle button for spectorgam enabled/disabled
 	ScopedPointer<ToggleButton> button_spectrogramEnabled;
 
 private:

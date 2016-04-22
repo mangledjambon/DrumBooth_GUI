@@ -141,6 +141,8 @@ public:
     }
 
 	// methods inherited from MenuBarModel
+	
+	// add top level menu items
 	StringArray getMenuBarNames()
 	{
 		StringArray names = { "File", "Options", "Help" };
@@ -649,7 +651,7 @@ private:
 		options.dialogTitle = "Rudiment Browser";
 		options.useNativeTitleBar = true;
 		options.escapeKeyTriggersCloseButton = true;
-		options.useBottomRightCornerResizer = true; // needs to be resizable, exercise images need more room than rudiments
+		options.useBottomRightCornerResizer = true; // needs to be resizable
 		options.resizable = true;
 		options.content = OptionalScopedPointer<Component>(rudimentBrowser, true);
 		options.launchAsync();

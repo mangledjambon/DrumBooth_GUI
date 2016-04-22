@@ -21,44 +21,62 @@ MedianSeparator::~MedianSeparator()
 
 void MedianSeparator::fillBuffer()
 {
-	numChannels = reader->numChannels;	// num of Channels in audio file
-	numSamples = reader->lengthInSamples;	// length of audio file in samples
-	numCols = 1 + floor((numSamples - WINDOW_SIZE) / HOP_SIZE);		// calculate number of columns using FFT size (4096) and HOP_SIZE (1024)
-	startSample = 0;
-	int readerStartSample = 0;
+	// num of Channels in audio file
+	numChannels = reader->numChannels;
+
+	// length of audio file in samples
+	numSamples = reader->lengthInSamples;
+
+	// calculate number of columns using FFT size (4096) and HOP_SIZE (1024)
+	numCols = 1 + floor((numSamples - WINDOW_SIZE) / HOP_SIZE);
+
+	startSample = 0;				// start sample in destination buffer
+	int readerStartSample = 0;		// start sample in reader
 
 	samples.setSize(numChannels, numSamples);
-	samples.clear();
+	samples.clear();				// clear buffer to remove any junk
 
+	// start reading samples from reader into samples
 	reader->read(&samples, startSample, numSamples, readerStartSample, true, true);
 }
 
 void MedianSeparator::convertToSpectrogram()
 {
+	// create STFT object to perform FFT
 	ScopedPointer<STFT> stft = new STFT(WINDOW_SIZE);
+
 	stft->initWindow(1);	// initialise hann window
 
-	float* bufferData[2];
-	std::complex<float>* spectrogramData[2];
+	// 2d array to hold pointer to sample data
+	float* bufferData[2];	
+
+	// 2d array of complex floats to hold complex spectrogram data after fft
+	std::complex<float>* spectrogramData[2];	
 
 	for (int i = 0; i < 2; i++)
 	{
 		// initialise structures to hold audio data in different forms
 		bufferData[i] = new float[WINDOW_SIZE];
-		spectrogram[i] = MatrixXcf::Zero((WINDOW_SIZE / 2) + 1, numCols);
+		spectrogram[i] = MatrixXcf::Zero((WINDOW_SIZE / 2) + 1, numCols); // holds entire spectrogram
 		spectrogramData[i] = new std::complex<float>[(WINDOW_SIZE/2) + 1];
 	}
 
 	// loop through each column of spectrogram
 	for (int column = 0; column < numCols; column++)
 	{
-		for (int i = 0; i < 2; i++)
+		// for each channel
+		for (int i = 0; i < numChannels; i++)
 		{
+			// get pointer to sample data
 			bufferData[i] = (float*)samples.getReadPointer(i, startSample);
 
+			// perform FFT
 			float* fftData = stft->performForwardTransform(bufferData[i]);
+
+			// convert from real to complex spectum data
 			spectrogramData[i] = stft->realToComplex(fftData, WINDOW_SIZE);
 
+			// fill column in spectrogram with complex data from FFT
 			for (int sample = 0; sample < 2049; sample++)
 			{
 				spectrogram[i](sample, column) = spectrogramData[i][sample];
@@ -205,8 +223,7 @@ void MedianSeparator::resynthesize()
 	/*
 		Apply masks to spectrograms.
 	*/
-
-	 
+ 
 	MatrixXf pest2[2];
 	pest2[0] = filteredSpectrogram_P[0].cwiseProduct(filteredSpectrogram_P[0]);
 	pest2[1] = filteredSpectrogram_P[1].cwiseProduct(filteredSpectrogram_P[1]);

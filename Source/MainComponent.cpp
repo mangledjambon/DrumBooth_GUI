@@ -459,7 +459,7 @@ private:
 				false
 				);
 
-			// load them into transport sources and into mixer
+			// load them into transport sources
 			formatReader_P = formatManager.createReaderFor(*pF);
 			formatReader_H = formatManager.createReaderFor(*hF);
 
@@ -478,8 +478,10 @@ private:
 			readerSource_H = hReaderSource.release();
 			readerSource_P = pReaderSource.release();
 
+			// load into mixer
 			if (formatReader_H != nullptr && formatReader_P != nullptr)
 			{
+				mixerSource.removeAllInputs();
 				mixerSource.addInputSource(pTransport, false);
 				mixerSource.addInputSource(hTransport, false);
 			}

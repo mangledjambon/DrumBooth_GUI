@@ -40,7 +40,6 @@ public:
 	*/
 	void setTrackInfo(String name);
 
-
 	// Timer method
 	void timerCallback() override;
 

@@ -91,6 +91,7 @@ void MedianSeparator::convertToSpectrogram()
 
 void MedianSeparator::filterBins()
 {
+	// clear matrix of any data
 	for (int channel = 0; channel < 2; channel++)
 	{
 		filteredSpectrogram_H[channel] = MatrixXf::Zero((WINDOW_SIZE / 2) + 1, numCols);
@@ -143,6 +144,7 @@ void MedianSeparator::filterBins()
 			MyArraySorter arraySorter;
 			float median;
 
+			// loop through samples
 			for (int samp = col; samp < (col + FILTER_SIZE); samp++)
 			{
 				if (samp < spectrogram[0].cols())
@@ -221,29 +223,49 @@ void MedianSeparator::filterFrames()
 void MedianSeparator::resynthesize()
 {
 	/*
-		Apply masks to spectrograms.
+
+	Pest = filteredSpectrogram_P
+	Hest = filteredSpectrogram_H
+
+	Masks for audio:
+
+	P = OriginalSpectrogram x Pest^2 / (Pest^2 + Hest^2)
+
+	H = OriginalSpectrogram x Hest^2 / (Pest^2 + Hest^2)
+
+	where
+	Pest = spectrogram for filtered frame data
+	Hest = spectrogram for filtered frequency bin data
+
 	*/
  
+	// Pest^2
 	MatrixXf pest2[2];
 	pest2[0] = filteredSpectrogram_P[0].cwiseProduct(filteredSpectrogram_P[0]);
 	pest2[1] = filteredSpectrogram_P[1].cwiseProduct(filteredSpectrogram_P[1]);
 
+	// Hest^2
 	MatrixXf hest2[2];
 	hest2[0] = filteredSpectrogram_H[0].cwiseProduct(filteredSpectrogram_H[0]);
 	hest2[1] = filteredSpectrogram_H[1].cwiseProduct(filteredSpectrogram_H[1]);
 
+	// (Pest^2 + Hest^2)
 	MatrixXf maskDivisorL = (pest2[0] + hest2[0]);
 	MatrixXf maskDivisorR = (pest2[1] + hest2[1]);
-
+	
+	// Pest^2 / (Pest^2 + Hest^2)
 	MatrixXf p_maskL = pest2[0].cwiseQuotient(maskDivisorL);
 	MatrixXf p_maskR = pest2[1].cwiseQuotient(maskDivisorR);
 
+	// Hest^2 / (Pest^2 + Hest^2)
 	MatrixXf h_maskL = hest2[0].cwiseQuotient(maskDivisorL);
 	MatrixXf h_maskR = hest2[1].cwiseQuotient(maskDivisorR);
 
+	// OriginalSpectrogram x Pest^2 / (Pest^2 + Hest^2)
 	resynthSpectrogram_P[0] = spectrogram[0].cwiseProduct(p_maskL);
 	resynthSpectrogram_P[1] = spectrogram[1].cwiseProduct(p_maskR);
 
+	// OriginalSpectrogram x Hest^2 / (Pest^2 + Hest^2)
 	resynthSpectrogram_H[0] = spectrogram[0].cwiseProduct(h_maskL);
 	resynthSpectrogram_H[1] = spectrogram[1].cwiseProduct(h_maskR);
 }

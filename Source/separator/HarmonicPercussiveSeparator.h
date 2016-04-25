@@ -29,25 +29,36 @@ public:
 	MedianSeparator(AudioFormatReader* reader);
 	~MedianSeparator();
 
+	// fill AudioSampleBuffer with samples from file
 	void fillBuffer();
+
+	// convert amplitude data to spectral data
 	void convertToSpectrogram();
+
+	// filter frequency bins to get harmonics
 	void filterBins();
+
+	// filter time frames to get percussive elements
 	void filterFrames();
+
+	// resynthesize back to audio data
 	void resynthesize();
+
+	// write files to disk
 	void writeFiles();
 
-	String fileNameNoExt;
-	double sampleRate;
+	String fileNameNoExt;	// file name without extension, for writing to disk
+	double sampleRate;		
 
 private:
 	int numSamples, numCols, numChannels, startSample;
 	AudioSampleBuffer samples;
 	AudioFormatReader* reader;
-	MatrixXcf spectrogram[2];
-	MatrixXf filteredSpectrogram_P[2];
-	MatrixXf filteredSpectrogram_H[2];
-	MatrixXcf resynthSpectrogram_P[2];
-	MatrixXcf resynthSpectrogram_H[2];
+	MatrixXcf spectrogram[2];			// original spectrogram data
+	MatrixXf filteredSpectrogram_P[2];	// filtered percussive
+	MatrixXf filteredSpectrogram_H[2];	// filtered harmonic
+	MatrixXcf resynthSpectrogram_P[2];	// resynthesized percussive
+	MatrixXcf resynthSpectrogram_H[2];	// resynthesized harmonic
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MedianSeparator)
 };

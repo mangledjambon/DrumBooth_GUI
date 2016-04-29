@@ -65,6 +65,7 @@ public:
     }
 
     //=======================================================================
+
     void prepareToPlay (int samplesPerBlockExpected, double sampleRate) override
     {
 		currentBufferSize = samplesPerBlockExpected;
@@ -201,12 +202,12 @@ public:
 		switch (commandID)
 		{
 		case CommandIDs::LOAD:
-			result.setInfo("Load", "Pick a file to load into DrumBooth", menu, 0);
+			result.setInfo("Load File", "Pick a file to load into DrumBooth", menu, 0);
 			//result.addDefaultKeypress('L', ModifierKeys::commandModifier);
 			break;
 
 		case CommandIDs::QUIT:
-			result.setInfo("Quit", "Exits DrumBooth", menu, 0);
+			result.setInfo("Quit DrumBooth", "Exits DrumBooth", menu, 0);
 			//result.addDefaultKeypress('Q', ModifierKeys::commandModifier);
 			break;
 
@@ -221,7 +222,7 @@ public:
 			break;
 
 		case CommandIDs::SETTINGS:
-			result.setInfo("Settings", "Open settings menu", menu, 0);
+			result.setInfo("Audio Settings", "Open settings menu", menu, 0);
 			//result.addDefaultKeypress('Q', ModifierKeys::commandModifier);
 			break;
 
@@ -230,7 +231,7 @@ public:
 			result.addDefaultKeypress(KeyPress::F2Key, ModifierKeys::noModifiers);
 			break;
 		case CommandIDs::ABOUT:
-			result.setInfo("About", "Information about this application", menu, 0);
+			result.setInfo("About DrumBooth", "Information about this application", menu, 0);
 		}
 	}
 

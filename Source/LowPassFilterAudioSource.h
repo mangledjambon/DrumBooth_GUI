@@ -5,6 +5,8 @@
     Created: 23 Feb 2016 1:33:33pm
     Author:  Sean
 
+	This class applies a low pass filter to an AudioSource.
+
   ==============================================================================
 */
 
@@ -19,15 +21,24 @@ public:
 	LowPassFilterAudioSource(AudioSource* source, double sampleRate);
 	~LowPassFilterAudioSource();
 
-	// inherited from AudioSource
+	// inherited from AudioSource ============================
 	void prepareToPlay(int samplesPerBlockExpected, double sampleRate) override;
 	void getNextAudioBlock(const AudioSourceChannelInfo& bufferToFill) override;
 	void releaseResources() override;
+	// =======================================================
 
-	// filter modifier methods
+	// filter modifier methods ===============================
+
+	// set new low pass frequency for filter
 	void setLowPassFilterFrequency(double newFrequency);
+
+	// get current filter frequency
 	double getLowPassFilterFrequency();
+
+	// enable/disable filter
 	void setEnabled(bool enabled);
+
+	// =======================================================
 
 private:
 	bool enabled;

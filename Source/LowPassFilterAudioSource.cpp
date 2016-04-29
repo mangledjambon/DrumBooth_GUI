@@ -13,6 +13,7 @@
 LowPassFilterAudioSource::LowPassFilterAudioSource(AudioSource* source, double sampleRate)
 	:	currentSampleRate(sampleRate)
 {
+	// create new IIRFilterAudiosource for AudioSource source
 	lowPassFilter = new IIRFilterAudioSource(source, false);
 }
 
@@ -24,7 +25,11 @@ void LowPassFilterAudioSource::prepareToPlay(int samplesPerBlockExpected, double
 	currentSampleRate = sampleRate;
 
 	lowPassFilter->prepareToPlay(samplesPerBlockExpected, sampleRate);
+
+	// set low pass frequency 
 	setLowPassFilterFrequency(15000);
+
+	// apply low pass filter coefficients 
 	lowPassFilter->setCoefficients(IIRCoefficients::makeLowPass(sampleRate, frequency));
 }
 

@@ -21,6 +21,8 @@ public:
 	void resized() override;
 
 private:
+	Image logo;
+	ImageComponent imageComponent;
 
 };
 

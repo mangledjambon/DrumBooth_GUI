@@ -20,9 +20,20 @@
 class SeparationTask : public ThreadWithProgressWindow
 {
 public:
+	/*
+		Constructor
+		Inputs: 
+				- pointer to AudioFormatReader
+				- file name as a String
+				- sampleRate as a double
+	*/
 	SeparationTask(AudioFormatReader* readerForFile, String fileName, double sampleRate);
 	~SeparationTask();
 
+	/*
+		Over ridden method from ThreadWithProgressWindow.
+		Starts the Thread.
+	*/
 	void run() override;
 private:
 	ScopedPointer<MedianSeparator> separator;

@@ -14,7 +14,9 @@
 #include "HarmonicPercussiveSeparator.h"
 
 MedianSeparator::MedianSeparator(AudioFormatReader* fileReader) : reader(fileReader)
-{}
+{
+	progress = 0.0;
+}
 
 MedianSeparator::~MedianSeparator()
 {}
@@ -38,6 +40,7 @@ void MedianSeparator::fillBuffer()
 
 	// start reading samples from reader into samples
 	reader->read(&samples, startSample, numSamples, readerStartSample, true, true);
+
 }
 
 void MedianSeparator::convertToSpectrogram()
@@ -420,4 +423,9 @@ void MedianSeparator::writeFiles()
 	outputSignal_P[0].clear();
 	outputSignal_P[1].clear();
 
+}
+
+double MedianSeparator::getProgress()
+{
+	return progress;
 }

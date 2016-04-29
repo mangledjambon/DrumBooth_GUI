@@ -47,10 +47,14 @@ public:
 	// write files to disk
 	void writeFiles();
 
+	// get current progress for progress bar
+	double getProgress();
+
 	String fileNameNoExt;	// file name without extension, for writing to disk
 	double sampleRate;		
 
 private:
+	double progress;
 	int numSamples, numCols, numChannels, startSample;
 	AudioSampleBuffer samples;
 	AudioFormatReader* reader;

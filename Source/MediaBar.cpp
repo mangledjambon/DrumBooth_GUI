@@ -187,18 +187,20 @@ void MediaBar::setTrackInfo(String name)
 
 void MediaBar::sliderValueChanged(Slider* sliderThatWasChanged)
 {
+	// Volume slider changed
 	if (sliderThatWasChanged == slider_Gain)
 	{
-		float gain = 0.0f;
-		gain = slider_Gain->getValue() / 100;
+		float gain = 0.0f; // initialise variable to hold gain
+		gain = slider_Gain->getValue() / 100;	// get gain value from slider
 
 		transportSource.setGain(gain);
 	}
+	// Separation slider changed
 	else if (sliderThatWasChanged == slider_SeparationControl)
 	{
-		float mix = slider_SeparationControl->getValue();
+		float mix = slider_SeparationControl->getValue(); // get value from separation slider
 
-		mixerSource.applyGain(mix, (1.0f - mix));
+		mixerSource.applyGain(mix, (1.0f - mix));	// apply gain to tracks in mixer (track1Gain + track2Gain = 1.0f)
 	}
 }
 

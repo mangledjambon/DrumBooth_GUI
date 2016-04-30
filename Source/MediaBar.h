@@ -5,6 +5,8 @@
     Created: 14 Feb 2016 11:16:06pm
     Author:  Sean
 
+	This class creates the component which holds the play/pause/stop buttons and the volume/separation control sliders.
+
   ==============================================================================
 */
 
@@ -12,11 +14,6 @@
 #define MEDIABAR_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-
-//==============================================================================
-/*
-*/
-
 #include "PositionableMixerAudioSource.h"
 
 class MediaBar    : public Component,
@@ -56,7 +53,7 @@ public:
 	// rotary slider for separation
 	ScopedPointer<Slider> slider_SeparationControl;
 
-	// toggle button for spectorgam enabled/disabled
+	// toggle button for spectogram enabled/disabled
 	ScopedPointer<ToggleButton> button_spectrogramEnabled;
 
 private:

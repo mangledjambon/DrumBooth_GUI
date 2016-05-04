@@ -77,9 +77,9 @@ public:
 
     void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override
     {
-		if (readerSource == nullptr)
+		if (readerSource == nullptr) // no file to read
 		{
-			bufferToFill.clearActiveBufferRegion();
+			bufferToFill.clearActiveBufferRegion(); // clear buffer to prevent noise
 			return;
 		}
 

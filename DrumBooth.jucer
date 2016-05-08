@@ -4,6 +4,10 @@
               bundleIdentifier="com.yourcompany.DrumBooth" includeBinaryInAppConfig="1"
               jucerVersion="4.2.0" companyName="Sean Breen" companyEmail="sean.breen@mycit.ie">
   <MAINGROUP id="kimbUk" name="DrumBooth">
+    <GROUP id="{D3CF5E0B-91E9-73C5-6CEF-6B9424B26A85}" name="res">
+      <FILE id="HGwF7t" name="icon-large.png" compile="0" resource="1" file="Source/res/icon-large.png"/>
+      <FILE id="NaUqCV" name="logo.PNG" compile="0" resource="1" file="Source/res/logo.PNG"/>
+    </GROUP>
     <GROUP id="{2B12A334-D04A-3F49-7893-D8D94637D817}" name="Source">
       <GROUP id="{F0BC7379-DA6E-AC17-5E33-567117E603C2}" name="Eigen">
         <GROUP id="{13EB4397-8BC0-1AB8-28D8-FA327F20B475}" name="src">
@@ -795,7 +799,7 @@
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <VS2015 targetFolder="Builds/VisualStudio2015">
+    <VS2015 targetFolder="Builds/VisualStudio2015" smallIcon="NaUqCV" bigIcon="NaUqCV">
       <CONFIGURATIONS>
         <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
                        isDebug="0" optimisation="3" targetName="DrumBooth"/>

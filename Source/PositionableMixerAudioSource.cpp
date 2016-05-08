@@ -163,7 +163,10 @@ void PositionableMixerAudioSource::setNextReadPosition(int64 newReadPosition)
 
 int64 PositionableMixerAudioSource::getNextReadPosition() const
 {
-	return currentPlayingPosition;
+	if (inputs.size() != 0)
+		return inputs.getUnchecked(0)->getNextReadPosition();
+	else
+		return 0;
 }
 
 int64 PositionableMixerAudioSource::getTotalLength() const

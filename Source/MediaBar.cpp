@@ -103,10 +103,20 @@ void MediaBar::paint (Graphics& g)
 	*/
 	int64 min_elapsed, sec_elapsed, min_total, sec_total;
 
-	min_elapsed = (transportSource.getNextReadPosition() / 44100) / 60;
-	sec_elapsed = (transportSource.getNextReadPosition() / 44100) % 60;
-	min_total = (transportSource.getTotalLength() / 44100) / 60;
-	sec_total = (transportSource.getTotalLength() / 44100) % 60;
+	if (mixerSource.getTotalLength() != 0)
+	{
+		min_elapsed = (mixerSource.getNextReadPosition() / 44100) / 60;
+		sec_elapsed = (mixerSource.getNextReadPosition() / 44100) % 60;
+		min_total = (mixerSource.getTotalLength() / 44100) / 60;
+		sec_total = (mixerSource.getTotalLength() / 44100) % 60;
+	}
+	else
+	{
+		min_elapsed = (transportSource.getNextReadPosition() / 44100) / 60;
+		sec_elapsed = (transportSource.getNextReadPosition() / 44100) % 60;
+		min_total = (transportSource.getTotalLength() / 44100) / 60;
+		sec_total = (transportSource.getTotalLength() / 44100) % 60;
+	}
 
 	g.drawFittedText(
 		fileName + "\n"

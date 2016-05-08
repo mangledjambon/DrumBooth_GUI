@@ -294,7 +294,7 @@ public:
 		{
 			int64 localCurrentPosition = transportSource.getNextReadPosition();
 
-			if ((localCurrentPosition + (currentSampleRate * 5)) <= (currentSampleRate * 5))
+			if ((localCurrentPosition - (currentSampleRate * 5) < 0))
 			{
 				transportSource.setPosition(0.0);
 			}
